@@ -40,7 +40,7 @@ public class BookValidator {
 		Pattern pattern = Pattern.compile(regx);
 		Matcher matcher = pattern.matcher(bookName);
 		boolean isMatch = matcher.matches();
-		if (bookName.trim().equals("") || bookName.trim().length() < 10 || bookName.trim().length() > 50) {
+		if (bookName.trim().equals("")) {
 
 			throw new IllegalArgumentException(BookValidateErrors.INVAILD_BOOK_NAME);
 		}
@@ -194,12 +194,12 @@ public class BookValidator {
 		}
 
 		// Code for Regex pattern
-		String regex = "^[A-Za-z, .]+$";
+		String regex = "^[A-Za-z0-9,@ ?.?\s]+$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(bookDescription);
 		boolean isMatch = matcher.matches(); // this is the new way to check the value
 
-		if (bookDescription.trim().equals("") || bookDescription.trim().length() > 250 || !isMatch) {
+		if (bookDescription.trim().equals("") || bookDescription.trim().length() > 400 || !isMatch) {
 			throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_DESCRIPTION);
 		} else {
 			return true;

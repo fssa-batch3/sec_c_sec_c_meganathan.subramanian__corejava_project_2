@@ -37,6 +37,6 @@ public interface BookValidateErrors {
 	
 	public static final String INVALID_BOOK_DESCRIPTION_NULL = "Book description can't be null";
 	
-	public static final String INVALID_BOOK_DESCRIPTION = "book name can't be empty or out of limit";
+	public static final String INVALID_BOOK_DESCRIPTION = "book description can't be empty or out of limit";
 	 
 }
