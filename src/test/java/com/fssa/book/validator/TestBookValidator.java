@@ -299,6 +299,4 @@ class TestBookValidator {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_DESCRIPTION_NULL, ex.getMessage());
 		}
 	}
-
-
 }

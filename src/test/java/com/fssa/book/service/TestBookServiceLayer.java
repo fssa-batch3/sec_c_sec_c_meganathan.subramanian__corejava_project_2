@@ -19,8 +19,8 @@ public class TestBookServiceLayer {
 		Book book = new Book();
 		// Set the attributes of the book object for testing
 
-		book.setBookName("Think like a monk");
-		book.setBookPrice(250.00);
+		book.setBookName("Attitude is eveything");
+		book.setBookPrice(100.00);
 		book.setBookCategories("Self help books");
 		book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
 		book.setBooklanguage("English");
@@ -36,14 +36,13 @@ public class TestBookServiceLayer {
 	
 	
 	// below the code for update the book 
-	@Test
-	void testdeletebook()throws IllegalArgumentException,DAOException,SQLException {
-		 
-		BookServiceLayer bookservicelayer = new BookServiceLayer();
-		
-		
-		// create the object for book
-		
-	}
+//	@Test
+//	void testDeleteBook()throws IllegalArgumentException,DAOException,SQLException {
+//		 
+//		BookServiceLayer bookservicelayer = new BookServiceLayer();
+//				
+//		// create the object for book
+//		
+//	}
 
 }
