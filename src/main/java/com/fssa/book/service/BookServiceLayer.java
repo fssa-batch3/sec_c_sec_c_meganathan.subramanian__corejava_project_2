@@ -8,7 +8,7 @@ import com.fssa.book.model.Book;
 import com.fssa.book.validator.BookValidator;
 
 public class BookServiceLayer {
-
+ 
 	// Below the code create the instance For DAO layer.
 
 	public boolean addBook(Book book) throws IllegalArgumentException, DAOException, SQLException {
@@ -23,15 +23,19 @@ public class BookServiceLayer {
 
 	}
 
-	// Below the code for delete the sql query
-	
-	public static boolean updateBookPrice(int bookId, int bookPrice) throws DAOException, SQLException {
+	// Below the code for read the book for mysql
 
-		if (BookValidator.validateBookPrice(300)) {
-			return BookDAO.updateBook(bookId, bookPrice);
-		} else {
-			return false;
+	public Book readBook(Book book) throws DAOException, SQLException {
 
+		try {
+			BookDAO.readBook(book.getBookId());
+		} 
+		catch(DAOException | SQLException ex) {
+			throw new DAOException("book id not found" + ex.getMessage());
+			
 		}
+		return book;
+
 	}
+
 }

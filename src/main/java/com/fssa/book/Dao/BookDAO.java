@@ -36,77 +36,63 @@ public class BookDAO {
 
 	}
 
-	public static boolean updateBook(int bookId, int bookPrice) throws SQLException, DAOException {
-		boolean bookExists = false;
+	// Below the code for read the book
+	public static Book readBook(int bookId) throws DAOException, SQLException {
 
 		try (Connection connection = ConnectionUtil.getConnection()) {
-			final String existsQuery = "SELECT * FROM books WHERE bookId = ?";
-			try (PreparedStatement pstmt = connection.prepareStatement(existsQuery)) {
-				pstmt.setInt(1, bookId);
-				try (ResultSet resultSet = pstmt.executeQuery()) {
-					bookExists = resultSet.next(); // Check if the book exists in the result set
+			String selectQuery = "SELECT * FROM books WHERE bookId=?";
+			try (PreparedStatement psmt = connection.prepareStatement(selectQuery)) {
+				psmt.setInt(1, bookId);
+				try (ResultSet rs = psmt.executeQuery()) {
+					if (rs.next()) {
+						Book book = new Book();
+						book.setBookId(rs.getInt("bookId"));
+						book.setBookName(rs.getString("bookName"));
+						book.setAuthor(rs.getString("author"));
+						book.setBookCategories(rs.getString("bookCategories"));
+						book.setBookDescription(rs.getString("bookDescription"));
+						book.setBookImage(rs.getString("bookImage"));
+						book.setBookPrice(rs.getInt("bookPrice"));
+						book.setBooklanguage(rs.getString("bookLanguage"));
+						book.setQuantity(rs.getInt("quantity"));
+						return book;
+						// System.out.println(book);
+					} else {
+						return null; // book object are not or not found
+					}
 				}
 			}
 
-		} catch (SQLException e) {
-			throw new DAOException("Error checking if book exists: " + e.getMessage());
-		}
-
-		if (bookExists) {
-			try (Connection connection = ConnectionUtil.getConnection()) {
-				String updateQuery = "UPDATE books SET bookPrice = ? WHERE bookId = ?";
-				try (PreparedStatement pstmt = connection.prepareStatement(updateQuery)) {
-					pstmt.setInt(1, bookPrice);
-					pstmt.setInt(2, bookId);
-					pstmt.executeUpdate();
-				}
-			} catch (SQLException e) {
-				throw new DAOException("Error updating book price: " + e.getMessage());
-			}
-			return true;
-		} else {
-			throw new DAOException("Given book_id does not exist");
+		} catch (SQLException ex) {
+			throw new DAOException("Error while reading the book" + ex.getMessage());
 		}
 	}
 
-	public Book getBookById(int id) throws SQLException {
-
-		Connection connection = ConnectionUtil.getConnection();
-		Book book = null;
-
-		try {
-
-			String query = "SELECT * FROM  books WHERE bookId= ? ";
-			PreparedStatement stmt = connection.prepareStatement(query);
-
-			stmt.setInt(1, id);
-
-			ResultSet rs = stmt.executeQuery();
-			
-			if (rs.next()) {
-
-				book = new Book();
-				book.setBookName(rs.getString("bookName"));
-				book.setBookPrice(rs.getDouble("bookPrice"));
-				book.setBookCategories(rs.getString("bookCategories"));
-
-				book.setBookImage(rs.getString("bookImage"));
-
-				book.setBooklanguage(rs.getString("bookLanguage"));
-				book.setQuantity(rs.getInt("quantity"));
-				book.setAuthor(rs.getString("author"));
-				book.setBookDescription(rs.getString("bookDescription"));
-
+	public static boolean deleteBook(int BookId) throws DAOException {
+		try (Connection connection = ConnectionUtil.getConnection()) {
+			String deleteQuery = "DELETE FROM Books WHERE bookId=?";
+			try (PreparedStatement psmt = connection.prepareStatement(deleteQuery)) {
+				psmt.setInt(1, BookId);
+				psmt.executeUpdate();
+				return true;
 			}
-			rs.close();
-
-			stmt.close();
-
 		} catch (SQLException e) {
-			e.getMessage();
+			throw new DAOException("Error while deleting task: " + e.getMessage());
+		}
+	}
+
+	public static boolean updateBookPrice(int BookId, int bookPrice) throws DAOException, SQLException {
+		try (Connection connection = ConnectionUtil.getConnection()) {
+			String existQuery = "SELECT * FROM books WHERE bookId = ?";
+			try (PreparedStatement psmt = connection.prepareStatement(existQuery)) {
+				psmt.setInt(1, BookId);
+				int bookid = psmt.executeUpdate(); 
+				return true;
+			} catch (SQLException e) {
+				throw new SQLException("Given bookid does not exist");
+			}
 		}
 		
-		return book;
-	}
 
+	}
 }

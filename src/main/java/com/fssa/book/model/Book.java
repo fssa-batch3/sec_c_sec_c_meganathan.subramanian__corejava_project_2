@@ -13,7 +13,25 @@ public class Book {
 	private String bookFilter;
 
 	
-//	 Default constructor 
+	
+	
+@Override
+public String toString() {
+    return "Book [\n"
+            + "bookId=" + bookId + "\n"
+            + "bookName=" + bookName + "\n"
+            + "bookPrice=" + bookPrice + "\n"
+            + "bookCategories=" + bookCategories + "\n"
+            + "bookImage=" + bookImage + "\n"
+            + "booklanguage=" + booklanguage + "\n"
+            + "quantity=" + quantity + "\n"
+            + "author=" + author + "\n"
+            + "bookDescription=" + bookDescription + "\n"
+            + "bookFilter=" + bookFilter + "\n"
+            + "]";
+}
+
+	//	 Default constructor 
 	public Book() {
 		
 	}

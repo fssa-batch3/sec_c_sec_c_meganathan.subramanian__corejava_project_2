@@ -9,21 +9,19 @@ public interface BookValidateErrors {
 	
 	public static final String INVALID_BOOK_NULL = "Book can't be a null";
 	
-	public static final String INVAILD_BOOK_NAME = "Book name can't be null and it limit below 50 letters above 10";
+	public static final String INVALID_BOOK_NAME = "Book name can't be null and it limit below 50 letters above 10";
 
-	public static final String INVAILD_BOOK_NAME_NULL = "Book name can't be null";
+	public static final String INVALID_BOOK_NAME_NULL = "Book name can't be null";
 	
-	public static final String INVAILD_BOOK_PRICE = "Book name can't be a null or empty or zero";
+	public static final String INVALID_BOOKID  = "Book ID can't be null or less than zero";
 	
-	public static final String INVAILD_BOOKID  = "Book can't be null or less than zero";
+	public static final String INVALID_BOOK_PRICE = "Book name can't be 0 or out of limit";
 	
-	public static final String INVALID_BOOK_PRICE = "Book name can't be null or out of limit";
-	
-	public static final String INVAID_BOOK_CATEGORIES_NULL  = "Book categories can't be null";
+	public static final String INVALID_BOOK_CATEGORIES_NULL  = "Book categories can't be null";
 	
 	public static final String INVALID_BOOK_CATEGOIRES_NAME  = "book categories name out of limit or Invalid";
 	
-	public static final String INVALID_BOOK_IMAGE_URL = "Book image are Invalid";
+	public static final String INVALID_BOOK_IMAGE_URL = "Book image are Invalid or null";
 	
 	public static final String INVALID_BOOK_LANGUAGE_NAME_NULL = "Book language name cannot be null";
 	

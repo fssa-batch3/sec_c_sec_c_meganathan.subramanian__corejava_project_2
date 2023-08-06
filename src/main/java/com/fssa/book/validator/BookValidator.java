@@ -14,7 +14,6 @@ public class BookValidator {
 		if (book == null) {
 			throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_NULL);
 		}
-
 		validateBookName(book.getBookName());
 		validateBookId(book.getBookId());
 		validateBookPrice(book.getBookPrice());
@@ -24,15 +23,14 @@ public class BookValidator {
 		validateAuthorName(book.getAuthor());
 		validateBookImageUrl(book.getBookImage());
 		validateBookDescription(book.getBookDescription());
-
+ 
 		return true;
 	}
 
 	// Below the code for validate
 	public static boolean validateBookName(String bookName) throws IllegalArgumentException {
 		if (bookName == null) {
-
-			throw new IllegalArgumentException(BookValidateErrors.INVAILD_BOOK_NAME_NULL);
+			throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_NAME_NULL);
 		}
 
 		// Below the code for Regex pattern
@@ -40,9 +38,9 @@ public class BookValidator {
 		Pattern pattern = Pattern.compile(regx);
 		Matcher matcher = pattern.matcher(bookName);
 		boolean isMatch = matcher.matches();
-		if (bookName.trim().equals("")) {
+		if (" ".trim().equals(bookName) || bookName.trim().length() > 40 || bookName.trim().length() < 3 || !isMatch) {
 
-			throw new IllegalArgumentException(BookValidateErrors.INVAILD_BOOK_NAME);
+			throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_NAME);
 		}
 
 		return true;
@@ -50,51 +48,51 @@ public class BookValidator {
 
 	// Below the code for validate the BookId
 	public static boolean validateBookId(int bookId) throws IllegalArgumentException {
-		if (bookId < 0) {
-			throw new IllegalArgumentException(BookValidateErrors.INVAILD_BOOKID);
+		if (bookId <= 0) {
+			throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOKID);
 		}
 		return true;
 	}
 
 	// Below the code for validate the bookPrice
 	public static boolean validateBookPrice(double Price) throws IllegalArgumentException {
-		if (Price <= 0.0 || Price > 1300.00) {
-			throw new IllegalArgumentException(BookValidateErrors.INVAILD_BOOK_PRICE);
+		if (Price <= 350 || Price > 1300.00) {
+			throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_PRICE);
 		}
 		return true;
 	}
 
 	// Code for Validate the bookCatergories
+	// This will given by the user
 
 	public static boolean validateBookCategoriesName(String bookCategoriesName) throws IllegalArgumentException {
 
-		if (bookCategoriesName == null || bookCategoriesName.trim().equals("")) {
-			throw new IllegalArgumentException(BookValidateErrors.INVAID_BOOK_CATEGORIES_NULL);
+		if (bookCategoriesName == null || "".trim().equals(bookCategoriesName)) {
+			throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_CATEGORIES_NULL);
 		}
-
+ 
 		// Code for Regex pattern
 		String regex = "^[A-Za-z ]+$";
 		Pattern pattern = Pattern.compile(regex); // Compile the pattern
-		Matcher matcher = pattern.matcher(bookCategoriesName); // using matcher object of check the whether match or not
+		Matcher matcher = pattern.matcher(bookCategoriesName); // using matcher object of check the whether match or
 		boolean isMatch = matcher.matches(); // And return the boolean value
 
-		if (bookCategoriesName.toLowerCase().length() > 20 || !isMatch) {
+		if (bookCategoriesName.toLowerCase().length() > 20 || bookCategoriesName.toLowerCase().length() < 2 || !isMatch) {
 			throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_CATEGOIRES_NAME);
 		}
 
 		else {
-			validateCategoryName(bookCategoriesName);
+			validateCategoryNameEnums(bookCategoriesName);
 			return true;
 		}
 
 	}
 
 	// below the code for validate the category name
+	public static boolean validateCategoryNameEnums(String mainCategory) throws IllegalArgumentException {
 
-	public static boolean validateCategoryName(String mainCategory) throws IllegalArgumentException {
-
-		if (mainCategory == null) {
-			throw new IllegalArgumentException(BookValidateErrors.INVAID_BOOK_CATEGORIES_NULL);
+		if (mainCategory == null || "".trim().equals(mainCategory)) {
+			throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_CATEGORIES_NULL);
 		}
 
 		for (Bookcategories category : Bookcategories.values()) {
@@ -156,7 +154,7 @@ public class BookValidator {
 	// Below the code for validate the Book quantity
 
 	public static boolean validateBookQuantity(int bookQuantity) throws IllegalArgumentException {
-		if (bookQuantity < 0 || bookQuantity > 20) {
+		if (bookQuantity <= 0 || bookQuantity > 20) {
 			throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_QUANTITY);
 		}
 		return true;
@@ -164,19 +162,19 @@ public class BookValidator {
 
 	// Below the code for Validate the author name
 
-	public static boolean validateAuthorName(String AuthorName) throws IllegalArgumentException {
+	public static boolean validateAuthorName(String authorName) throws IllegalArgumentException {
 
-		if (AuthorName == null) {
+		if (authorName == null) {
 			throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_AUTHOR_NAME_NULL);
 		}
 
 		// Code for Regex pattern
 		String regex = "^[A-Za-z ]+$";
 		Pattern pattern = Pattern.compile(regex);
-		Matcher matcher = pattern.matcher(AuthorName);
+		Matcher matcher = pattern.matcher(authorName);
 		boolean isMatch = matcher.matches(); // this is the new way to check the value
 
-		if (AuthorName.trim().equals("") || AuthorName.trim().length() > 20 || !isMatch) {
+		if (authorName.trim().equals("") || authorName.trim().length() > 20 || !isMatch) {
 			throw new IllegalArgumentException(BookValidateErrors.INVAID_BOOK_AUTHOR_NAME);
 		}
 
@@ -199,7 +197,7 @@ public class BookValidator {
 		Matcher matcher = pattern.matcher(bookDescription);
 		boolean isMatch = matcher.matches(); // this is the new way to check the value
 
-		if (bookDescription.trim().equals("") || bookDescription.trim().length() > 400 || !isMatch) {
+		if ("".trim().equals(bookDescription) || bookDescription.trim().length() > 400 || !isMatch) {
 			throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_DESCRIPTION);
 		} else {
 			return true;
