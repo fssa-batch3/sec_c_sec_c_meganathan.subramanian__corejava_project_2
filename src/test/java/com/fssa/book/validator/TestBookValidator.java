@@ -34,7 +34,7 @@ class TestBookValidator {
 		Validbook.setBookCategories("fiction books");
 		Validbook.setBooklanguage("English");
 		Validbook.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
-		Validbook.setBookPrice(400.00);
+		Validbook.setBookPrice(400);
 		Validbook.setQuantity(2);
 		Assertions.assertTrue(BookValidator.validate(Validbook));
 	}
@@ -52,7 +52,7 @@ class TestBookValidator {
 			book.setBookCategories("fiction books");
 			book.setBooklanguage("English");
 			book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
-			book.setBookPrice(400.00);
+			book.setBookPrice(400);
 			book.setQuantity(2);
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOKID, ex.getMessage());
@@ -103,10 +103,9 @@ class TestBookValidator {
 	void testInvalidBookNameObj() {
 		try {
 			Book book = new Book();
-			book.setBookId(2);
+			book.setBookId(1);
 			book.setAuthor("Jeff keller");
-			book.setBookDescription(
-					"The key takeaway from the book is to remember that being motivated is easier than making excuses. To be truly motivated, you need to think positively and break free of negative attitude and mental window.");
+			book.setBookDescription("The key takeaway from the book is to remember that being motivated is easier than making excuses. To be truly motivated, you need to think positively and break free of negative attitude and mental window.");
 			book.setBookName(null);
 			book.setBookCategories("fiction books");
 			book.setBooklanguage("English");

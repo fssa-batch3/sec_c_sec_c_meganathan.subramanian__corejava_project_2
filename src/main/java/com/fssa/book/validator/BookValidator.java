@@ -16,7 +16,7 @@ public class BookValidator {
 		}
 		validateBookName(book.getBookName());
 		validateBookId(book.getBookId());
-		validateBookPrice(book.getBookPrice());
+		validateBookPrice((int) book.getBookPrice());
 		validateBookCategoriesName(book.getBookCategories());
 		validateBookLanguages(book.getBooklanguage());
 		validateBookQuantity(book.getQuantity());
@@ -55,8 +55,8 @@ public class BookValidator {
 	}
 
 	// Below the code for validate the bookPrice
-	public static boolean validateBookPrice(double Price) throws IllegalArgumentException {
-		if (Price <= 350 || Price > 1300.00) {
+	public static boolean validateBookPrice(int Price) throws IllegalArgumentException {
+		if (Price <= 350 || Price > 1300) {
 			throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_PRICE);
 		}
 		return true;

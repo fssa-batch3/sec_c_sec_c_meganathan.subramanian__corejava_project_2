@@ -3,7 +3,7 @@ package com.fssa.book.model;
 public class Book {
 	private int bookId;
 	private String bookName;
-	private double bookPrice;
+	private int bookPrice;
 	private String bookCategories;
 	private String bookImage;
 	private String booklanguage;
@@ -37,7 +37,7 @@ public String toString() {
 	}
 	
 	// parameterized constructor 
-	public Book(int bookId, String bookName, double bookPrice, String bookCategories, String bookImage,
+	public Book(int bookId, String bookName, int bookPrice, String bookCategories, String bookImage,
 			String booklanguage, int quantity, String author, String bookDescription, String bookFilter) {
 	
 		this.bookId = bookId;
@@ -68,11 +68,11 @@ public String toString() {
 		this.bookName = bookName;
 	}
 
-	public double getBookPrice() {
+	public int getBookPrice() {
 		return bookPrice;
 	}
 
-	public void setBookPrice(double bookPrice) {
+	public void setBookPrice(int bookPrice) {
 		this.bookPrice = bookPrice;
 	}
 

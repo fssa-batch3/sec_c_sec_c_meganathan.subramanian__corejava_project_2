@@ -1,6 +1,7 @@
 package com.fssa.book.Dao;
 
 import java.sql.Connection;
+import java.lang.System.Logger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -68,31 +69,68 @@ public class BookDAO {
 		}
 	}
 
-	public static boolean deleteBook(int BookId) throws DAOException {
-		try (Connection connection = ConnectionUtil.getConnection()) {
-			String deleteQuery = "DELETE FROM Books WHERE bookId=?";
-			try (PreparedStatement psmt = connection.prepareStatement(deleteQuery)) {
-				psmt.setInt(1, BookId);
-				psmt.executeUpdate();
-				return true;
-			}
-		} catch (SQLException e) {
-			throw new DAOException("Error while deleting task: " + e.getMessage());
-		}
-	}
-
-	public static boolean updateBookPrice(int BookId, int bookPrice) throws DAOException, SQLException {
+	public static void deleteBook(int BookId) throws DAOException, SQLException {
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String existQuery = "SELECT * FROM books WHERE bookId = ?";
 			try (PreparedStatement psmt = connection.prepareStatement(existQuery)) {
 				psmt.setInt(1, BookId);
-				int bookid = psmt.executeUpdate(); 
-				return true;
-			} catch (SQLException e) {
-				throw new SQLException("Given bookid does not exist");
+				try (ResultSet rs = psmt.executeQuery()) {
+
+					if (!rs.next()) {
+						throw new DAOException("given bookid doesn't exist");
+					}
+
+				}
+			}
+		} catch (SQLException e) {
+			throw new DAOException("Error while deleting task: " + e.getMessage());
+		}
+
+		try (Connection connection = ConnectionUtil.getConnection()) {
+			String deleteQuery = "DELETE FROM books WHERE bookId = ?";
+			try (PreparedStatement psmt = connection.prepareStatement(deleteQuery)) {
+				psmt.setInt(1, BookId);
+				int rowAffected = psmt.executeUpdate();
+				if (rowAffected > 0) {
+					System.out.println("Success fully delete the row");
+				} else {
+					System.out.println("Error while deleting the book");
+				}
 			}
 		}
-		
-
 	}
+
+	public static void updateBookPrice(int bookId, int bookPrice) throws DAOException, SQLException {
+		try (Connection connection = ConnectionUtil.getConnection()) {
+			String existQuery = "SELECT * FROM books WHERE bookId = ?";
+			try (PreparedStatement psmt = connection.prepareStatement(existQuery)) {
+				psmt.setInt(1, bookId);
+				try (ResultSet rs = psmt.executeQuery()) {
+
+					if (!rs.next()) {
+						throw new DAOException("given bookid doesn't exist");
+					}
+				}
+			}
+		} catch (SQLException e) {
+			throw new DAOException("Error while checking bookid exist" + e.getMessage());
+		}
+
+		try (Connection connection = ConnectionUtil.getConnection()) {
+			String updateQuery = "UPDATE books set bookPrice = ? WHERE bookId = ?";
+			try (PreparedStatement psmt = connection.prepareStatement(updateQuery)) {
+				psmt.setInt(1, bookPrice);
+				psmt.setInt(2, bookId);
+				int rowsAffected = psmt.executeUpdate();
+				if (rowsAffected > 0) {
+					System.out.println("Successfully updated bookprice");
+				} else {
+					System.out.println("bookprice updation fails");
+				}
+			}
+		} catch (SQLException e) {
+			throw new DAOException(e.getMessage());
+		}
+	}
+
 }
