@@ -1,7 +1,7 @@
 -- Create a new DB Table books
 
 use bookstore;
-
+Drop table books;
 CREATE TABLE books(
     bookId INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     bookName VARCHAR(100) NOT NULL,

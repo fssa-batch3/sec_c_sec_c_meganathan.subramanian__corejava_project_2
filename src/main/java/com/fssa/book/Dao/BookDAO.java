@@ -99,7 +99,7 @@ public class BookDAO {
 				try (ResultSet rs = psmt.executeQuery()) {
 
 					if (!rs.next()) {
-						throw new DAOException("given bookid doesn't exist");
+						throw new DAOException("Given bookId doesn't exist");
 					}
 
 				}

@@ -39,12 +39,13 @@ public class BookServiceLayer {
 	}
 	
 	public boolean updateBookPrice(int bookId , int bookPrice) throws  DAOException, SQLException{
+
 		try {
 			BookValidator.validateBookPrice(bookPrice);
 			BookDAO.updateBookPrice(bookId, bookPrice);
 			return true;
 		} catch(DAOException | SQLException e) {
-			throw new DAOException("updation fails" + e.getMessage());
+			throw new DAOException("Updation fails" + e.getMessage());
 		}
 	}
 

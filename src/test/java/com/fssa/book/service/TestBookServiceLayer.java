@@ -27,9 +27,8 @@ public class TestBookServiceLayer {
 
 	Book getBook() {
 		Book book = new Book();
-		book.setBookId(1);
 		book.setBookName("Attitude is eveything");
-		book.setBookPrice(300);
+		book.setBookPrice(400);
 		book.setBookCategories("Self help books");
 		book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
 		book.setBooklanguage("English");
@@ -48,13 +47,13 @@ public class TestBookServiceLayer {
 		BookServiceLayer bookservicelayer = new BookServiceLayer();
 		Book book = new Book();
 		// Set the attributes of the book object for testing
-		book.setBookName("Attitude is eveything");
-		book.setBookPrice(500);
+		book.setBookName("The mircale morning");
+		book.setBookPrice(600);
 		book.setBookCategories("Self help books");
 		book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
-		book.setBooklanguage("English");
-		book.setQuantity(1);
-		book.setAuthor("Someone");
+		book.setBooklanguage("Tamil");
+		book.setQuantity(2);
+		book.setAuthor("Brain Tracy");
 		book.setBookDescription("Combining ancient wisdom with the practicalities of today?,Think Like a Monk provides essential guidance for traveling a balanced path to success. Jay Shetty has written a book especially for you. He takes abstract concepts like compassion and humility and makes them applicable to your life.");
 
 		boolean success = bookservicelayer.addBook(book);
@@ -91,10 +90,20 @@ public class TestBookServiceLayer {
 
 		Book book = new Book();
 		book.setBookId(1);
-		book.setBookPrice(500);
+		book.setBookPrice(800);
 		BookServiceLayer bookServiceLayer = new BookServiceLayer();
 		assertDoesNotThrow(() -> bookServiceLayer.updateBookPrice(book.getBookId(),book.getBookPrice()));
 		
 	}
+
+
+	// Below the code for test update the book quantity
+//	void testUpdateBookQty(){
+//		Book book = new Book();
+//		book.setQuantity(3);
+//
+//
+
+
 
 }

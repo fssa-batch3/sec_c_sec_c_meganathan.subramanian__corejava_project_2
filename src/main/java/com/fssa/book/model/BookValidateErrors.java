@@ -15,7 +15,7 @@ public interface BookValidateErrors {
 	
 	public static final String INVALID_BOOKID  = "Book ID can't be null or less than zero";
 	
-	public static final String INVALID_BOOK_PRICE = "Book name can't be 0 or out of limit";
+	public static final String INVALID_BOOK_PRICE = "Book Price can't be 0 or out of limit";
 	
 	public static final String INVALID_BOOK_CATEGORIES_NULL  = "Book categories can't be null";
 	
