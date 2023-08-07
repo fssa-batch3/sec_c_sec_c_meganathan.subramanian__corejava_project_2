@@ -39,20 +39,22 @@ public class TestBookServiceLayer {
 
 	}
 
-	// Below the code for test the all the attribute to set the value
 
+	/**
+	 * // Below the code for test the all the attribute to set the value
+	 */
 	@Test
-	void testCreateBook() throws IllegalArgumentException, SQLException, DAOException {
+	void testCreateBook() throws  SQLException, DAOException {
 
 		BookServiceLayer bookservicelayer = new BookServiceLayer();
 		Book book = new Book();
 		// Set the attributes of the book object for testing
-		book.setBookName("The mircale morning");
-		book.setBookPrice(600);
-		book.setBookCategories("Self help books");
+		book.setBookName("The Elon musk book");
+		book.setBookPrice(400);
+		book.setBookCategories("fiction books");
 		book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
 		book.setBooklanguage("Tamil");
-		book.setQuantity(2);
+		book.setQuantity(1);
 		book.setAuthor("Brain Tracy");
 		book.setBookDescription("Combining ancient wisdom with the practicalities of today?,Think Like a Monk provides essential guidance for traveling a balanced path to success. Jay Shetty has written a book especially for you. He takes abstract concepts like compassion and humility and makes them applicable to your life.");
 
@@ -98,12 +100,12 @@ public class TestBookServiceLayer {
 
 
 	// Below the code for test update the book quantity
-//	void testUpdateBookQty(){
-//		Book book = new Book();
-//		book.setQuantity(3);
-//
-//
-
-
-
+	@Test
+	void testUpdateBookQty() {
+		Book book = new Book();
+		book.setQuantity(3);
+		book.setBookId(1);
+		BookServiceLayer bookServiceLayer = new BookServiceLayer();
+		assertDoesNotThrow(() -> bookServiceLayer.updateBookQty(book.getBookId(),book.getQuantity()));
+	}
 }
