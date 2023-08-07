@@ -11,6 +11,15 @@ import com.fssa.book.model.Book;
 
 public class BookDAO {
 
+	/**
+	 * Below the code for Creating the new book in database
+	 *
+	 * @param book
+	 * @return
+	 * @throws DAOException
+	 * @throws SQLException
+	 */
+
 	public static boolean createBook(Book book) throws DAOException, SQLException {
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String insertQuery = "INSERT INTO books (bookId , bookName , bookPrice, bookCategories, bookImage, booklanguage , quantity, author , bookDescription) VALUES (?,?,?,?,?,?,?,?,?)";
@@ -37,7 +46,14 @@ public class BookDAO {
 
 	}
 
-	// Below the code for read the book
+
+	/**
+	 *   Below the code for read the book
+	 * @param bookId
+	 * @return
+	 * @throws DAOException
+	 * @throws SQLException
+	 */
 	public static Book readBook(int bookId) throws DAOException, SQLException {
 
 		try (Connection connection = ConnectionUtil.getConnection()) {
@@ -69,6 +85,12 @@ public class BookDAO {
 		}
 	}
 
+	/**
+	 *
+	 * @param BookId
+	 * @throws DAOException
+	 * @throws SQLException
+	 */
 	public static void deleteBook(int BookId) throws DAOException, SQLException {
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String existQuery = "SELECT * FROM books WHERE bookId = ?";
@@ -100,6 +122,13 @@ public class BookDAO {
 		}
 	}
 
+	/**
+	 *  Below the code for update the book price using book id
+	 * @param bookId
+	 * @param bookPrice
+	 * @throws DAOException
+	 * @throws SQLException
+	 */
 	public static void updateBookPrice(int bookId, int bookPrice) throws DAOException, SQLException {
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String existQuery = "SELECT * FROM books WHERE bookId = ?";

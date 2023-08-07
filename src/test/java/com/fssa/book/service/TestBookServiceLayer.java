@@ -6,6 +6,7 @@ package com.fssa.book.service;
  * 
  */
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import java.util.logging.*;
 
 /**
  *  // Below the code for testing the all book service layer 
@@ -47,7 +48,6 @@ public class TestBookServiceLayer {
 		BookServiceLayer bookservicelayer = new BookServiceLayer();
 		Book book = new Book();
 		// Set the attributes of the book object for testing
-		book.setBookId(1);
 		book.setBookName("Attitude is eveything");
 		book.setBookPrice(500);
 		book.setBookCategories("Self help books");
@@ -59,6 +59,7 @@ public class TestBookServiceLayer {
 
 		boolean success = bookservicelayer.addBook(book);
 		Assertions.assertTrue(success); // Assert that the book creation is successful
+		
 		System.out.println("Query inserted Successfully");
 	}
 
@@ -77,22 +78,22 @@ public class TestBookServiceLayer {
 
 	
 	// Below the code for delete the book ID
-//	 void testDeleteBookusingbookId() {
-//		 
-//		 Book book = new Book();
-//		 book.setBookId(1);
-//		 
-//	 }
+	 void testDeleteBookusingbookId() {
+		 
+		 Book book = new Book();
+		 book.setBookId(1);
+		 
+	 }
 
 	// below the code for update the book price using book id 
 	@Test
 	void testUpdateBookPrice() throws DAOException, SQLException {
 
-		Book book = getBook();
-		int bookId = book.getBookId();
-		int bookPrice1 =  book.getBookPrice();
+		Book book = new Book();
+		book.setBookId(1);
+		book.setBookPrice(500);
 		BookServiceLayer bookServiceLayer = new BookServiceLayer();
-		assertDoesNotThrow(() -> bookServiceLayer.updateBookPrice(bookId,bookPrice1));
+		assertDoesNotThrow(() -> bookServiceLayer.updateBookPrice(book.getBookId(),book.getBookPrice()));
 		
 	}
 

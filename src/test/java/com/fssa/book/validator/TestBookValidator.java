@@ -196,22 +196,6 @@ class TestBookValidator {
 		}
 	}
 
-	// Code for Valid Test the bookId
-	@Test
-	void testValidBookId() {
-		Assertions.assertTrue(BookValidator.validateBookId(12));
-
-	}
- 
-	// code for Invalid TestCase the bookId
-	@Test
-	void testInvalidBookId() {
-		try {
-			BookValidator.validateBookId(-1);
-		} catch (IllegalArgumentException ex) {
-			Assertions.assertEquals(BookValidateErrors.INVALID_BOOKID, ex.getMessage());
-		}
-	}
 
 	@Test
 	// code for Valid book name

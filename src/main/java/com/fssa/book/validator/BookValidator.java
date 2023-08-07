@@ -15,8 +15,7 @@ public class BookValidator {
 			throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_NULL);
 		}
 		validateBookName(book.getBookName());
-		validateBookId(book.getBookId());
-		validateBookPrice((int) book.getBookPrice());
+		validateBookPrice(book.getBookPrice());
 		validateBookCategoriesName(book.getBookCategories());
 		validateBookLanguages(book.getBooklanguage());
 		validateBookQuantity(book.getQuantity());
@@ -46,13 +45,6 @@ public class BookValidator {
 		return true;
 	}
 
-	// Below the code for validate the BookId
-	public static boolean validateBookId(int bookId) throws IllegalArgumentException {
-		if (bookId <= 0) {
-			throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOKID);
-		}
-		return true;
-	}
 
 	// Below the code for validate the bookPrice
 	public static boolean validateBookPrice(int Price) throws IllegalArgumentException {

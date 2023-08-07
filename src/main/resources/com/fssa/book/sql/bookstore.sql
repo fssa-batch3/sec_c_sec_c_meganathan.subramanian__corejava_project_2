@@ -2,7 +2,7 @@
 
 use bookstore;
 
-CREATE TABLE books (
+CREATE TABLE books(
     bookId INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     bookName VARCHAR(100) NOT NULL,
     bookPrice INT(200) not null,
