@@ -120,7 +120,7 @@ public class BookDAO {
                 psmt.setInt(1, BookId);
                 int rowAffected = psmt.executeUpdate();
                 if (rowAffected > 0) {
-                    System.out.println("Successfully delete the row" + rowAffected);
+                    System.out.println("Successfully delete the row" + BookId);
                 } else {
                     System.out.println("Error while deleting the book");
                 }
