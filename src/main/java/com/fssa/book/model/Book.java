@@ -1,5 +1,10 @@
 package com.fssa.book.model;
 
+/**
+ * Below the code for add the attribute and write the getter and setter
+ *
+ * @author MeganathanSubramania
+ */
 public class Book {
 	private int bookId;
 	private String bookName;

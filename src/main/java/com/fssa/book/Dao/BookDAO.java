@@ -1,11 +1,17 @@
 package com.fssa.book.Dao;
 
+/**
+ *  Below the codw for write the all query like create,read,delete,update
+ *
+ * @author meganthan Subramanian
+ *
+ */
+
 import java.sql.Connection;
 import java.lang.System.Logger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import com.fssa.book.exception.DAOException;
 import com.fssa.book.model.Book;
 
@@ -114,7 +120,7 @@ public class BookDAO {
                 psmt.setInt(1, BookId);
                 int rowAffected = psmt.executeUpdate();
                 if (rowAffected > 0) {
-                    System.out.println("Success fully delete the row");
+                    System.out.println("Successfully delete the row" + rowAffected);
                 } else {
                     System.out.println("Error while deleting the book");
                 }

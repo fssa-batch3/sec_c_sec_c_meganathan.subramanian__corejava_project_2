@@ -27,7 +27,7 @@ public class TestBookServiceLayer {
 
 	Book getBook() {
 		Book book = new Book();
-		book.setBookName("Attitude is eveything");
+		book.setBookName("Attitude is Everything");
 		book.setBookPrice(400);
 		book.setBookCategories("Self help books");
 		book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
@@ -77,12 +77,14 @@ public class TestBookServiceLayer {
 
 	}
 
-	
-	// Below the code for delete the book ID
+	// Below the code for delete the book using book ID
+	@Test
 	 void testDeleteBookusingbookId() {
 		 
 		 Book book = new Book();
-		 book.setBookId(1);
+		 book.setBookId(5);
+		 BookServiceLayer bookServiceLayer = new BookServiceLayer();
+		 assertDoesNotThrow(()-> bookServiceLayer.deleteBookUsingId(book.getBookId()));
 		 
 	 }
 
