@@ -6,5 +6,4 @@ public class DAOException extends Exception {
 		super(msg);
 	}
 	public static final String ERROR_CONNECTION_DB = "Error connection the database";
-
 }

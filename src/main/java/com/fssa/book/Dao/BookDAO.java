@@ -8,14 +8,20 @@ package com.fssa.book.Dao;
  */
 
 import java.sql.Connection;
-import java.lang.System.Logger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import com.fssa.book.exception.DAOException;
+import com.fssa.book.logger.Logger;
 import com.fssa.book.model.Book;
 
 public class BookDAO {
+
+    // Below the code for private constructor
+ private  BookDAO(){
+
+
+ }
 
     /**
      * Below the code for Creating the new book in database
@@ -80,7 +86,7 @@ public class BookDAO {
                         book.setBooklanguage(rs.getString("bookLanguage"));
                         book.setQuantity(rs.getInt("quantity"));
                         return book;
-                        // System.out.println(book);
+                       
                     } else {
                         return null; // book object are not or not found
                     }
@@ -120,9 +126,9 @@ public class BookDAO {
                 psmt.setInt(1, BookId);
                 int rowAffected = psmt.executeUpdate();
                 if (rowAffected > 0) {
-                    System.out.println("Successfully delete the row" + BookId);
+                    Logger.info("Successfully delete the row" + BookId);
                 } else {
-                    System.out.println("Error while deleting the book");
+                    Logger.info("Error while deleting the book");
                 }
             }
         }
@@ -159,9 +165,9 @@ public class BookDAO {
                 psmt.setInt(2, bookId);
                 int rowsAffected = psmt.executeUpdate();
                 if (rowsAffected > 0) {
-                    System.out.println("Successfully updated bookprice");
+                    Logger.info("Successfully updated bookprice");
                 } else {
-                    System.out.println("bookprice updation fails");
+                    Logger.info("bookprice updation fails");
                 }
             }
         } catch (SQLException e) {
@@ -202,9 +208,9 @@ public class BookDAO {
                 psmt.setInt(2, bookId);
                 int rowsAffected = psmt.executeUpdate();
                 if (rowsAffected > 0) {
-                    System.out.println("Successfully updated bookqty");
+                    Logger.info("Successfully updated bookqty");
                 } else {
-                    System.out.println("bookqty updation fails");
+                    Logger.info("bookqty updation fails");
                 }
             }
         } catch (SQLException e) {

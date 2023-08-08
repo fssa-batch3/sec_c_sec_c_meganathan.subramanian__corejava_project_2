@@ -5,6 +5,7 @@ package com.fssa.book.model;
  *
  * @author MeganathanSubramania
  */
+
 public class Book {
 	private int bookId;
 	private String bookName;
@@ -16,9 +17,6 @@ public class Book {
 	private String author;
 	private String bookDescription;
 	private String bookFilter;
-
-	
-	
 	
 @Override
 public String toString() {
