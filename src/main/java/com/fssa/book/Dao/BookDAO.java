@@ -1,16 +1,16 @@
 package com.fssa.book.Dao;
 
 /**
- *  Below the codw for write the all query like create,read,delete,update
+ * Below the codw for write the all query like create,read,delete,update
  *
  * @author meganthan Subramanian
- *
  */
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import com.fssa.book.exception.DAOException;
 import com.fssa.book.logger.Logger;
 import com.fssa.book.model.Book;
@@ -18,10 +18,10 @@ import com.fssa.book.model.Book;
 public class BookDAO {
 
     // Below the code for private constructor
- private  BookDAO(){
+    private BookDAO() {
 
 
- }
+    }
 
     /**
      * Below the code for Creating the new book in database
@@ -109,16 +109,16 @@ public class BookDAO {
             try (PreparedStatement psmt = connection.prepareStatement(existQuery)) {
                 psmt.setInt(1, BookId);
                 try (ResultSet rs = psmt.executeQuery()) {
-
-                    if (!rs.next()) {
+                    if (rs.next()) {
                         throw new DAOException("Given bookId doesn't exist");
                     }
-
                 }
             }
-        } catch (SQLException e) {
-            throw new DAOException("Error while deleting task: " + e.getMessage());
+        } catch (SQLException ex) {
+            throw new DAOException("Error while deleting book: " + ex.getMessage());
         }
+
+            // Below the code for delete the book using book id
 
         try (Connection connection = ConnectionUtil.getConnection()) {
             String deleteQuery = "DELETE FROM books WHERE bookId = ?";
