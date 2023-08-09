@@ -86,7 +86,7 @@ public class BookDAO {
                         book.setBooklanguage(rs.getString("bookLanguage"));
                         book.setQuantity(rs.getInt("quantity"));
                         return book;
-                       
+
                     } else {
                         return null; // book object are not or not found
                     }
