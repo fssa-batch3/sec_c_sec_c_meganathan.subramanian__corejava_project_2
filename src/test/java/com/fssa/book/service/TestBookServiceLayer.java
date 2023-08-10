@@ -18,7 +18,7 @@ import java.sql.SQLException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import com.fssa.book.Dao.BookDAO;
+import com.fssa.book.dao.BookDAO;
 import com.fssa.book.exception.DAOException;
 import com.fssa.book.model.Book;
 

@@ -1,0 +1,5 @@
+
+€
+java:S1192l"eDefine a constant instead of duplicating this literal "SELECT * FROM books WHERE bookId = ?" 3 times.(‰ï”Õüÿÿÿÿ
+e	java:S117j"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÌœµZ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Œø

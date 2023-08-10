@@ -14,8 +14,9 @@ class TestBookValidator {
 	@Test
 	// Below the code test the object are null
 	void testBookObjNull() {
+		BookValidator bookvalidator = new BookValidator(); // Create a new object
 		try {
-			BookValidator.validate(null);
+			bookvalidator.validate(null);
 
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_NULL, ex.getMessage());
@@ -26,6 +27,7 @@ class TestBookValidator {
 	// Code for valid test for book object
 	void validTestBookObject() {
 		Book Validbook = new Book();
+		BookValidator bookvalidator = new BookValidator(); // Create a new object for it
 		Validbook.setBookId(1);
 		Validbook.setAuthor("Jeff keller");
 		Validbook.setBookDescription(
@@ -36,7 +38,7 @@ class TestBookValidator {
 		Validbook.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
 		Validbook.setBookPrice(400);
 		Validbook.setQuantity(2);
-		Assertions.assertTrue(BookValidator.validate(Validbook));
+		Assertions.assertTrue(bookvalidator.validate(Validbook));
 	}
 
 	@Test
@@ -105,7 +107,8 @@ class TestBookValidator {
 			Book book = new Book();
 			book.setBookId(1);
 			book.setAuthor("Jeff keller");
-			book.setBookDescription("The key takeaway from the book is to remember that being motivated is easier than making excuses. To be truly motivated, you need to think positively and break free of negative attitude and mental window.");
+			book.setBookDescription(
+					"The key takeaway from the book is to remember that being motivated is easier than making excuses. To be truly motivated, you need to think positively and break free of negative attitude and mental window.");
 			book.setBookName(null);
 			book.setBookCategories("fiction books");
 			book.setBooklanguage("English");
@@ -196,18 +199,19 @@ class TestBookValidator {
 		}
 	}
 
-
 	@Test
 	// code for Valid book name
 	void testValidBookName() {
-		Assertions.assertTrue(BookValidator.validateBookName("Attitude is everything by jeff keller"));
+		BookValidator bookValidator = new BookValidator();
+		Assertions.assertTrue(bookValidator.validateBookName("Attitude is everything by jeff keller"));
 	}
 
 	// Code for Invalid book name
 	@Test
 	void testInvalidBookName() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateBookName("Attitude book is by something new@@@@@@@@@@@@@@@@@@@@@");
+			bookValidator.validateBookName("Attitude book is by something new@@@@@@@@@@@@@@@@@@@@@");
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_NAME, ex.getMessage());
 
@@ -218,50 +222,47 @@ class TestBookValidator {
 	// Below the code for test the invaild book name
 	@Test
 	void testinvalidBookNameValidator() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateBookName("Harry Potter 123");
+			bookValidator.validateBookName("Harry Potter 123");
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_NAME, ex.getMessage());
 
 		}
- 
+
 		try {
-			BookValidator.validateBookName("The Jungle Book @#$");
+
+			bookValidator.validateBookName("The Jungle Book @#$");
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_NAME, ex.getMessage());
 		}
-		
-		
-		try {
-			BookValidator.validateBookName("To Kill a\nMockingbird"); 
-		}
-		catch(IllegalArgumentException ex) {
-			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_NAME, ex.getMessage());
-		}
-		
-		try {
-			BookValidator.validateBookName("A"); 
 
+		try {
+			bookValidator.validateBookName("To Kill a\nMockingbird");
+		} catch (IllegalArgumentException ex) {
+			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_NAME, ex.getMessage());
 		}
-		catch(IllegalArgumentException ex) {
+
+		try {
+			bookValidator.validateBookName("A");
+
+		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_NAME, ex.getMessage());
 		}
 		try {
-			BookValidator.validateBookName("123-ABC");
-		} 
-		catch(IllegalArgumentException ex) {
+			bookValidator.validateBookName("123-ABC");
+		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_NAME, ex.getMessage());
-			
+
 		}
 	}
-	
-	
 
 	@Test
 	// Code for the Null invalid bookName
 	void testNullInvalidTestCase() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateBookName(null);
+			bookValidator.validateBookName(null);
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_NAME_NULL, ex.getMessage());
 		}
@@ -270,8 +271,9 @@ class TestBookValidator {
 	@Test
 	// Code for Invalid Test case bookName empty string
 	void testInvalidEmptyStringValidator() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateBookName("");
+			bookValidator.validateBookName("");
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_NAME, ex.getMessage());
 		}
@@ -280,8 +282,9 @@ class TestBookValidator {
 	// Code for invalid testCaser bookName
 	@Test
 	void testInvalidSpecialCharacterbookNameValidtor() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateBookName("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+			bookValidator.validateBookName("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		} catch (IllegalArgumentException ex) {
 
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_NAME, ex.getMessage());
@@ -291,14 +294,16 @@ class TestBookValidator {
 	@Test
 	// Code for Test valid BookPrice
 	void testValidBookPrice() {
-		Assertions.assertTrue(BookValidator.validateBookPrice(400));
+		BookValidator bookValidator = new BookValidator();
+		Assertions.assertTrue(bookValidator.validateBookPrice(400));
 	}
 
 	// Code for Invalid testCase bookPrice
 	@Test
 	void testInvalidBookPrice() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateBookPrice(0);
+			bookValidator.validateBookPrice(0);
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_PRICE, ex.getMessage());
 		}
@@ -307,8 +312,9 @@ class TestBookValidator {
 	@Test
 	// Code for Invalid test the BookCategoires name
 	void testInvalidBookCatNull() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateBookCategoriesName(null);
+			bookValidator.validateBookCategoriesName(null);
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_CATEGORIES_NULL, ex.getMessage());
 		}
@@ -318,14 +324,16 @@ class TestBookValidator {
 	@Test
 	// Code for valid book categories name
 	void testValidBookCatName() {
-		Assertions.assertTrue(BookValidator.validateBookCategoriesName("fiction books"));
+		BookValidator bookValidator = new BookValidator();
+		Assertions.assertTrue(bookValidator.validateBookCategoriesName("fiction books"));
 	}
 
 	@Test
 	// Code for Invalid Book categories name
 	void testvalidBookCatName() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateBookCategoriesName("story books");
+			bookValidator.validateBookCategoriesName("story books");
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_CATEGOIRES_NAME, ex.getMessage());
 		}
@@ -335,14 +343,16 @@ class TestBookValidator {
 	@Test
 	// Code for test Valid the enum validator
 	void testInvalidBookCatName() {
-		Assertions.assertTrue(BookValidator.validateCategoryNameEnums("Law books"));
+		BookValidator bookValidator = new BookValidator();
+		Assertions.assertTrue(bookValidator.validateCategoryNameEnums("Law books"));
 	}
 
 	@Test
 	// Code for test the invalid enum validator
 	void testInvaidBookcatgEnums() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateCategoryNameEnums(null);
+			bookValidator.validateCategoryNameEnums(null);
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_CATEGORIES_NULL, ex.getMessage());
 
@@ -352,15 +362,16 @@ class TestBookValidator {
 	@Test
 	// Code for test the book Valid Image URL
 	void testValidBookImgUrl() {
-		Assertions
-				.assertTrue(BookValidator.validateBookImageUrl("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg"));
+		BookValidator bookValidator = new BookValidator();
+		Assertions.assertTrue(bookValidator.validateBookImageUrl("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg"));
 	}
 
 	@Test
 	// code for Empty String invalid test case for book image URL
 	void testInvaildEmptyStringBookImgUrl() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateBookImageUrl("");
+			bookValidator.validateBookImageUrl("");
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_IMAGE_URL, ex.getMessage());
 
@@ -371,8 +382,9 @@ class TestBookValidator {
 	@Test
 	// Code for Invalid Book image URL
 	void testInvalidBookImgUrl() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateBookImageUrl("htps://media-amazon.com/images/I/611OWa8x+W.kk");
+			bookValidator.validateBookImageUrl("htps://media-amazon.com/images/I/611OWa8x+W.kk");
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_IMAGE_URL, ex.getMessage());
 		}
@@ -381,8 +393,9 @@ class TestBookValidator {
 	@Test
 	// Code for the check the null book image URL
 	void testBookImgUrlNull() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateBookImageUrl(null);
+			bookValidator.validateBookImageUrl(null);
 
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_IMAGE_URL, ex.getMessage());
@@ -392,8 +405,9 @@ class TestBookValidator {
 	@Test
 	// Code for Test the invalid book image URL
 	void testInvalidIntBookImgUrl() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateBookCategoriesName("12323i2392038290323");
+			bookValidator.validateBookCategoriesName("12323i2392038290323");
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_CATEGOIRES_NAME, ex.getMessage());
 		}
@@ -402,14 +416,16 @@ class TestBookValidator {
 	@Test
 	// code for the valid book language name
 	void testValidBooklangName() {
-		Assertions.assertTrue(BookValidator.validateBookLanguages("Tamil Edition Books"));
+		BookValidator bookValidator = new BookValidator();
+		Assertions.assertTrue(bookValidator.validateBookLanguages("Tamil Edition Books"));
 	}
 
 	@Test
 	// code for invalid Test Case for book language name
 	void testInvalidBookLangName() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateBookLanguages("");
+			bookValidator.validateBookLanguages("");
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_LANGUAGE_NAME, ex.getMessage());
 		}
@@ -418,8 +434,9 @@ class TestBookValidator {
 	@Test
 	// code for check the book language name null
 	void testBookLangNameNull() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateBookLanguages(null);
+			bookValidator.validateBookLanguages(null);
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_LANGUAGE_NAME_NULL, ex.getMessage());
 		}
@@ -428,8 +445,9 @@ class TestBookValidator {
 	@Test
 	// code for invalid test case book language name
 	void testSplCharBookLangName() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateBookLanguages("@@@@@@@@@@@@@12");
+			bookValidator.validateBookLanguages("@@@@@@@@@@@@@12");
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_LANGUAGE_NAME, ex.getMessage());
 		}
@@ -438,14 +456,16 @@ class TestBookValidator {
 	@Test
 	// Code for Test the Valid Book Quantity
 	void testValidBookQty() {
-		Assertions.assertTrue(BookValidator.validateBookQuantity(12));
+		BookValidator bookValidator = new BookValidator();
+		Assertions.assertTrue(bookValidator.validateBookQuantity(12));
 	}
 
 	@Test
 	// Code for Test the Invalid bookQuantity
 	void testInvalidBookQuantity() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateBookQuantity(-1);
+			bookValidator.validateBookQuantity(-1);
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_QUANTITY, ex.getMessage());
 		}
@@ -454,8 +474,9 @@ class TestBookValidator {
 	@Test
 	// code for invalid testcase for book quantity
 	void testInvalidBookQty() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateBookQuantity(21);
+			bookValidator.validateBookQuantity(21);
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_QUANTITY, ex.getMessage());
 		}
@@ -464,14 +485,16 @@ class TestBookValidator {
 	@Test
 	// code for test the valid Book author name
 	void testValidBookAuthorName() {
-		Assertions.assertTrue(BookValidator.validateAuthorName("Jeff keller"));
+		BookValidator bookValidator = new BookValidator();
+		Assertions.assertTrue(bookValidator.validateAuthorName("Jeff keller"));
 	}
 
 	@Test
 	// Code for Invalid test case for author name
 	void testInvaildAuthorNameNull() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateAuthorName(null);
+			bookValidator.validateAuthorName(null);
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_AUTHOR_NAME_NULL, ex.getMessage());
 		}
@@ -480,8 +503,9 @@ class TestBookValidator {
 	@Test
 	// Code for Invalid test case for author name
 	void testSplCharInvalidAuthorName() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateAuthorName("@@@@@@@@@@@@@@@");
+			bookValidator.validateAuthorName("@@@@@@@@@@@@@@@");
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVAID_BOOK_AUTHOR_NAME, ex.getMessage());
 		}
@@ -491,8 +515,9 @@ class TestBookValidator {
 	// code for test the invalid author name empty String
 
 	void testInvalidEmptyAuthorName() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateAuthorName("");
+			bookValidator.validateAuthorName("");
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVAID_BOOK_AUTHOR_NAME, ex.getMessage());
 		}
@@ -501,8 +526,9 @@ class TestBookValidator {
 	@Test
 	// Code for test the invalid author name
 	void testInvalidIntAuthorName() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateAuthorName("123354253726");
+			bookValidator.validateAuthorName("123354253726");
 		} catch (IllegalArgumentException ex) {
 
 			Assertions.assertEquals(BookValidateErrors.INVAID_BOOK_AUTHOR_NAME, ex.getMessage());
@@ -512,15 +538,17 @@ class TestBookValidator {
 	@Test
 	// Code for test the valid Book Description
 	void testValidBookDesc() {
-		Assertions.assertTrue(BookValidator.validateBookDescription(
+		BookValidator bookValidator = new BookValidator();
+		Assertions.assertTrue(bookValidator.validateBookDescription(
 				"The key takeaway from the book is to remember that being motivated is easier than making excuses. To be truly motivated, you need to think positively and break free of negative attitude and mental window."));
 	}
 
 	@Test
 	// Code for invalid test case for book description
 	void testBookDescEmpty() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateBookDescription("");
+			bookValidator.validateBookDescription("");
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_DESCRIPTION, ex.getMessage());
 
@@ -530,8 +558,9 @@ class TestBookValidator {
 	@Test
 	// Code for invalid test case for book description
 	void testBookDescNull() {
+		BookValidator bookValidator = new BookValidator();
 		try {
-			BookValidator.validateBookDescription(null);
+			bookValidator.validateBookDescription(null);
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_DESCRIPTION_NULL, ex.getMessage());
 		}

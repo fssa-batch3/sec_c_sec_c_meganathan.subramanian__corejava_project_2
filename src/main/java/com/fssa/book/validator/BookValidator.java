@@ -10,7 +10,7 @@ package com.fssa.book.validator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.fssa.book.enums.Bookcategories;
+import com.fssa.book.enums.BookCategories;
 import com.fssa.book.model.Book;
 import com.fssa.book.model.BookValidateErrors;
 
@@ -23,7 +23,7 @@ public class BookValidator {
      * @return
      * @throws IllegalArgumentException
      */
-    public static boolean validate(Book book) throws IllegalArgumentException {
+    public  boolean validate(Book book) throws IllegalArgumentException {
 
         if (book == null) {
             throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_NULL);
@@ -38,7 +38,7 @@ public class BookValidator {
         validateBookDescription(book.getBookDescription());
 
         return true;
-    }
+    } 
 
     /**
      * Below the code for validate the book Name.
@@ -47,7 +47,7 @@ public class BookValidator {
      * @return
      * @throws IllegalArgumentException
      */
-    public static boolean validateBookName(String bookName) throws IllegalArgumentException {
+    public  boolean validateBookName(String bookName) throws IllegalArgumentException {
         if (bookName == null) {
             throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_NAME_NULL);
         }
@@ -73,7 +73,7 @@ public class BookValidator {
      * @return
      * @throws IllegalArgumentException
      */
-    public static boolean validateBookPrice(int Price) throws IllegalArgumentException {
+    public  boolean validateBookPrice(int Price) throws IllegalArgumentException {
         if (Price <= 350 || Price > 1300) {
             throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_PRICE);
         }
@@ -87,7 +87,7 @@ public class BookValidator {
      * @return
      * @throws IllegalArgumentException
      */
-    public static boolean validateBookCategoriesName(String bookCategoriesName) throws IllegalArgumentException {
+    public  boolean validateBookCategoriesName(String bookCategoriesName) throws IllegalArgumentException {
 
         if (bookCategoriesName == null || "".trim().equals(bookCategoriesName)) {
             throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_CATEGORIES_NULL);
@@ -115,13 +115,13 @@ public class BookValidator {
      * @return
      * @throws IllegalArgumentException
      */
-    public static boolean validateCategoryNameEnums(String mainCategory) throws IllegalArgumentException {
+    public  boolean validateCategoryNameEnums(String mainCategory) throws IllegalArgumentException {
 
         if (mainCategory == null || "".trim().equals(mainCategory)) {
             throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_CATEGORIES_NULL);
         }
 
-        for (Bookcategories category : Bookcategories.values()) {
+        for (BookCategories category : BookCategories.values()) {
 
             if (category.getValue().equals(mainCategory)) {
                 return true;
@@ -139,7 +139,7 @@ public class BookValidator {
      * @throws IllegalArgumentException
      */
 
-    public static boolean validateBookImageUrl(String bookImageUrl) throws IllegalArgumentException {
+    public  boolean validateBookImageUrl(String bookImageUrl) throws IllegalArgumentException {
 
         if (bookImageUrl == null || bookImageUrl.trim().equals("")) {
             throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_IMAGE_URL);
@@ -166,7 +166,7 @@ public class BookValidator {
      * @return
      * @throws IllegalArgumentException
      */
-    public static boolean validateBookLanguages(String bookLanguage) throws IllegalArgumentException {
+    public  boolean validateBookLanguages(String bookLanguage) throws IllegalArgumentException {
 
         if (bookLanguage == null) {
             throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_LANGUAGE_NAME_NULL);
@@ -194,7 +194,7 @@ public class BookValidator {
      * @throws IllegalArgumentException
      */
 
-    public static boolean validateBookQuantity(int bookQuantity) throws IllegalArgumentException {
+    public  boolean validateBookQuantity(int bookQuantity) throws IllegalArgumentException {
         if (bookQuantity <= 0 || bookQuantity > 20) {
             throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_QUANTITY);
         }
@@ -209,7 +209,7 @@ public class BookValidator {
      * @throws IllegalArgumentException
      */
 
-    public static boolean validateAuthorName(String authorName) throws IllegalArgumentException {
+    public  boolean validateAuthorName(String authorName) throws IllegalArgumentException {
 
         if (authorName == null) {
             throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_AUTHOR_NAME_NULL);
@@ -236,7 +236,7 @@ public class BookValidator {
      * @return
      * @throws IllegalArgumentException
      */
-    public static boolean validateBookDescription(String bookDescription) throws IllegalArgumentException {
+    public  boolean validateBookDescription(String bookDescription) throws IllegalArgumentException {
         if (bookDescription == null) {
             throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_DESCRIPTION_NULL);
 

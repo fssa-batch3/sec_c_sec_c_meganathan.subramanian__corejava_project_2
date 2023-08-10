@@ -1,4 +1,4 @@
-package com.fssa.book.Dao;
+package com.fssa.book.dao;
 
 /**
  *  Below the code for connect the Database and fetch the value

@@ -1,7 +1,7 @@
-package com.fssa.book.Dao;
+package com.fssa.book.dao;
 
 /**
- * Below the codw for write the all query like create,read,delete,update
+ * Below the code for write the all query like create,read,delete,update
  *
  * @author meganthan Subramanian
  */
@@ -20,14 +20,13 @@ public class BookDAO {
     // Below the code for private constructor
     private BookDAO() {
 
-
     }
 
     /**
      * Below the code for Creating the new book in database
      *
      * @param book
-     * @return
+     * @return 
      * @throws DAOException
      * @throws SQLException
      */
