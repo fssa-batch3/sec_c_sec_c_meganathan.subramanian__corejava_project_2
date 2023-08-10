@@ -146,7 +146,7 @@ public class BookValidator {
         }
 
         // Code for Regex pattern
-        String regex = "(?i)\\b((https?|ftp)://)?[a-z0-9-]+([/?].*)?\\.(jpg|jpeg|gif|png|bmp)\\b";
+        String regex = "(?i)\\b((https?|ftp)://)?[a-z0-9-]+(\\.[a-z0-9-]+)+([/?].*)?\\.(jpg|jpeg|gif|png|bmp)\\b";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(bookImageUrl);
         boolean isMatch = matcher.matches();

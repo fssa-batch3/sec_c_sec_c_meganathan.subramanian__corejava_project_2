@@ -57,7 +57,7 @@ class TestBookServiceLayer {
 
 	// Below the code for read the book using Book ID
 
-	@Test
+	@Test 
 	void testReadBookUsingId() throws DAOException, SQLException {
 
 		Book book = getBook();
@@ -66,7 +66,7 @@ class TestBookServiceLayer {
 		Logger.info(bookServiceLayer.readBook(book));
 		Logger.info("Succesfully read the data from the MYSQL");
 
-	}
+	} 
 
 	// Below the code for delete the book using book ID
 	@Test

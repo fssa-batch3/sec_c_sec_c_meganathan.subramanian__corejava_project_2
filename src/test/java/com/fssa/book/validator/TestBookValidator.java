@@ -363,9 +363,9 @@ class TestBookValidator {
 	// Code for test the book Valid Image URL
 	void testValidBookImgUrl() {
 		BookValidator bookValidator = new BookValidator();
-		Assertions.assertTrue(bookValidator.validateBookImageUrl("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg"));
+		Assertions.assertTrue(bookValidator.validateBookImageUrl("https://m.media-amazon.com/images/I/31PBdo581fL._SX317_BO1,204,203,200_.jpg"));
 	}
-
+ 
 	@Test
 	// code for Empty String invalid test case for book image URL
 	void testInvaildEmptyStringBookImgUrl() {
@@ -384,7 +384,7 @@ class TestBookValidator {
 	void testInvalidBookImgUrl() {
 		BookValidator bookValidator = new BookValidator();
 		try {
-			bookValidator.validateBookImageUrl("htps://media-amazon.com/images/I/611OWa8x+W.kk");
+			bookValidator.validateBookImageUrl("media-amazon.com/images/I/611OWa8x+W.kk");
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_IMAGE_URL, ex.getMessage());
 		}
