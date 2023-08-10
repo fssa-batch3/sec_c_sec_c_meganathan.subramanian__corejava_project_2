@@ -1,6 +1,6 @@
 package com.fssa.book.enums;
 
-public enum BookCategories {
+public enum BookCategoriesEnum { 
 
     ARTS_AND_BIOGRAPHY_BOOK("Arts and biography"),
     FICTION_BOOKS("fiction books"),
@@ -13,7 +13,7 @@ public enum BookCategories {
     private final String mainCategories;
 
     // This code for setting the value
-    BookCategories(String categories) {
+    BookCategoriesEnum(String categories) {
         this.mainCategories = categories;
     }
 
