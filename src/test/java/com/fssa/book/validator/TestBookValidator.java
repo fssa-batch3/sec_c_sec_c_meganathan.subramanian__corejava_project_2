@@ -66,7 +66,7 @@ class TestBookValidator {
 	void testInvalidBookAuthorObj() {
 		try {
 			Book book = new Book();
-			book.setBookId(2);
+			book.setBookId(2); 
 			book.setAuthor(null);
 			book.setBookDescription(
 					"The key takeaway from the book is to remember that being motivated is easier than making excuses. To be truly motivated, you need to think positively and break free of negative attitude and mental window.");

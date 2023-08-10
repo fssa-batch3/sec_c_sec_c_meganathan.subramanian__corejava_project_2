@@ -73,7 +73,7 @@ class TestBookServiceLayer {
 	 void testDeleteBookusingbookId() {
 		 
 		 Book book = new Book(); 
-		 book.setBookId(9);
+		 book.setBookId(2);
 		 BookServiceLayer bookServiceLayer = new BookServiceLayer();
 		 assertDoesNotThrow(()-> bookServiceLayer.deleteBookUsingId(book.getBookId()));
 		 
