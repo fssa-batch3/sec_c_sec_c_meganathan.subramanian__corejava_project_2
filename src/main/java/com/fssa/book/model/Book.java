@@ -15,7 +15,7 @@ public class Book {
 	private String booklanguage;
 	private int quantity;
 	private String author;
-	private String bookDescription;
+	private String bookDescription; 
 	private String bookFilter;
 	
 @Override

@@ -1,31 +1,23 @@
 package com.fssa.book.service;
 
 /**
- * Below the code for test all the Service layer 
+ * Below the code for test all the book Service layer 
  * @author MeganathanSubramania 
  * 
- */
+  */
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import java.util.logging.*;
-
-/**
- *  // Below the code for testing the all book service layer 
- * @author MeganathanSubramania
- */
-
 import java.sql.SQLException;
-
+import com.fssa.book.logger.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import com.fssa.book.dao.BookDAO;
 import com.fssa.book.exception.DAOException;
 import com.fssa.book.model.Book;
 
 // Main class for test
-public class TestBookServiceLayer {
+class TestBookServiceLayer {
 
-	Book getBook() {
+	Book getBook() { 
 		Book book = new Book();
 		book.setBookName("Attitude is Everything");
 		book.setBookPrice(400);
@@ -39,9 +31,8 @@ public class TestBookServiceLayer {
 
 	}
 
-
 	/**
-	 * // Below the code for test the all the attribute to set the value
+	 *  Below the code for test the all the attribute to set the value
 	 */
 	@Test
 	void testCreateBook() throws  SQLException, DAOException {
@@ -61,7 +52,7 @@ public class TestBookServiceLayer {
 		boolean success = bookservicelayer.addBook(book);
 		Assertions.assertTrue(success); // Assert that the book creation is successful
 		
-		System.out.println("Query inserted Successfully");
+		Logger.info("Query inserted Successfully");
 	}
 
 	// Below the code for read the book using Book ID
@@ -72,8 +63,8 @@ public class TestBookServiceLayer {
 		Book book = getBook();
 		BookServiceLayer bookServiceLayer = new BookServiceLayer();
 		assertDoesNotThrow(() -> BookDAO.readBook(book.getBookId()));
-		System.out.println(bookServiceLayer.readBook(book));
-		System.out.println("Succesfully read the data from the MYSQL");
+		Logger.info(bookServiceLayer.readBook(book));
+		Logger.info("Succesfully read the data from the MYSQL");
 
 	}
 

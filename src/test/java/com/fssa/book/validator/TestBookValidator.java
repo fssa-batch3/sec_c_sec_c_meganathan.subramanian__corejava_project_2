@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import com.fssa.book.model.Book;
 import com.fssa.book.model.BookValidateErrors;
 
-class TestBookValidator {
+class TestBookValidator { 
 
 	@Test
 	// Below the code test the object are null

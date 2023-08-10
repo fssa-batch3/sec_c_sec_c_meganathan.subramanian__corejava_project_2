@@ -3,7 +3,7 @@ package com.fssa.book.model;
 /**
  * Create Exception errors in the different package and access it.
  */
-public interface BookValidateErrors {
+public interface BookValidateErrors {  
 
 	// Below the code for custom write the errors
 	

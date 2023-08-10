@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------
+Test set: com.fssa.book.service.TestBookServiceLayer
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 4.821 s <<< FAILURE! - in com.fssa.book.service.TestBookServiceLayer
+testDeleteBookusingbookId  Time elapsed: 0.42 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception thrown: com.fssa.book.exception.DAOException: Error while delete the bookGiven bookId doesn't exist
+	at com.fssa.book.service.TestBookServiceLayer.testDeleteBookusingbookId(TestBookServiceLayer.java:87)
+Caused by: com.fssa.book.exception.DAOException: Error while delete the bookGiven bookId doesn't exist
+	at com.fssa.book.service.TestBookServiceLayer.lambda$testDeleteBookusingbookId$1(TestBookServiceLayer.java:87)
+	at com.fssa.book.service.TestBookServiceLayer.testDeleteBookusingbookId(TestBookServiceLayer.java:87)
+

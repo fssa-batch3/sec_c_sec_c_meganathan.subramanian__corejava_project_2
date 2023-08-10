@@ -21,6 +21,8 @@ public class BookDAO {
     private BookDAO() {
 
     }
+    
+    public static final String GET_BOOKID = "SELECT * FROM books WHERE bookId = ?";
 
     /**
      * Below the code for Creating the new book in database
@@ -69,7 +71,7 @@ public class BookDAO {
     public static Book readBook(int bookId) throws DAOException, SQLException {
 
         try (Connection connection = ConnectionUtil.getConnection()) {
-            String selectQuery = "SELECT * FROM books WHERE bookId=?";
+            String selectQuery = GET_BOOKID;
             try (PreparedStatement psmt = connection.prepareStatement(selectQuery)) {
                 psmt.setInt(1, bookId);
                 try (ResultSet rs = psmt.executeQuery()) {
@@ -102,13 +104,13 @@ public class BookDAO {
      * @throws DAOException
      * @throws SQLException
      */
-    public static void deleteBook(int BookId) throws DAOException, SQLException {
+    public static void deleteBook(int bookId) throws DAOException, SQLException {
         try (Connection connection = ConnectionUtil.getConnection()) {
-            String existQuery = "SELECT * FROM books WHERE bookId = ?";
+            String existQuery = GET_BOOKID;
             try (PreparedStatement psmt = connection.prepareStatement(existQuery)) {
-                psmt.setInt(1, BookId);
+                psmt.setInt(1, bookId);
                 try (ResultSet rs = psmt.executeQuery()) {
-                    if (rs.next()) {
+                    if(rs.next()) {
                         throw new DAOException("Given bookId doesn't exist");
                     }
                 }
@@ -122,10 +124,10 @@ public class BookDAO {
         try (Connection connection = ConnectionUtil.getConnection()) {
             String deleteQuery = "DELETE FROM books WHERE bookId = ?";
             try (PreparedStatement psmt = connection.prepareStatement(deleteQuery)) {
-                psmt.setInt(1, BookId);
+                psmt.setInt(1, bookId);
                 int rowAffected = psmt.executeUpdate();
                 if (rowAffected > 0) {
-                    Logger.info("Successfully delete the row" + BookId);
+                    Logger.info("Successfully delete the row" + bookId);
                 } else {
                     Logger.info("Error while deleting the book");
                 }
@@ -143,7 +145,7 @@ public class BookDAO {
      */
     public static void updateBookPrice(int bookId, int bookPrice) throws DAOException, SQLException {
         try (Connection connection = ConnectionUtil.getConnection()) {
-            String existQuery = "SELECT * FROM books WHERE bookId = ?";
+            String existQuery = GET_BOOKID;
             try (PreparedStatement psmt = connection.prepareStatement(existQuery)) {
                 psmt.setInt(1, bookId);
                 try (ResultSet rs = psmt.executeQuery()) {
@@ -185,7 +187,7 @@ public class BookDAO {
 
     public static void udpatebookQty(int bookId, int bookQty) throws DAOException, SQLException {
         try (Connection connection = ConnectionUtil.getConnection()) {
-            String existsQuery = "SELECT * FROM books WHERE bookId = ?";
+            String existsQuery = GET_BOOKID;
             try (PreparedStatement psmt = connection.prepareStatement(existsQuery)) {
                 psmt.setInt(1, bookId);
                 try (ResultSet rs = psmt.executeQuery()) {

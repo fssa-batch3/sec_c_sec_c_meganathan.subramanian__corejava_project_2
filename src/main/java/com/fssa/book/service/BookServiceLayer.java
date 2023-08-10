@@ -13,7 +13,7 @@ public class BookServiceLayer {
 
     public boolean addBook(Book book) throws IllegalArgumentException, DAOException, SQLException {
     	BookValidator bookValidator = new BookValidator();
-    	
+
         try {
             bookValidator.validate(book);
             BookDAO.createBook(book);
@@ -84,7 +84,6 @@ public class BookServiceLayer {
 
     /**
      * update the quantity using the book id
-     *
      * @param bookID
      * @param bookQty
      * @return
