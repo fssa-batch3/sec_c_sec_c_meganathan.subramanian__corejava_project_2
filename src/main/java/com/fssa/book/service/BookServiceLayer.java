@@ -74,7 +74,7 @@ public class BookServiceLayer {
      */
     public boolean deleteBookUsingId(int bookId) throws DAOException, SQLException {
         try {
-            BookDAO.deleteBook(bookId);
+            BookDAO.deleteBook(bookId); 
             return true;
         } catch (DAOException | SQLException ex) {
             throw new DAOException("Error while delete the book" + ex.getMessage());

@@ -110,8 +110,11 @@ public class BookDAO {
             try (PreparedStatement psmt = connection.prepareStatement(existQuery)) {
                 psmt.setInt(1, bookId);
                 try (ResultSet rs = psmt.executeQuery()) {
-                    if(rs.next()) {
+                    if(!rs.next()) {
                         throw new DAOException("Given bookId doesn't exist");
+                    }
+                    else {
+                    	Logger.info("Sucessfully delete the book.");
                     }
                 }
             }
@@ -206,7 +209,7 @@ public class BookDAO {
             String updateQuery = "UPDATE books set quantity = ? WHERE bookId = ?";
             try (PreparedStatement psmt = connection.prepareStatement(updateQuery)) {
                 psmt.setInt(1, bookQty);
-                psmt.setInt(2, bookId);
+                psmt.setInt(2, bookId); 
                 int rowsAffected = psmt.executeUpdate();
                 if (rowsAffected > 0) {
                     Logger.info("Successfully updated bookqty");
