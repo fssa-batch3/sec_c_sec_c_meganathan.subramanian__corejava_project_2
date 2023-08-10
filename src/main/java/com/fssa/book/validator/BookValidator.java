@@ -8,14 +8,15 @@ package com.fssa.book.validator;
  */
 
 import java.util.regex.Matcher;
+
 import java.util.regex.Pattern;
 
-import com.fssa.book.enums.BookCategories;
+import com.fssa.book.enums.BookCategoriesEnum;
 import com.fssa.book.model.Book;
 import com.fssa.book.model.BookValidateErrors;
 
 public class BookValidator {
-
+ 
     /**
      * Below the code for validate the all attribute and get the value from it.
      *
@@ -121,7 +122,7 @@ public class BookValidator {
             throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_CATEGORIES_NULL);
         }
 
-        for (BookCategories category : BookCategories.values()) {
+        for (BookCategoriesEnum category : BookCategoriesEnum.values()) {
 
             if (category.getValue().equals(mainCategory)) {
                 return true;
