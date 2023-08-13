@@ -1,0 +1,10 @@
+
+o
+java:S11928"MDefine a constant instead of duplicating this literal "^[A-Za-z ]+$" 4 times.(‘“Ÿ¾øÿÿÿÿ8Š¸Øğ1
+r	java:S117L"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹”ï×úÿÿÿÿ8Œ¸Øğ1
+o
+java:S5998•"LRefactor this repetition that can lead to a stack overflow for large inputs.(ñ ¾úÿÿÿÿ8É»Øğ1
+F
+java:S5869ö"*Remove duplicates in this character class.(ôšùÁüÿÿÿÿ
+w
+java:S5843•"TSimplify this regular expression to reduce its complexity from 21 to the 20 allowed.(ñ ¾úÿÿÿÿ8‡¼Øğ1

@@ -58,9 +58,9 @@ class TestBookServiceLayer {
 	// Below the code for read the book using Book ID
 
 	@Test 
-	void testReadBookUsingId() throws DAOException, SQLException {
+	void testReadBookUsingId() throws DAOException, SQLException { 
 
-		Book book = getBook();
+		Book book = getBook(); 
 		BookServiceLayer bookServiceLayer = new BookServiceLayer();
 		assertDoesNotThrow(() -> BookDAO.readBook(book.getBookId()));
 		Logger.info(bookServiceLayer.readBook(book));
@@ -82,14 +82,14 @@ class TestBookServiceLayer {
 	// below the code for update the book price using book id 
 	@Test
 	void testUpdateBookPrice() throws DAOException, SQLException {
-
+ 
 		Book book = new Book();
 		book.setBookId(1);
 		book.setBookPrice(800);
 		BookServiceLayer bookServiceLayer = new BookServiceLayer();
 		assertDoesNotThrow(() -> bookServiceLayer.updateBookPrice(book.getBookId(),book.getBookPrice()));
 		
-	}
+	} 
 
 
 	// Below the code for test update the book quantity

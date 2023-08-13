@@ -80,7 +80,7 @@ public class BookServiceLayer {
             throw new DAOException("Error while delete the book" + ex.getMessage());
 
         }
-    }
+    } 
 
     /**
      * update the quantity using the book id
@@ -94,8 +94,8 @@ public class BookServiceLayer {
     public boolean updateBookQty(int bookID, int bookQty) throws SQLException, DAOException {
     	BookValidator bookValidator = new BookValidator();
         try {
-            bookValidator.validateBookQuantity(4);
-            BookDAO.udpatebookQty(bookID, bookQty);
+            bookValidator.validateBookQuantity(4); 
+            BookDAO.udpatebookQty(bookID, bookQty); 
             return true;
         } catch (SQLException | DAOException e) {
             throw new DAOException("updation fails" + e.getMessage());

@@ -68,6 +68,7 @@ public class BookDAO {
      * @throws DAOException
      * @throws SQLException
      */
+    
     public static Book readBook(int bookId) throws DAOException, SQLException {
 
         try (Connection connection = ConnectionUtil.getConnection()) {
@@ -104,6 +105,7 @@ public class BookDAO {
      * @throws DAOException
      * @throws SQLException
      */
+    
     public static void deleteBook(int bookId) throws DAOException, SQLException {
         try (Connection connection = ConnectionUtil.getConnection()) {
             String existQuery = GET_BOOKID;

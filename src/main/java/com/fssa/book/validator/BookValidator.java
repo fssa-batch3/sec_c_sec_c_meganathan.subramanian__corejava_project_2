@@ -36,7 +36,7 @@ public class BookValidator {
         validateAuthorName(book.getAuthor());
         validateBookImageUrl(book.getBookImage());
         validateBookDescription(book.getBookDescription());
-
+ 
         return true;
     } 
 
@@ -48,7 +48,7 @@ public class BookValidator {
      * @throws IllegalArgumentException
      */
     public  boolean validateBookName(String bookName) throws IllegalArgumentException {
-        if (bookName == null) {
+        if (bookName == null) { 
             throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_NAME_NULL);
         }
 
@@ -199,7 +199,7 @@ public class BookValidator {
             throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_QUANTITY);
         }
         return true;
-    }
+    } 
 
     /**
      * Below the code for validate the book author name.
@@ -207,7 +207,7 @@ public class BookValidator {
      * @param authorName
      * @return
      * @throws IllegalArgumentException
-     */
+     */ 
 
     public  boolean validateAuthorName(String authorName) throws IllegalArgumentException {
 
@@ -235,7 +235,7 @@ public class BookValidator {
      * @param bookDescription
      * @return
      * @throws IllegalArgumentException
-     */
+     */ 
     public  boolean validateBookDescription(String bookDescription) throws IllegalArgumentException {
         if (bookDescription == null) {
             throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_DESCRIPTION_NULL);
@@ -250,8 +250,9 @@ public class BookValidator {
 
         if ("".trim().equals(bookDescription) || bookDescription.trim().length() > 400 || !isMatch) {
             throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_DESCRIPTION);
-        } else {
+        } 
+        else {
             return true;
         }
     }
-}
+} 

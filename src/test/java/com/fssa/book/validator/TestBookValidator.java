@@ -220,7 +220,7 @@ class TestBookValidator {
 	}
 
 	// Below the code for test the invaild book name
-	@Test
+	@Test 
 	void testinvalidBookNameValidator() {
 		BookValidator bookValidator = new BookValidator();
 		try {
@@ -232,7 +232,7 @@ class TestBookValidator {
 
 		try {
 
-			bookValidator.validateBookName("The Jungle Book @#$");
+			bookValidator.validateBookName("The Jungle Book @#$"); 
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_NAME, ex.getMessage());
 		}
@@ -337,7 +337,6 @@ class TestBookValidator {
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_CATEGOIRES_NAME, ex.getMessage());
 		}
-
 	}
 
 	@Test
@@ -353,10 +352,10 @@ class TestBookValidator {
 		BookValidator bookValidator = new BookValidator();
 		try {
 			bookValidator.validateCategoryNameEnums(null);
-		} catch (IllegalArgumentException ex) {
+		} 
+		catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_CATEGORIES_NULL, ex.getMessage());
-
-		}
+		} 
 	}
 
 	@Test
