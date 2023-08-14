@@ -3,7 +3,6 @@ package com.fssa.book.validator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import com.fssa.book.model.User;
 import com.fssa.book.model.UserValidatorsErrors;
 
 /**
