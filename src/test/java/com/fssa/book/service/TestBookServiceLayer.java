@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import java.sql.SQLException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 import com.fssa.book.dao.BookDao;
 import com.fssa.book.exception.DAOException;
 import com.fssa.book.logger.Logger;
@@ -75,7 +76,7 @@ class TestBookServiceLayer {
 	 void testDeleteBookusingbookId() {
 		 
 		 Book book = new Book(); 
-		 book.setBookId(9);
+		 book.setBookId(8);
 		 BookServiceLayer bookServiceLayer = new BookServiceLayer();
 		 assertDoesNotThrow(()-> bookServiceLayer.deleteBookUsingId(book.getBookId()));
 		 

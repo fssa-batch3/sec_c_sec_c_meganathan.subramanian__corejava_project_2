@@ -28,7 +28,8 @@ public class BookDao {
 	 */
 
 	public boolean createBook(Book book) throws DAOException, SQLException {
-		try (Connection connection = ConnectionUtil.getConnection()) {
+		ConnectionUtil connectionUtil = new ConnectionUtil(); 
+		try (Connection connection = connectionUtil.getConnection()) {
 			String insertQuery = "INSERT INTO books (bookId , bookName , bookPrice, bookCategories, bookImage, booklanguage , quantity, author , bookDescription) VALUES (?,?,?,?,?,?,?,?,?)";
 			try (PreparedStatement pstmt = connection.prepareStatement(insertQuery)) {
 
@@ -63,8 +64,8 @@ public class BookDao {
 	 */
 
 	public Book readBook(int bookId) throws DAOException, SQLException {
-
-		try (Connection connection = ConnectionUtil.getConnection()) {
+		ConnectionUtil connectionUtil = new ConnectionUtil(); 
+		try (Connection connection = connectionUtil.getConnection()) {
 			String selectQuery = GET_BOOKID;
 			try (PreparedStatement psmt = connection.prepareStatement(selectQuery)) {
 				psmt.setInt(1, bookId);
@@ -100,7 +101,8 @@ public class BookDao {
 	 */
 
 	public void deleteBook(int bookId) throws DAOException, SQLException {
-		try (Connection connection = ConnectionUtil.getConnection()) {
+		ConnectionUtil connectionUtil = new ConnectionUtil(); 
+		try (Connection connection = connectionUtil.getConnection()) {
 			String existQuery = GET_BOOKID;
 			try (PreparedStatement psmt = connection.prepareStatement(existQuery)) {
 				psmt.setInt(1, bookId);
@@ -117,8 +119,7 @@ public class BookDao {
 		}
 
 		// Below the code for delete the book using book id
-
-		try (Connection connection = ConnectionUtil.getConnection()) {
+		try (Connection connection = connectionUtil.getConnection()) {
 			String deleteQuery = "DELETE FROM books WHERE bookId = ?";
 			try (PreparedStatement psmt = connection.prepareStatement(deleteQuery)) {
 				psmt.setInt(1, bookId);
@@ -141,7 +142,8 @@ public class BookDao {
 	 * @throws SQLException
 	 */
 	public void updateBookPrice(int bookId, int bookPrice) throws DAOException, SQLException {
-		try (Connection connection = ConnectionUtil.getConnection()) {
+		ConnectionUtil connectionUtil = new ConnectionUtil(); 
+		try (Connection connection = connectionUtil.getConnection()) {
 			String existQuery = GET_BOOKID;
 			try (PreparedStatement psmt = connection.prepareStatement(existQuery)) {
 				psmt.setInt(1, bookId);
@@ -155,8 +157,8 @@ public class BookDao {
 		} catch (SQLException e) {
 			throw new DAOException("Error while checking bookid exist" + e.getMessage());
 		}
-
-		try (Connection connection = ConnectionUtil.getConnection()) {
+ 
+		try (Connection connection = connectionUtil.getConnection()) {
 			String updateQuery = "UPDATE books set bookPrice = ? WHERE bookId = ?";
 			try (PreparedStatement psmt = connection.prepareStatement(updateQuery)) {
 				psmt.setInt(1, bookPrice);
@@ -183,7 +185,8 @@ public class BookDao {
 	 */
 
 	public void udpatebookQty(int bookId, int bookQty) throws DAOException, SQLException {
-		try (Connection connection = ConnectionUtil.getConnection()) {
+		ConnectionUtil connectionUtil = new ConnectionUtil(); 
+		try (Connection connection = connectionUtil.getConnection()) {
 			String existsQuery = GET_BOOKID;
 			try (PreparedStatement psmt = connection.prepareStatement(existsQuery)) {
 				psmt.setInt(1, bookId);
@@ -199,7 +202,7 @@ public class BookDao {
 		}
 
 		// This second try for update the book price qty
-		try (Connection connection = ConnectionUtil.getConnection()) {
+		try (Connection connection = connectionUtil.getConnection()) {
 			String updateQuery = "UPDATE books set quantity = ? WHERE bookId = ?";
 			try (PreparedStatement psmt = connection.prepareStatement(updateQuery)) {
 				psmt.setInt(1, bookQty);

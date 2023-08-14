@@ -1,18 +1,18 @@
 package com.fssa.book.dao;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 /**
  *  Below the code for connect the Database and fetch the value
  * @author MeganathanSubramania
  */
 
 import io.github.cdimascio.dotenv.Dotenv;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class ConnectionUtil {
-
-	public static Connection getConnection() {
+ 
+	public  Connection getConnection() {
 		Connection con = null;
 
 		String url, userName, passWord;
