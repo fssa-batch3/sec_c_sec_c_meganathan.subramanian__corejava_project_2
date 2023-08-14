@@ -14,7 +14,7 @@ import com.fssa.book.logger.Logger;
 import com.fssa.book.model.Book;
 
 public class BookDao {
-
+     
 	public static final String GET_BOOKID = "SELECT * FROM books WHERE bookId = ?";
 
 	/**

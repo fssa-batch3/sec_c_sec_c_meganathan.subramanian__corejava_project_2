@@ -76,7 +76,7 @@ class TestBookServiceLayer {
 	 void testDeleteBookusingbookId() {
 		 
 		 Book book = new Book(); 
-		 book.setBookId(8);
+		 book.setBookId(3);
 		 BookServiceLayer bookServiceLayer = new BookServiceLayer();
 		 assertDoesNotThrow(()-> bookServiceLayer.deleteBookUsingId(book.getBookId()));
 		 
@@ -84,11 +84,11 @@ class TestBookServiceLayer {
 
 	// below the code for update the book price using book id 
 	@Test
-	void testUpdateBookPrice() throws DAOException, SQLException {
+	void testUpdateBookPrice() throws DAOException, SQLException { 
  
 		Book book = new Book();
-		book.setBookId(2);
-		book.setBookPrice(300);
+		book.setBookId(5);
+		book.setBookPrice(800);
 		BookServiceLayer bookServiceLayer = new BookServiceLayer();
 		assertDoesNotThrow(() -> bookServiceLayer.updateBookPrice(book.getBookId(),book.getBookPrice()));
 		
