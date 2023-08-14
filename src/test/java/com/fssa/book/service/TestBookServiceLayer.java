@@ -7,7 +7,9 @@ package com.fssa.book.service;
  * 
   */
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+
 import java.sql.SQLException;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -16,10 +18,14 @@ import com.fssa.book.exception.DAOException;
 import com.fssa.book.logger.Logger;
 import com.fssa.book.model.Book;
 
+
+
+
+
 // Main class for test
 class TestBookServiceLayer {
 
-	Book getBook() { 
+	Book getBook() {
 		Book book = new Book();
 		book.setBookName("Attitude is Everything");
 		book.setBookPrice(400);
@@ -28,16 +34,17 @@ class TestBookServiceLayer {
 		book.setBooklanguage("English");
 		book.setQuantity(1);
 		book.setAuthor("Someone");
-		book.setBookDescription("Combining ancient wisdom with the practicalities of today?,Think Like a Monk provides essential guidance for traveling a balanced path to success. Jay Shetty has written a book especially for you. He takes abstract concepts like compassion and humility and makes them applicable to your life.");
+		book.setBookDescription(
+				"Combining ancient wisdom with the practicalities of today?,Think Like a Monk provides essential guidance for traveling a balanced path to success. Jay Shetty has written a book especially for you. He takes abstract concepts like compassion and humility and makes them applicable to your life.");
 		return book;
 
 	}
 
 	/**
-	 *  Below the code for test the all the attribute to set the value
+	 * Below the code for test the all the attribute to set the value
 	 */
 	@Test
-	void testCreateBook() throws  SQLException, DAOException {
+	void testCreateBook() throws SQLException, DAOException {
 
 		BookServiceLayer bookservicelayer = new BookServiceLayer();
 		Book book = new Book();
@@ -49,51 +56,51 @@ class TestBookServiceLayer {
 		book.setBooklanguage("Tamil");
 		book.setQuantity(1);
 		book.setAuthor("Brain Tracy");
-		book.setBookDescription("Combining ancient wisdom with the practicalities of today?,Think Like a Monk provides essential guidance for traveling a balanced path to success. Jay Shetty has written a book especially for you. He takes abstract concepts like compassion and humility and makes them applicable to your life.");
+		book.setBookDescription(
+				"Combining ancient wisdom with the practicalities of today?,Think Like a Monk provides essential guidance for traveling a balanced path to success. Jay Shetty has written a book especially for you. He takes abstract concepts like compassion and humility and makes them applicable to your life.");
 
 		boolean success = bookservicelayer.addBook(book);
 		Assertions.assertTrue(success); // Assert that the book creation is successful
-		
+
 		Logger.info("Query inserted Successfully");
 	}
 
 	// Below the code for read the book using Book ID
 
-	@Test 
-	void testReadBookUsingId() throws DAOException, SQLException { 
+	@Test
+	void testReadBookUsingId() throws DAOException, SQLException {
 
-		Book book = getBook(); 
+		Book book = getBook();
 		BookDao bookDao = new BookDao();
 		BookServiceLayer bookServiceLayer = new BookServiceLayer();
 		assertDoesNotThrow(() -> bookDao.readBook(book.getBookId()));
 		Logger.info(bookServiceLayer.readBook(book));
 		Logger.info("Succesfully read the data from the MYSQL");
 
-	} 
+	}
 
 	// Below the code for delete the book using book ID
 	@Test
-	 void testDeleteBookusingbookId() {
-		 
-		 Book book = new Book(); 
-		 book.setBookId(3);
-		 BookServiceLayer bookServiceLayer = new BookServiceLayer();
-		 assertDoesNotThrow(()-> bookServiceLayer.deleteBookUsingId(book.getBookId()));
-		 
-	 }
+	void testDeleteBookusingbookId() {
 
-	// below the code for update the book price using book id 
+		Book book = new Book();
+		book.setBookId(4);
+		BookServiceLayer bookServiceLayer = new BookServiceLayer();
+		assertDoesNotThrow(() -> bookServiceLayer.deleteBookUsingId(book.getBookId()));
+
+	}
+
+	// below the code for update the book price using book id
 	@Test
-	void testUpdateBookPrice() throws DAOException, SQLException { 
- 
+	void testUpdateBookPrice() throws DAOException, SQLException {
+
 		Book book = new Book();
 		book.setBookId(5);
 		book.setBookPrice(800);
 		BookServiceLayer bookServiceLayer = new BookServiceLayer();
-		assertDoesNotThrow(() -> bookServiceLayer.updateBookPrice(book.getBookId(),book.getBookPrice()));
-		
-	} 
+		assertDoesNotThrow(() -> bookServiceLayer.updateBookPrice(book.getBookId(), book.getBookPrice()));
 
+	}
 
 	// Below the code for test update the book quantity
 	@Test
@@ -102,6 +109,6 @@ class TestBookServiceLayer {
 		book.setQuantity(3);
 		book.setBookId(3);
 		BookServiceLayer bookServiceLayer = new BookServiceLayer();
-		assertDoesNotThrow(() -> bookServiceLayer.updateBookQty(book.getBookId(),book.getQuantity()));
+		assertDoesNotThrow(() -> bookServiceLayer.updateBookQty(book.getBookId(), book.getQuantity()));
 	}
 }

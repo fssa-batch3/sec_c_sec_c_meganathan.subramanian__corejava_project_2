@@ -5,7 +5,7 @@
 	<groupId>com.fssa.Bookstore</groupId>
 	<artifactId>BookStore</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Book</name>
+	<name>BookStore</name>
 	<description>Project for doing CRUD operation in book Project for doing the CRUD in book </description>
 
 	<properties>
