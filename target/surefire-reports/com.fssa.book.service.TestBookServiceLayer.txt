@@ -1,25 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.fssa.book.service.TestBookServiceLayer
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 27.42 s <<< FAILURE! - in com.fssa.book.service.TestBookServiceLayer
-testUpdateBookPrice  Time elapsed: 7.553 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: Unexpected exception thrown: com.fssa.book.exception.DAOException: Updation failsgiven bookid doesn't exist
-	at com.fssa.book.service.TestBookServiceLayer.testUpdateBookPrice(TestBookServiceLayer.java:92)
-Caused by: com.fssa.book.exception.DAOException: Updation failsgiven bookid doesn't exist
-	at com.fssa.book.service.TestBookServiceLayer.lambda$testUpdateBookPrice$2(TestBookServiceLayer.java:92)
-	at com.fssa.book.service.TestBookServiceLayer.testUpdateBookPrice(TestBookServiceLayer.java:92)
-
-testUpdateBookQty  Time elapsed: 1.82 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: Unexpected exception thrown: com.fssa.book.exception.DAOException: updation failsBook id doesn't exists
-	at com.fssa.book.service.TestBookServiceLayer.testUpdateBookQty(TestBookServiceLayer.java:104)
-Caused by: com.fssa.book.exception.DAOException: updation failsBook id doesn't exists
-	at com.fssa.book.service.TestBookServiceLayer.lambda$testUpdateBookQty$3(TestBookServiceLayer.java:104)
-	at com.fssa.book.service.TestBookServiceLayer.testUpdateBookQty(TestBookServiceLayer.java:104)
-
-testDeleteBookusingbookId  Time elapsed: 4.853 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: Unexpected exception thrown: com.fssa.book.exception.DAOException: Error while delete the bookGiven bookId doesn't exist
-	at com.fssa.book.service.TestBookServiceLayer.testDeleteBookusingbookId(TestBookServiceLayer.java:80)
-Caused by: com.fssa.book.exception.DAOException: Error while delete the bookGiven bookId doesn't exist
-	at com.fssa.book.service.TestBookServiceLayer.lambda$testDeleteBookusingbookId$1(TestBookServiceLayer.java:80)
-	at com.fssa.book.service.TestBookServiceLayer.testDeleteBookusingbookId(TestBookServiceLayer.java:80)
-
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.421 s - in com.fssa.book.service.TestBookServiceLayer
