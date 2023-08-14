@@ -84,7 +84,7 @@ class TestBookServiceLayer {
 	void testDeleteBookusingbookId() {
 
 		Book book = new Book();
-		book.setBookId(5);
+		book.setBookId(1);
 		BookServiceLayer bookServiceLayer = new BookServiceLayer();
 		assertDoesNotThrow(() -> bookServiceLayer.deleteBookUsingId(book.getBookId()));
 
@@ -106,8 +106,8 @@ class TestBookServiceLayer {
 	@Test
 	void testUpdateBookQty() {
 		Book book = new Book();
-		book.setQuantity(6);
-		book.setBookId(3);
+		book.setQuantity(3);
+		book.setBookId(6);
 		BookServiceLayer bookServiceLayer = new BookServiceLayer();
 		assertDoesNotThrow(() -> bookServiceLayer.updateBookQty(book.getBookId(), book.getQuantity()));
 	}
