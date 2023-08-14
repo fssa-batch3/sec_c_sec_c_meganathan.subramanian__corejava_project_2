@@ -3,9 +3,9 @@ package com.fssa.book.validator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.fssa.book.model.BookValidateErrors;
+import com.fssa.book.ValidatorErrors.BookValidateErrors;
+import com.fssa.book.ValidatorErrors.UserValidatorsErrors;
 import com.fssa.book.model.User;
-import com.fssa.book.model.UserValidatorsErrors;
 
 /**
  * Below the code for validate the user

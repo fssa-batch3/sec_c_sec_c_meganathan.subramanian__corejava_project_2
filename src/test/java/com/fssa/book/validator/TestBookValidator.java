@@ -6,8 +6,9 @@ package com.fssa.book.validator;
  */
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import com.fssa.book.ValidatorErrors.BookValidateErrors;
 import com.fssa.book.model.Book;
-import com.fssa.book.model.BookValidateErrors;
 
 class TestBookValidator { 
 
@@ -219,9 +220,9 @@ class TestBookValidator {
 
 	}
 
-	// Below the code for test the invaild book name
+	// Below the code for test the Invaild book name
 	@Test 
-	void testinvalidBookNameValidator() {
+	void testInvalidBookNameValidator() {
 		BookValidator bookValidator = new BookValidator();
 		try {
 			bookValidator.validateBookName("Harry Potter 123");

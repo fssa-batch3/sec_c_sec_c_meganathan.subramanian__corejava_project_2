@@ -3,7 +3,7 @@ package com.fssa.book.validator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import com.fssa.book.model.UserValidatorsErrors;
+import com.fssa.book.ValidatorErrors.UserValidatorsErrors;
 
 /**
  * Below the code for Test the all validator

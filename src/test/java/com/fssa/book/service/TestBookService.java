@@ -23,7 +23,7 @@ import com.fssa.book.model.Book;
 
 
 // Main class for test
-class TestBookServiceLayer {
+class TestBookService {
 
 	Book getBook() {
 		Book book = new Book();
@@ -46,7 +46,7 @@ class TestBookServiceLayer {
 	@Test
 	void testCreateBook() throws SQLException, DAOException {
 
-		BookServiceLayer bookservicelayer = new BookServiceLayer();
+		BookService bookservicelayer = new BookService();
 		Book book = new Book();
 		// Set the attributes of the book object for testing
 		book.setBookName("The Elon musk book");
@@ -72,9 +72,9 @@ class TestBookServiceLayer {
 
 		Book book = getBook();
 		BookDao bookDao = new BookDao();
-		BookServiceLayer bookServiceLayer = new BookServiceLayer();
+		BookService bookService = new BookService();
 		assertDoesNotThrow(() -> bookDao.readBook(book.getBookId()));
-		Logger.info(bookServiceLayer.readBook(book));
+		Logger.info(bookService.readBook(book));
 		Logger.info("Succesfully read the data from the MYSQL");
 
 	}
@@ -84,9 +84,9 @@ class TestBookServiceLayer {
 	void testDeleteBookusingbookId() {
 
 		Book book = new Book();
-		book.setBookId(1);
-		BookServiceLayer bookServiceLayer = new BookServiceLayer();
-		assertDoesNotThrow(() -> bookServiceLayer.deleteBookUsingId(book.getBookId()));
+		book.setBookId(3);
+		BookService bookService = new BookService();
+		assertDoesNotThrow(() -> bookService.deleteBookUsingId(book.getBookId()));
 
 	}
 
@@ -95,10 +95,10 @@ class TestBookServiceLayer {
 	void testUpdateBookPrice() throws DAOException, SQLException {
 
 		Book book = new Book();
-		book.setBookId(6);
+		book.setBookId(5);
 		book.setBookPrice(600);
-		BookServiceLayer bookServiceLayer = new BookServiceLayer();
-		assertDoesNotThrow(() -> bookServiceLayer.updateBookPrice(book.getBookId(), book.getBookPrice()));
+		BookService bookService = new BookService();
+		assertDoesNotThrow(() -> bookService.updateBookPrice(book.getBookId(), book.getBookPrice()));
 
 	}
 
@@ -106,9 +106,9 @@ class TestBookServiceLayer {
 	@Test
 	void testUpdateBookQty() {
 		Book book = new Book();
+		book.setBookId(5);
 		book.setQuantity(3);
-		book.setBookId(6);
-		BookServiceLayer bookServiceLayer = new BookServiceLayer();
-		assertDoesNotThrow(() -> bookServiceLayer.updateBookQty(book.getBookId(), book.getQuantity()));
+		BookService bookService = new BookService();
+		assertDoesNotThrow(() -> bookService.updateBookQty(book.getBookId(), book.getQuantity()));
 	}
 }

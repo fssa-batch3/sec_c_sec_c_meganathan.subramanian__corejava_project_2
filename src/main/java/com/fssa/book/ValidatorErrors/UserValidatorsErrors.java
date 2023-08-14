@@ -1,4 +1,4 @@
-package com.fssa.book.model;
+package com.fssa.book.ValidatorErrors;
 
 public interface UserValidatorsErrors {
 	

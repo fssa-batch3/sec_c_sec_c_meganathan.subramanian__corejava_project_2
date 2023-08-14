@@ -10,11 +10,14 @@ package com.fssa.book.validator;
 import java.util.regex.Matcher;
 
 import java.util.regex.Pattern;
+
+import com.fssa.book.ValidatorErrors.BookValidateErrors;
 import com.fssa.book.enums.BookCategoriesEnum;
 import com.fssa.book.model.Book;
-import com.fssa.book.model.BookValidateErrors;
 
 public class BookValidator {
+	
+	public static final String REGEX_NAMES  = "^[A-Za-z ]+$";
  
     /**
      * Below the code for validate the all attribute and get the value from it.
@@ -53,7 +56,7 @@ public class BookValidator {
         }
 
         // Below the code for Regex pattern
-        String regx = "^[A-Za-z ]+$";
+        String regx = REGEX_NAMES;
         Pattern pattern = Pattern.compile(regx);
         Matcher matcher = pattern.matcher(bookName);
         boolean isMatch = matcher.matches();
@@ -94,7 +97,7 @@ public class BookValidator {
         }
 
         // Code for Regex pattern
-        String regex = "^[A-Za-z ]+$";
+        String regex = REGEX_NAMES;
         Pattern pattern = Pattern.compile(regex); // Compile the pattern
         Matcher matcher = pattern.matcher(bookCategoriesName); // using matcher object of check the whether match or
         boolean isMatch = matcher.matches(); // And return the boolean value
@@ -173,7 +176,7 @@ public class BookValidator {
         }
 
         // Code for Regex pattern
-        String regex = "^[A-Za-z ]+$";
+        String regex = REGEX_NAMES;
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(bookLanguage);
         boolean isMatch = matcher.matches(); // this is the new way to check the value
@@ -216,7 +219,7 @@ public class BookValidator {
         }
 
         // Code for Regex pattern
-        String regex = "^[A-Za-z ]+$";
+        String regex = REGEX_NAMES;
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(authorName);
         boolean isMatch = matcher.matches(); // this is the new way to check the value

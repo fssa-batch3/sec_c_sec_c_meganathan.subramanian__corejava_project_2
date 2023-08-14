@@ -7,7 +7,7 @@ import com.fssa.book.exception.DAOException;
 import com.fssa.book.model.Book;
 import com.fssa.book.validator.BookValidator;
 
-public class BookServiceLayer {
+public class BookService {
 
     // Below the code create the instance For DAO layer.
 
