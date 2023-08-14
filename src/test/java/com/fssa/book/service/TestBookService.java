@@ -84,7 +84,7 @@ class TestBookService {
 	void testDeleteBookusingbookId() {
 
 		Book book = new Book();
-		book.setBookId(3);
+		book.setBookId(1);
 		BookService bookService = new BookService();
 		assertDoesNotThrow(() -> bookService.deleteBookUsingId(book.getBookId()));
 
@@ -96,7 +96,7 @@ class TestBookService {
 
 		Book book = new Book();
 		book.setBookId(5);
-		book.setBookPrice(600);
+		book.setBookPrice(400);
 		BookService bookService = new BookService();
 		assertDoesNotThrow(() -> bookService.updateBookPrice(book.getBookId(), book.getBookPrice()));
 

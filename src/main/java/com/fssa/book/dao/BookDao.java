@@ -30,7 +30,7 @@ public class BookDao {
 	public boolean createBook(Book book) throws DAOException, SQLException {
 		ConnectionUtil connectionUtil = new ConnectionUtil(); 
 		try (Connection connection = connectionUtil.getConnection()) {
-			String insertQuery = "INSERT INTO books (bookId , bookName , bookPrice, bookCategories, bookImage, booklanguage , quantity, author , bookDescription) VALUES (?,?,?,?,?,?,?,?,?)";
+			String insertQuery = "INSERT INTO books (bookId , bookName , bookPrice, BookCategories, bookImage, booklanguage , quantity, author , bookDescription) VALUES (?,?,?,?,?,?,?,?,?)";
 			try (PreparedStatement pstmt = connection.prepareStatement(insertQuery)) {
 
 				pstmt.setInt(1, book.getBookId());
@@ -75,7 +75,7 @@ public class BookDao {
 						book.setBookId(rs.getInt("bookId"));
 						book.setBookName(rs.getString("bookName"));
 						book.setAuthor(rs.getString("author"));
-						book.setBookCategories(rs.getString("bookCategories"));
+						book.setBookCategories(rs.getString("BookCategories"));
 						book.setBookDescription(rs.getString("bookDescription"));
 						book.setBookImage(rs.getString("bookImage"));
 						book.setBookPrice(rs.getInt("bookPrice"));
