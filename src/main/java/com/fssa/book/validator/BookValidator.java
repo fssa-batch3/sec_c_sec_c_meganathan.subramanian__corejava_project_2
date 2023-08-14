@@ -57,7 +57,7 @@ public class BookValidator {
         Pattern pattern = Pattern.compile(regx);
         Matcher matcher = pattern.matcher(bookName);
         boolean isMatch = matcher.matches();
-        if (" ".trim().equals(bookName) || bookName.trim().length() > 40 || bookName.trim().length() < 3 || !isMatch) {
+        if ("".trim().equals(bookName) || bookName.trim().length() > 40 || bookName.trim().length() < 3 || !isMatch) {
 
             throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_NAME);
         }
@@ -73,8 +73,8 @@ public class BookValidator {
      * @return
      * @throws IllegalArgumentException
      */
-    public  boolean validateBookPrice(int Price) throws IllegalArgumentException {
-        if (Price <= 350 || Price > 1300) {
+    public  boolean validateBookPrice(int price) throws IllegalArgumentException {
+        if (price <= 350 || price > 1300) {
             throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_PRICE);
         }
         return true;

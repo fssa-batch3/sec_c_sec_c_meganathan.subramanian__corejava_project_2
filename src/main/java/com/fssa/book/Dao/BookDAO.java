@@ -15,13 +15,8 @@ import com.fssa.book.exception.DAOException;
 import com.fssa.book.logger.Logger;
 import com.fssa.book.model.Book;
 
-public class BookDAO {
+public class BookDao {
 
-    // Below the code for private constructor
-    private BookDAO() {
-
-    }
-    
     public static final String GET_BOOKID = "SELECT * FROM books WHERE bookId = ?";
 
     /**
@@ -33,7 +28,7 @@ public class BookDAO {
      * @throws SQLException
      */
 
-    public static boolean createBook(Book book) throws DAOException, SQLException {
+    public  boolean createBook(Book book) throws DAOException, SQLException {
         try (Connection connection = ConnectionUtil.getConnection()) {
             String insertQuery = "INSERT INTO books (bookId , bookName , bookPrice, bookCategories, bookImage, booklanguage , quantity, author , bookDescription) VALUES (?,?,?,?,?,?,?,?,?)";
             try (PreparedStatement pstmt = connection.prepareStatement(insertQuery)) {
@@ -69,7 +64,7 @@ public class BookDAO {
      * @throws SQLException
      */
     
-    public static Book readBook(int bookId) throws DAOException, SQLException {
+    public  Book readBook(int bookId) throws DAOException, SQLException {
 
         try (Connection connection = ConnectionUtil.getConnection()) {
             String selectQuery = GET_BOOKID;
@@ -106,7 +101,7 @@ public class BookDAO {
      * @throws SQLException
      */
     
-    public static void deleteBook(int bookId) throws DAOException, SQLException {
+    public  void deleteBook(int bookId) throws DAOException, SQLException {
         try (Connection connection = ConnectionUtil.getConnection()) {
             String existQuery = GET_BOOKID;
             try (PreparedStatement psmt = connection.prepareStatement(existQuery)) {
@@ -148,7 +143,7 @@ public class BookDAO {
      * @throws DAOException
      * @throws SQLException
      */
-    public static void updateBookPrice(int bookId, int bookPrice) throws DAOException, SQLException {
+    public  void updateBookPrice(int bookId, int bookPrice) throws DAOException, SQLException {
         try (Connection connection = ConnectionUtil.getConnection()) {
             String existQuery = GET_BOOKID;
             try (PreparedStatement psmt = connection.prepareStatement(existQuery)) {
@@ -190,7 +185,7 @@ public class BookDAO {
      * @throws SQLException
      */
 
-    public static void udpatebookQty(int bookId, int bookQty) throws DAOException, SQLException {
+    public  void udpatebookQty(int bookId, int bookQty) throws DAOException, SQLException {
         try (Connection connection = ConnectionUtil.getConnection()) {
             String existsQuery = GET_BOOKID;
             try (PreparedStatement psmt = connection.prepareStatement(existsQuery)) {

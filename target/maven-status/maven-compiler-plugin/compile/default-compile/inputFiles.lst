@@ -1,9 +1,12 @@
 C:\GitHub\Book\src\main\java\com\fssa\book\dao\ConnectionUtil.java
 C:\GitHub\Book\src\main\java\com\fssa\book\exception\DAOException.java
+C:\GitHub\Book\src\main\java\com\fssa\book\validator\UserValidator.java
 C:\GitHub\Book\src\main\java\com\fssa\book\model\Book.java
 C:\GitHub\Book\src\main\java\com\fssa\book\model\BookValidateErrors.java
-C:\GitHub\Book\src\main\java\com\fssa\book\dao\BookDAO.java
+C:\GitHub\Book\src\main\java\com\fssa\book\dao\BookDao.java
 C:\GitHub\Book\src\main\java\com\fssa\book\service\BookServiceLayer.java
 C:\GitHub\Book\src\main\java\com\fssa\book\logger\Logger.java
-C:\GitHub\Book\src\main\java\com\fssa\book\enums\BookCategories.java
+C:\GitHub\Book\src\main\java\com\fssa\book\model\UserValidatorsErrors.java
 C:\GitHub\Book\src\main\java\com\fssa\book\validator\BookValidator.java
+C:\GitHub\Book\src\main\java\com\fssa\book\enums\BookCategoriesEnum.java
+C:\GitHub\Book\src\main\java\com\fssa\book\model\User.java

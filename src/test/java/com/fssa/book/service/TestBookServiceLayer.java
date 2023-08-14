@@ -6,11 +6,12 @@ package com.fssa.book.service;
  * 
   */
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+
 import java.sql.SQLException;
 import com.fssa.book.logger.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import com.fssa.book.dao.BookDAO;
+import com.fssa.book.dao.BookDao;
 import com.fssa.book.exception.DAOException;
 import com.fssa.book.model.Book;
 
@@ -61,8 +62,9 @@ class TestBookServiceLayer {
 	void testReadBookUsingId() throws DAOException, SQLException { 
 
 		Book book = getBook(); 
+		BookDao bookDao = new BookDao();
 		BookServiceLayer bookServiceLayer = new BookServiceLayer();
-		assertDoesNotThrow(() -> BookDAO.readBook(book.getBookId()));
+		assertDoesNotThrow(() -> bookDao.readBook(book.getBookId()));
 		Logger.info(bookServiceLayer.readBook(book));
 		Logger.info("Succesfully read the data from the MYSQL");
 

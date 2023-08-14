@@ -1,8 +1,7 @@
 package com.fssa.book.service;
 
 import java.sql.SQLException;
-
-import com.fssa.book.dao.BookDAO;
+import com.fssa.book.dao.BookDao;
 import com.fssa.book.exception.DAOException;
 import com.fssa.book.model.Book;
 import com.fssa.book.validator.BookValidator;
@@ -13,10 +12,11 @@ public class BookServiceLayer {
 
     public boolean addBook(Book book) throws IllegalArgumentException, DAOException, SQLException {
     	BookValidator bookValidator = new BookValidator();
+    	BookDao bookDao = new BookDao();
 
         try {
             bookValidator.validate(book);
-            BookDAO.createBook(book);
+            bookDao.createBook(book);
             return true;
         } catch (DAOException | SQLException ex) {
             throw new DAOException("Object are empty or bug" + ex.getMessage());
@@ -35,9 +35,9 @@ public class BookServiceLayer {
 
 
     public Book readBook(Book book) throws DAOException, SQLException {
-
+    	BookDao bookDao = new BookDao();
         try {
-            BookDAO.readBook(book.getBookId());
+        	bookDao.readBook(book.getBookId());
         } catch (DAOException | SQLException ex) {
             throw new DAOException("book id not found" + ex.getMessage());
 
@@ -55,9 +55,11 @@ public class BookServiceLayer {
      */
     public boolean updateBookPrice(int bookId, int bookPrice) throws DAOException, SQLException {
     	BookValidator bookValidator = new BookValidator();
+    	BookDao bookDao = new BookDao();
+    	
         try {
             bookValidator.validateBookPrice(bookPrice);
-            BookDAO.updateBookPrice(bookId, bookPrice);
+            bookDao.updateBookPrice(bookId, bookPrice);
             return true;
         } catch (DAOException | SQLException e) {
             throw new DAOException("Updation fails" + e.getMessage());
@@ -73,8 +75,10 @@ public class BookServiceLayer {
      * @throws SQLException
      */
     public boolean deleteBookUsingId(int bookId) throws DAOException, SQLException {
+    	BookDao bookDao = new BookDao();
+    	
         try {
-            BookDAO.deleteBook(bookId); 
+        	bookDao.deleteBook(bookId); 
             return true;
         } catch (DAOException | SQLException ex) {
             throw new DAOException("Error while delete the book" + ex.getMessage());
@@ -93,9 +97,10 @@ public class BookServiceLayer {
 
     public boolean updateBookQty(int bookID, int bookQty) throws SQLException, DAOException {
     	BookValidator bookValidator = new BookValidator();
+    	BookDao bookDao = new BookDao();
         try {
             bookValidator.validateBookQuantity(4); 
-            BookDAO.udpatebookQty(bookID, bookQty); 
+            bookDao.udpatebookQty(bookID, bookQty); 
             return true;
         } catch (SQLException | DAOException e) {
             throw new DAOException("updation fails" + e.getMessage());
