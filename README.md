@@ -56,3 +56,4 @@ This table stores user profile information, including details such as name, cont
 
  #  Architecture and DataBase Design:
 
+![DB BookStore](https://github.com/fssa-batch3/sec_c_sec_c_meganathan.subramanian__corejava_project_2/assets/109018167/266d0f3e-5d34-4e96-9222-528dece4911f)
