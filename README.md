@@ -1,11 +1,6 @@
 # Welcome to My project!
 
-Hi my project name is book store and it is purely E-  commerce website My website is fully for buying and selling the books easily.
-
-# DATABASE DESGIN :
-
-
-
+Hello! My project name is book-Store and it is purely E- commerce website.My website is fully focus on Buying and Selling the books through my website.
 
 # Project Setup
  Create a new Java project
@@ -16,18 +11,47 @@ Hi my project name is book store and it is purely E-  commerce website My websit
  JUnit,
  Dotenv.
 
-## Table name : Book Details 
+# My project tables: 
 
-## This Table contain the book details.
+##  This table Contains the book details:
 
-| bookId | bookName                                   | bookPrice | bookCategories      | bookImage  | bookLanguage | quantity | author           | bookDescription                                                                                   |
-|--------|--------------------------------------------|-----------|---------------------|------------|--------------|----------|------------------|---------------------------------------------------------------------------------------------------|
-| 1      | The Complete Works of William Shakespeare | 450       | Drama               | image16.jpg| English      | 3      | William Shakespeare| A collection of all the plays and sonnets by the renowned playwright.                          |
-| 2      | War and Peace                            | 350       | Historical Fiction  | image17.jpg| English      | 2       | Leo Tolstoy      | A historical novel set against the backdrop of the Napoleonic Wars.                             |
-| 3      | Crime and Punishment                     | 320       | Psychological Thriller | image18.jpg| English      | 2       | Fyodor Dostoevsky| A psychological exploration of guilt, morality, and redemption.                                 |
-| 4      | Moby-Dick                                | 380       | Adventure           | image19.jpg| English      | 1       | Herman Melville  | An epic tale of obsession and revenge, centered around the hunt for a giant white whale.       |
-| 5      | Les Misérables                           | 420       | Historical Fiction  | image20.jpg| French       | 1       | Victor Hugo      | A sweeping novel following the lives of several characters during the tumultuous years of post-revolutionary France. |
-| 6      | The Fountainhead                         | 310       | Fiction             | image21.jpg| English      | 4       | Ayn Rand         | A philosophical novel about individualism, architecture, and the struggle for creative independence. |
+## Books Detail Table :
+
+This table stores information about books, including details such as name, price, categories, image, language, quantity, author, and description.
+
+| Field       | Type           | Description                            |
+|-------------|----------------|----------------------------------------|
+| Id          | INT            | Unique book identifier (auto-increment) |
+| Name        | VARCHAR(100)   | Book's title                           |
+| Price       | INT            | Book's price                           |
+| Categories  | VARCHAR(200)   | Book's categories                      |
+| Image       | VARCHAR(200)   | URL to the book's cover image          |
+| Language    | VARCHAR(50)    | Book's language                        |
+| Quantity    | INT            | Available quantity of the book         |
+| Author      | VARCHAR(100)   | Book's author                          |
+| Description | TEXT           | Description or summary of the book     |
 
 
+# This table for Users : CRUD 
 
+###  User Profile Table :
+This table stores user profile information, including details such as name, contact information,  and preferences.
+
+| Field        | Type           | Description                           |
+|--------------|----------------|---------------------------------------|
+| id           | INT            | Unique user identifier (auto-increment)|
+| name         | VARCHAR(255)   | User's full name                      |
+| email        | VARCHAR(255)   | User's email address                  |
+| phoneNumber  | VARCHAR(20)    | User's contact phone number           |
+| password     | VARCHAR(255)   | Encrypted user password               |
+| state        | VARCHAR(255)   | User's state or province              |
+| city         | VARCHAR(255)   | User's city                           |
+| pincode      | VARCHAR(6)     | User's postal code                    |
+
+# Key feature:
+	
+ 1.  **User Side** : User can buy book easly form my webiste and they can buy tamil language books also in our webiste tamil books is the first priority to users.
+  
+ 2. **Seller Side** : In my website not only user can buy books seller also sell their own book through my webiste and earn the money with profit
+
+ #  Architecture and DataBase Design:
