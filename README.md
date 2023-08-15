@@ -55,3 +55,5 @@ This table stores user profile information, including details such as name, cont
  2. **Seller Side** : In my website not only user can buy books seller also sell their own book through my webiste and earn the money with profit
 
  #  Architecture and DataBase Design:
+
+![Screenshot (35)](https://github.com/fssa-batch3/sec_c_sec_c_meganathan.subramanian__corejava_project_2/assets/109018167/405f4949-f8f3-45c7-a0cb-dca8e51ae40c)
