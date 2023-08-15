@@ -33,7 +33,7 @@ public class BookValidator {
         }
         validateBookName(book.getBookName());
         validateBookPrice(book.getBookPrice());
-        validateBookCategoriesName(book.getBookCategories());
+        validateBookCategoriesName(book.getbookCategories());
         validateBookLanguages(book.getBooklanguage());
         validateBookQuantity(book.getQuantity());
         validateAuthorName(book.getAuthor());

@@ -10,7 +10,7 @@ public class Book {
 	private int bookId;
 	private String bookName;
 	private int bookPrice;
-	private String BookCategories;
+	private String bookCategories;
 	private String bookImage;
 	private String booklanguage;
 	private int quantity;
@@ -24,7 +24,7 @@ public String toString() {
             + "bookId=" + bookId + "\n"
             + "bookName=" + bookName + "\n"
             + "bookPrice=" + bookPrice + "\n"
-            + "bookCategories=" + BookCategories + "\n"
+            + "bookCategories=" + bookCategories + "\n"
             + "bookImage=" + bookImage + "\n"
             + "booklanguage=" + booklanguage + "\n"
             + "quantity=" + quantity + "\n"
@@ -40,13 +40,13 @@ public String toString() {
 	}
 	
 	// parameterized constructor 
-	public Book(int bookId, String bookName, int bookPrice, String BookCategories, String bookImage,
+	public Book(int bookId, String bookName, int bookPrice, String bookCategories, String bookImage,
 			String booklanguage, int quantity, String author, String bookDescription, String bookFilter) {
 	
 		this.bookId = bookId;
 		this.bookName = bookName;
 		this.bookPrice = bookPrice;
-		this.BookCategories = BookCategories;
+		this.bookCategories = bookCategories;
 		this.bookImage = bookImage;
 		this.booklanguage = booklanguage;
 		this.quantity = quantity;
@@ -79,12 +79,12 @@ public String toString() {
 		this.bookPrice = bookPrice;
 	}
 
-	public String getBookCategories() {
-		return BookCategories;
+	public String getbookCategories() {
+		return bookCategories;
 	}
 
-	public void setBookCategories(String BookCategories) {
-		this.BookCategories = BookCategories;
+	public void setbookCategories(String bookCategories) {
+		this.bookCategories = bookCategories;
 	}
 
 	public String getBookImage() {

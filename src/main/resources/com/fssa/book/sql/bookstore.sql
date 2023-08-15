@@ -2,17 +2,17 @@
 
 use meganathan_subramanian_corejava_project;
 CREATE TABLE books(
-    bookId INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    bookName VARCHAR(100) NOT NULL,
-    bookPrice INT(200) not null,
-    bookCategories VARCHAR(200) not null,
-    bookImage VARCHAR(200) not null,
-    bookLanguage VARCHAR(50) not null,
+    Id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    Name VARCHAR(100) NOT NULL,
+    Price INT(200) not null,
+    Categories VARCHAR(200) not null,
+    Image VARCHAR(200) not null,
+    Language VARCHAR(50) not null,
     quantity INT not null,
     author VARCHAR(100)not null, 
-    bookDescription TEXT
+    Description TEXT
 );
-INSERT INTO books (bookName, bookPrice, bookCategories, bookImage, bookLanguage, quantity, author, bookDescription)
+INSERT INTO books (Name, Price, Categories, Image, Language, quantity, author, Description)
 VALUES 
     ('The Great Gatsby', 20, 'Fiction', 'gatsby.jpg', 'English', 2, 'F. Scott Fitzgerald', 'A classic novel about the American Dream.'),
     ('To Kill a Mockingbird', 18, 'Fiction', 'mockingbird.jpg', 'English', 2, 'Harper Lee', 'A powerful story addressing racial injustice.'),

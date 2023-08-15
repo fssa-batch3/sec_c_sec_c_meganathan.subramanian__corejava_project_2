@@ -30,7 +30,7 @@ class TestBookService {
 		Book book = new Book();
 		book.setBookName("Attitude is Everything");
 		book.setBookPrice(400);
-		book.setBookCategories("Self help books");
+		book.setbookCategories("Self help books");
 		book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
 		book.setBooklanguage("English");
 		book.setQuantity(1);
@@ -52,7 +52,7 @@ class TestBookService {
 		// Set the attributes of the book object for testing
 		book.setBookName("The Elon musk book");
 		book.setBookPrice(400);
-		book.setBookCategories("fiction books");
+		book.setbookCategories("fiction books");
 		book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
 		book.setBooklanguage("Tamil");
 		book.setQuantity(1);
@@ -84,7 +84,7 @@ class TestBookService {
 	@Test
 	void testDeleteBookusingbookId() {
 
-		Book book = new Book();
+		Book book = new Book(); 
 		book.setBookId(2);
 		BookService bookService = new BookService();
 		assertDoesNotThrow(() -> bookService.deleteBookUsingId(book.getBookId()));

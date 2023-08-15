@@ -2,21 +2,21 @@ package com.fssa.bookstore.dao;
 
 /**
  * Below the code for write the all query like create,read,delete,update
- * @author meganthan Subramanian
+ * @author Meganathan Subramanian
  */
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import com.fssa.bookstore.exception.DAOException;
 import com.fssa.bookstore.logger.Logger;
 import com.fssa.bookstore.model.Book;
 
 public class BookDao {
-     
-	public static final String GET_BOOKID = "SELECT * FROM books WHERE bookId = ?";
+
+	// Below the code for constant 
+	public static final String GET_BOOKID = "SELECT * FROM books WHERE Id = ?";
 
 	/**
 	 * Below the code for Creating the new book in database
@@ -28,15 +28,15 @@ public class BookDao {
 	 */
 
 	public boolean createBook(Book book) throws DAOException, SQLException {
-		ConnectionUtil connectionUtil = new ConnectionUtil(); 
+		ConnectionUtil connectionUtil = new ConnectionUtil();
 		try (Connection connection = connectionUtil.getConnection()) {
-			String insertQuery = "INSERT INTO books (bookId , bookName , bookPrice, BookCategories, bookImage, booklanguage , quantity, author , bookDescription) VALUES (?,?,?,?,?,?,?,?,?)";
+			String insertQuery = "INSERT INTO books (Id , Name , Price, Categories, Image, language , quantity, author , Description) VALUES (?,?,?,?,?,?,?,?,?)";
 			try (PreparedStatement pstmt = connection.prepareStatement(insertQuery)) {
 
-				pstmt.setInt(1, book.getBookId());
+				pstmt.setInt(1, book.getBookId()); 
 				pstmt.setString(2, book.getBookName());
 				pstmt.setDouble(3, book.getBookPrice());
-				pstmt.setString(4, book.getBookCategories());
+				pstmt.setString(4, book.getbookCategories());
 				pstmt.setString(5, book.getBookImage());
 				pstmt.setString(6, book.getBooklanguage());
 				pstmt.setInt(7, book.getQuantity());
@@ -47,7 +47,7 @@ public class BookDao {
 				return true;
 
 			} catch (SQLException e) {
-				throw new DAOException("Error while creating task: " + e.getMessage());
+				throw new DAOException("Error while adding book : " + e.getMessage());
 			}
 
 		}
@@ -64,7 +64,7 @@ public class BookDao {
 	 */
 
 	public Book readBook(int bookId) throws DAOException, SQLException {
-		ConnectionUtil connectionUtil = new ConnectionUtil(); 
+		ConnectionUtil connectionUtil = new ConnectionUtil();
 		try (Connection connection = connectionUtil.getConnection()) {
 			String selectQuery = GET_BOOKID;
 			try (PreparedStatement psmt = connection.prepareStatement(selectQuery)) {
@@ -72,14 +72,14 @@ public class BookDao {
 				try (ResultSet rs = psmt.executeQuery()) {
 					if (rs.next()) {
 						Book book = new Book();
-						book.setBookId(rs.getInt("bookId"));
-						book.setBookName(rs.getString("bookName"));
+						book.setBookId(rs.getInt("Id"));
+						book.setBookName(rs.getString("Name"));
 						book.setAuthor(rs.getString("author"));
-						book.setBookCategories(rs.getString("BookCategories"));
-						book.setBookDescription(rs.getString("bookDescription"));
-						book.setBookImage(rs.getString("bookImage"));
-						book.setBookPrice(rs.getInt("bookPrice"));
-						book.setBooklanguage(rs.getString("bookLanguage"));
+						book.setbookCategories(rs.getString("Categories"));
+						book.setBookDescription(rs.getString("Description"));
+						book.setBookImage(rs.getString("Image"));
+						book.setBookPrice(rs.getInt("Price"));
+						book.setBooklanguage(rs.getString("Language"));
 						book.setQuantity(rs.getInt("quantity"));
 						return book;
 
@@ -101,36 +101,36 @@ public class BookDao {
 	 */
 
 	public void deleteBook(int bookId) throws DAOException, SQLException {
-		ConnectionUtil connectionUtil = new ConnectionUtil(); 
+		ConnectionUtil connectionUtil = new ConnectionUtil();
 		try (Connection connection = connectionUtil.getConnection()) {
 			String existQuery = GET_BOOKID;
 			try (PreparedStatement psmt = connection.prepareStatement(existQuery)) {
 				psmt.setInt(1, bookId);
 				try (ResultSet rs = psmt.executeQuery()) {
 					if (!rs.next()) {
-						throw new DAOException("Given bookId doesn't exist");
+						Logger.info("Id doesn't exists in database");
 					} else {
-						Logger.info("Sucessfully delete the book.");
+						Logger.info("Id Got sucessfully.");
 					}
 				}
 			}
 		} catch (SQLException ex) {
-			throw new DAOException("Error while deleting book: " + ex.getMessage());
+			throw new DAOException("Error while getting the id  " + ex.getMessage());
 		}
 
 		// Below the code for delete the book using book id
 		try (Connection connection = connectionUtil.getConnection()) {
-			String deleteQuery = "DELETE FROM books WHERE bookId = ?";
+			String deleteQuery = "DELETE FROM books WHERE Id = ?";
 			try (PreparedStatement psmt = connection.prepareStatement(deleteQuery)) {
 				psmt.setInt(1, bookId);
-				int rowAffected = psmt.executeUpdate();
+				int rowAffected = psmt.executeUpdate(); 
 				if (rowAffected > 0) {
-					Logger.info("Successfully delete the row" + bookId);
+					Logger.info("Successfully delete the row " + bookId);
 				} else {
 					Logger.info("Error while deleting the book");
 				}
 			}
-		}
+		} 
 	}
 
 	/**
@@ -142,13 +142,12 @@ public class BookDao {
 	 * @throws SQLException
 	 */
 	public void updateBookPrice(int bookId, int bookPrice) throws DAOException, SQLException {
-		ConnectionUtil connectionUtil = new ConnectionUtil(); 
+		ConnectionUtil connectionUtil = new ConnectionUtil();
 		try (Connection connection = connectionUtil.getConnection()) {
 			String existQuery = GET_BOOKID;
 			try (PreparedStatement psmt = connection.prepareStatement(existQuery)) {
 				psmt.setInt(1, bookId);
 				try (ResultSet rs = psmt.executeQuery()) {
-
 					if (!rs.next()) {
 						throw new DAOException("given bookid doesn't exist");
 					}
@@ -157,9 +156,9 @@ public class BookDao {
 		} catch (SQLException e) {
 			throw new DAOException("Error while checking bookid exist" + e.getMessage());
 		}
- 
+
 		try (Connection connection = connectionUtil.getConnection()) {
-			String updateQuery = "UPDATE books set bookPrice = ? WHERE bookId = ?";
+			String updateQuery = "UPDATE books set Price = ? WHERE Id = ?";
 			try (PreparedStatement psmt = connection.prepareStatement(updateQuery)) {
 				psmt.setInt(1, bookPrice);
 				psmt.setInt(2, bookId);
@@ -185,14 +184,14 @@ public class BookDao {
 	 */
 
 	public void udpatebookQty(int bookId, int bookQty) throws DAOException, SQLException {
-		ConnectionUtil connectionUtil = new ConnectionUtil(); 
+		ConnectionUtil connectionUtil = new ConnectionUtil();
 		try (Connection connection = connectionUtil.getConnection()) {
 			String existsQuery = GET_BOOKID;
 			try (PreparedStatement psmt = connection.prepareStatement(existsQuery)) {
 				psmt.setInt(1, bookId);
 				try (ResultSet rs = psmt.executeQuery()) {
 					if (!rs.next()) {
-						throw new DAOException("Book id doesn't exists");
+						throw new DAOException("id doesn't exists");
 					}
 				}
 
@@ -203,12 +202,12 @@ public class BookDao {
 
 		// This second try for update the book price qty
 		try (Connection connection = connectionUtil.getConnection()) {
-			String updateQuery = "UPDATE books set quantity = ? WHERE bookId = ?";
+			String updateQuery = "UPDATE books set quantity = ? WHERE Id = ?";
 			try (PreparedStatement psmt = connection.prepareStatement(updateQuery)) {
 				psmt.setInt(1, bookQty);
 				psmt.setInt(2, bookId);
 				int rowsAffected = psmt.executeUpdate();
-				if (rowsAffected > 0) {
+				if (rowsAffected > 0) { 
 					Logger.info("Successfully updated bookqty");
 				} else {
 					Logger.info("bookqty updation fails");

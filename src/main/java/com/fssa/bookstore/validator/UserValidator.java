@@ -47,11 +47,11 @@ public class UserValidator {
 			throw new IllegalArgumentException(UserValidatorsErrors.INVALID_USER_NAME_NULL);
 		}
 		// Below the code for Regex pattern
-		String regx = "^\\w{6,20}$";
+		String regx = "^\\w{5,20}$";
 		Pattern pattern = Pattern.compile(regx);
 		Matcher matcher = pattern.matcher(name);
 		boolean isMatch = matcher.matches();
-		if ("".trim().equals(name) || name.trim().length() > 20 || name.trim().length() < 6 || !isMatch) {
+		if ("".trim().equals(name) || name.trim().length() > 20 || name.trim().length() < 5 || !isMatch) {
 
 			throw new IllegalArgumentException(UserValidatorsErrors.INVALID_USER_NAME);
 		}
@@ -84,7 +84,7 @@ public class UserValidator {
 
 		}
 		return true;
-	}
+	} 
 
 	/**
 	 * below the code for validate the email

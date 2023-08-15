@@ -4,7 +4,7 @@ public interface UserValidatorsErrors {
 	
 	// Below the code for Custom write the User error
 	
-	public static final String INVALID_USEROBJ_NULL = "User obj cannot be null or empty";
+	public static final String INVALID_USEROBJ_NULL = "User obj cannot be null or empty or Invalid";
 	
 	public static final String INVALID_USER_NAME_NULL  = "user name can't be null";
 	

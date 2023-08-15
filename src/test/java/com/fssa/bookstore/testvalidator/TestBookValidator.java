@@ -35,7 +35,7 @@ class TestBookValidator {
 		Validbook.setBookDescription(
 				"The key takeaway from the book is to remember that being motivated is easier than making excuses. To be truly motivated, you need to think positively and break free of negative attitude and mental window.");
 		Validbook.setBookName("Attitude is everything");
-		Validbook.setBookCategories("fiction books");
+		Validbook.setbookCategories("fiction books");
 		Validbook.setBooklanguage("English");
 		Validbook.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
 		Validbook.setBookPrice(400);
@@ -53,7 +53,7 @@ class TestBookValidator {
 			book.setBookDescription(
 					"The key takeaway from the book is to remember that being motivated is easier than making excuses. To be truly motivated, you need to think positively and break free of negative attitude and mental window.");
 			book.setBookName("Attitude is everything");
-			book.setBookCategories("fiction books");
+			book.setbookCategories("fiction books");
 			book.setBooklanguage("English");
 			book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
 			book.setBookPrice(400);
@@ -73,7 +73,7 @@ class TestBookValidator {
 			book.setBookDescription(
 					"The key takeaway from the book is to remember that being motivated is easier than making excuses. To be truly motivated, you need to think positively and break free of negative attitude and mental window.");
 			book.setBookName("Attitude is everything");
-			book.setBookCategories("fiction books");
+			book.setbookCategories("fiction books");
 			book.setBooklanguage("English");
 			book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
 			book.setBookPrice(400);
@@ -92,7 +92,7 @@ class TestBookValidator {
 			book.setAuthor("Jeff keller");
 			book.setBookDescription(null);
 			book.setBookName("Attitude is everything");
-			book.setBookCategories("fiction books");
+			book.setbookCategories("fiction books");
 			book.setBooklanguage("English");
 			book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
 			book.setBookPrice(400);
@@ -112,7 +112,7 @@ class TestBookValidator {
 			book.setBookDescription(
 					"The key takeaway from the book is to remember that being motivated is easier than making excuses. To be truly motivated, you need to think positively and break free of negative attitude and mental window.");
 			book.setBookName(null);
-			book.setBookCategories("fiction books");
+			book.setbookCategories("fiction books");
 			book.setBooklanguage("English");
 			book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
 			book.setBookPrice(400);
@@ -132,7 +132,7 @@ class TestBookValidator {
 			book.setBookDescription(
 					"The key takeaway from the book is to remember that being motivated is easier than making excuses. To be truly motivated, you need to think positively and break free of negative attitude and mental window.");
 			book.setBookName("Eat that Frog");
-			book.setBookCategories(null);
+			book.setbookCategories(null);
 			book.setBooklanguage("English");
 			book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
 			book.setBookPrice(400);
@@ -152,7 +152,7 @@ class TestBookValidator {
 			book.setBookDescription(
 					"The key takeaway from the book is to remember that being motivated is easier than making excuses. To be truly motivated, you need to think positively and break free of negative attitude and mental window.");
 			book.setBookName("Eat that Frog");
-			book.setBookCategories("fiction books");
+			book.setbookCategories("fiction books");
 			book.setBooklanguage(null);
 			book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
 			book.setBookPrice(400);
@@ -172,7 +172,7 @@ class TestBookValidator {
 			book.setBookDescription(
 					"The key takeaway from the book is to remember that being motivated is easier than making excuses. To be truly motivated, you need to think positively and break free of negative attitude and mental window.");
 			book.setBookName("Eat that Frog");
-			book.setBookCategories("fiction books");
+			book.setbookCategories("fiction books");
 			book.setBooklanguage("Tamil");
 			book.setBookImage(null);
 			book.setBookPrice(400);
@@ -191,7 +191,7 @@ class TestBookValidator {
 			book.setBookDescription(
 					"The key takeaway from the book is to remember that being motivated is easier than making excuses. To be truly motivated, you need to think positively and break free of negative attitude and mental window.");
 			book.setBookName("Eat that Frog");
-			book.setBookCategories("fiction books");
+			book.setbookCategories("fiction books");
 			book.setBooklanguage("Tamil");
 			book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
 			book.setBookPrice(0);

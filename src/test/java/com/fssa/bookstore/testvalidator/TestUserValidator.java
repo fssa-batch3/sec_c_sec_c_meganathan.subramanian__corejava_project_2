@@ -2,7 +2,6 @@ package com.fssa.bookstore.testvalidator;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import com.fssa.bookstore.model.User;
 import com.fssa.bookstore.validator.UserValidator;
 import com.fssa.bookstore.validatorerrors.UserValidatorsErrors;
