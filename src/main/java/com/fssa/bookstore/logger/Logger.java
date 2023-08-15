@@ -6,8 +6,13 @@ package com.fssa.bookstore.logger;
  * @author MeganathanSubramania
  */
 public class Logger {
-    public static void info(Object obj) {
-        System.out.println(obj);
 
-    }
+	private Logger() {
+
+	}
+
+	public static void info(Object obj) {
+		System.out.println(obj);
+
+	}
 }

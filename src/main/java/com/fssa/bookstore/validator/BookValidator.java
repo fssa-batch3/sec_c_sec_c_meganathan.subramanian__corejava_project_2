@@ -256,7 +256,7 @@ public class BookValidator {
 		}
 
 		// Code for Regex pattern
-		String regex = "^[A-Za-z0-9,@ ?.\s]+$";
+		String regex = "^[A-Za-z0-9\\s.,;:'\"!?()/-]*$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(bookDescription);
 		boolean isMatch = matcher.matches(); // this is the new way to check the value

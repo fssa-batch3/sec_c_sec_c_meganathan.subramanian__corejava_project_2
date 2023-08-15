@@ -41,7 +41,7 @@ public String toString() {
 	
 	// parameterized constructor 
 	public Book(int bookId, String bookName, int bookPrice, String bookCategories, String bookImage,
-			String booklanguage, int quantity, String author, String bookDescription, String bookFilter) {
+			String booklanguage, int quantity) {
 	
 		this.bookId = bookId;
 		this.bookName = bookName;
@@ -50,9 +50,14 @@ public String toString() {
 		this.bookImage = bookImage;
 		this.booklanguage = booklanguage;
 		this.quantity = quantity;
-		this.author = author;
+		
+		
+	}
+
+	public Book(String bookDescription, String bookFilter,String author) {
 		this.bookDescription = bookDescription;
 		this.bookFilter = bookFilter;
+		this.author = author;
 	}
 
 	public int getBookId() {

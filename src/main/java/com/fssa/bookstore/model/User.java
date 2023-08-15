@@ -24,16 +24,18 @@ public class User {
 	}
 
 	// Constructor
-	public User(String name, String phoneNumber, String email, String password, String state, String city,
-			String pincode, int id) {
+	public User(String name, String phoneNumber, String email, String password, String state, String city, int id) {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
 		this.password = password;
 		this.state = state;
 		this.city = city;
-		this.pincode = pincode;
 		this.id = id;
+	}
+
+	public User(String pincode) {
+		this.pincode = pincode;
 	}
 
 	// Code for getter and setters

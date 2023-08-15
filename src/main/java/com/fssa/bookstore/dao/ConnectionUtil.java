@@ -35,7 +35,7 @@ public class ConnectionUtil {
 			con = DriverManager.getConnection(url, userName, passWord);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new RuntimeException("Unable to connect to the database");
+			throw new IllegalArgumentException("Unable to connect to the database");
 		}
 		return con;
 	}

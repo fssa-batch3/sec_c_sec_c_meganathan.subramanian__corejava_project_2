@@ -66,8 +66,8 @@ class TestUserService {
 	void testUpdateUserPhoneNo() {
 		User  user = new User();
 		UserService userservice = new UserService();
-		user.setId(1);
-		user.setPhoneNumber("+919092063753");
+		user.setId(2);
+		user.setPhoneNumber("+919092063763");
 		assertDoesNotThrow(() -> userservice.updatePhoneNo(user.getId(), user.getPhoneNumber()));
 	}
 	
