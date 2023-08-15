@@ -7,9 +7,10 @@ package com.fssa.bookstore.validator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import com.fssa.bookstore.enums.BookCategoriesEnum;
 import com.fssa.bookstore.model.Book;
-import com.fssa.bookstore.validatorerrors.BookValidateErrors;
+import com.fssa.bookstore.validatorerrors.BookValidateErrors; 
 
 public class BookValidator {
 

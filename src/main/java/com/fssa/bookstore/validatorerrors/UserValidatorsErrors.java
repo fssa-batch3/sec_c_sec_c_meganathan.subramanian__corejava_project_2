@@ -1,6 +1,11 @@
 package com.fssa.bookstore.validatorerrors;
 
-public interface UserValidatorsErrors {
+public class UserValidatorsErrors {
+	
+	private UserValidatorsErrors() {
+		// restrict instantiation
+	}
+	
 	
 	// Below the code for Custom write the User error
 	

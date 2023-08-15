@@ -3,7 +3,11 @@ package com.fssa.bookstore.validatorerrors;
 /**
  * Create Exception errors in the different package and access it.
  */
-public interface BookValidateErrors {  
+public class BookValidateErrors {  
+	
+	private BookValidateErrors() {
+		// restrict instantiation
+	}
 
 	// Below the code for custom write the errors
 	
