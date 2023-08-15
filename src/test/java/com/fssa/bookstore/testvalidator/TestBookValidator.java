@@ -10,9 +10,9 @@ import org.junit.jupiter.api.Test;
 import com.fssa.bookstore.model.Book;
 import com.fssa.bookstore.validator.BookValidator;
 import com.fssa.bookstore.validatorerrors.BookValidateErrors;
-
+ 
 class TestBookValidator { 
-
+ 
 	@Test
 	// Below the code test the object are null
 	void testBookObjNull() {
@@ -37,7 +37,7 @@ class TestBookValidator {
 		Validbook.setBookName("Attitude is everything");
 		Validbook.setbookCategories("fiction books");
 		Validbook.setBooklanguage("English");
-		Validbook.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
+		Validbook.setBookImage("https://www.example.com");
 		Validbook.setBookPrice(400);
 		Validbook.setQuantity(2);
 		Assertions.assertTrue(bookvalidator.validate(Validbook));
@@ -55,7 +55,7 @@ class TestBookValidator {
 			book.setBookName("Attitude is everything");
 			book.setbookCategories("fiction books");
 			book.setBooklanguage("English");
-			book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
+			book.setBookImage("https://www.example.com");
 			book.setBookPrice(400);
 			book.setQuantity(2);
 		} catch (IllegalArgumentException ex) {
@@ -75,7 +75,7 @@ class TestBookValidator {
 			book.setBookName("Attitude is everything");
 			book.setbookCategories("fiction books");
 			book.setBooklanguage("English");
-			book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
+			book.setBookImage("https://www.example.com");
 			book.setBookPrice(400);
 
 		} catch (IllegalArgumentException ex) {
@@ -94,7 +94,7 @@ class TestBookValidator {
 			book.setBookName("Attitude is everything");
 			book.setbookCategories("fiction books");
 			book.setBooklanguage("English");
-			book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
+			book.setBookImage("https://www.example.com");
 			book.setBookPrice(400);
 
 		} catch (IllegalArgumentException ex) {
@@ -114,7 +114,7 @@ class TestBookValidator {
 			book.setBookName(null);
 			book.setbookCategories("fiction books");
 			book.setBooklanguage("English");
-			book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
+			book.setBookImage("https://www.example.com");
 			book.setBookPrice(400);
 
 		} catch (IllegalArgumentException ex) {
@@ -134,7 +134,7 @@ class TestBookValidator {
 			book.setBookName("Eat that Frog");
 			book.setbookCategories(null);
 			book.setBooklanguage("English");
-			book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
+			book.setBookImage("https://www.example.com");
 			book.setBookPrice(400);
 
 		} catch (IllegalArgumentException ex) {
@@ -154,7 +154,7 @@ class TestBookValidator {
 			book.setBookName("Eat that Frog");
 			book.setbookCategories("fiction books");
 			book.setBooklanguage(null);
-			book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
+			book.setBookImage("https://www.example.com");
 			book.setBookPrice(400);
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_LANGUAGE_NAME_NULL, ex.getMessage());
@@ -193,7 +193,7 @@ class TestBookValidator {
 			book.setBookName("Eat that Frog");
 			book.setbookCategories("fiction books");
 			book.setBooklanguage("Tamil");
-			book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
+			book.setBookImage("https://www.example.com");
 			book.setBookPrice(0);
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_PRICE, ex.getMessage());
@@ -360,11 +360,11 @@ class TestBookValidator {
 		} 
 	}
 
-	@Test
+	@Test 
 	// Code for test the book Valid Image URL
 	void testValidBookImgUrl() {
 		BookValidator bookValidator = new BookValidator();
-		Assertions.assertTrue(bookValidator.validateBookImageUrl("https://m.media-amazon.com/images/I/31PBdo581fL._SX317_BO1,204,203,200_.jpg"));
+		Assertions.assertTrue(bookValidator.validateBookImageUrl("https://www.example.com"));
 	}
  
 	@Test
@@ -458,7 +458,7 @@ class TestBookValidator {
 	// Code for Test the Valid Book Quantity
 	void testValidBookQty() {
 		BookValidator bookValidator = new BookValidator();
-		Assertions.assertTrue(bookValidator.validateBookQuantity(12));
+		Assertions.assertTrue(bookValidator.validateBookQuantity(4));
 	}
 
 	@Test

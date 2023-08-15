@@ -56,7 +56,7 @@ class TestUserService {
 	void testDeleteUser() {
 		User user = new User();
 		UserService userservice = new UserService(); 
-		user.setId(1);
+		user.setId(2);
 		assertDoesNotThrow(() -> userservice.deleteUser(user.getId()));
 
 	}

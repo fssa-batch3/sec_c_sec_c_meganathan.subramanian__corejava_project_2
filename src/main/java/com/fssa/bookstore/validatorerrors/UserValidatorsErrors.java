@@ -22,11 +22,11 @@ public interface UserValidatorsErrors {
 	
 	public static final String INVALID_USER_STATE_NULL = "user state cannot be null";
 	
-	public static final String INVALID_USER_STATE = "User State cannot be empty or invalid";
+	public static final String INVALID_USER_STATE = "User State must give the space And cannot be empty or invalid";
 	
 	public static final String INVALID_USER_CITY_NULL = "User City cannot be null";
 	
 	public static final String INVALID_USER_CITY = "User city are invalid are empty";
 	
-	public static final String INVALID_USER_PINCODE = "User pincode cannot be empty or invalid";
+	public static final String INVALID_USER_PINCODE = "User pincode must be 6 digits cannot be empty or invalid";
 }

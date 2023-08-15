@@ -24,7 +24,7 @@ class TestUserValidator {
 	// Below the code for invalid user name
 	@Test
 	void testInvalidUserNameNull() {
-		try {
+		try { 
 			UserValidator userValidator = new UserValidator();
 			userValidator.validateUserName(null);
 		} catch (IllegalArgumentException ex) {
@@ -317,7 +317,7 @@ class TestUserValidator {
 		validUser.setPincode("600081");
 		Assertions.assertTrue(userValidator.validate(validUser));
 		
-	}
+	} 
 	
 	// below the code for check the user obj null or empty
 	@Test

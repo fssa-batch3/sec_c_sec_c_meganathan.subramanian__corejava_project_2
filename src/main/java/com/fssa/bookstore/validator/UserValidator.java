@@ -27,7 +27,7 @@ public class UserValidator {
 		validateUserName(user.getName());
 		validateEmail(user.getEmail());
 		validatePassword(user.getPassword());
-		validatePhoneNumber(user.getPhoneNumber());
+		validatePhoneNumber(user.getPhoneNumber()); 
 		validateState(user.getState());
 		validateCity(user.getCity());
 		validatePincode(user.getPincode());
@@ -99,7 +99,7 @@ public class UserValidator {
 			throw new IllegalArgumentException(UserValidatorsErrors.INVALID_USER_EMAIL_NULL);
 		}
 
-		String regex = "^[A-Za-z0-9+_.-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,}$";
+		String regex = "^(?i)[a-z0-9.+-]{1,64}@[a-z0-9.-]{1,256}\\.[a-z]{2,6}$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(email);
 		boolean isMatch = matcher.matches();
@@ -150,7 +150,7 @@ public class UserValidator {
 		}
 		
 		// Below the code for REGEX
-		String regex = "[A-Z][a-z]+(?: +[A-Z][a-z]+)*";
+		String regex = "^[A-Za-z\\s-]+$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(state);
 		boolean isMatch = matcher.matches();
@@ -173,7 +173,7 @@ public class UserValidator {
 		}
 		
 		// Below the code for regex
-		String regex = "^[a-zA-Z]+(?:[\\s-][a-zA-Z]+)*$";
+		String regex = "^[A-Za-z\\s]+$|^$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(city);
 		boolean isMatch = matcher.matches();
@@ -197,7 +197,7 @@ public class UserValidator {
 		}
 		
 		// below the code for regex
-		String regex = "^[0-9]{6}$";
+		String regex = "^\\d{6}$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(pincode);
 		boolean isMatch = matcher.matches();

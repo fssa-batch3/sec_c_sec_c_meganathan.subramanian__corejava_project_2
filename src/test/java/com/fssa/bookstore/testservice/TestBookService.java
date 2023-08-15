@@ -24,7 +24,7 @@ import com.fssa.bookstore.service.BookService;
 
 
 // Main class for test
-class TestBookService {
+class TestBookService { 
 
 	Book getBook() {
 		Book book = new Book();
@@ -85,7 +85,7 @@ class TestBookService {
 	void testDeleteBookusingbookId() {
 
 		Book book = new Book(); 
-		book.setBookId(2);
+		book.setBookId(1);
 		BookService bookService = new BookService();
 		assertDoesNotThrow(() -> bookService.deleteBookUsingId(book.getBookId()));
 
@@ -97,7 +97,7 @@ class TestBookService {
 
 		Book book = new Book();
 		book.setBookId(5);
-		book.setBookPrice(500);
+		book.setBookPrice(600);
 		BookService bookService = new BookService();
 		assertDoesNotThrow(() -> bookService.updateBookPrice(book.getBookId(), book.getBookPrice()));
 
@@ -108,7 +108,7 @@ class TestBookService {
 	void testUpdateBookQty() {
 		Book book = new Book();
 		book.setBookId(5);
-		book.setQuantity(1);
+		book.setQuantity(3);
 		BookService bookService = new BookService();
 		assertDoesNotThrow(() -> bookService.updateBookQty(book.getBookId(), book.getQuantity()));
 	}
