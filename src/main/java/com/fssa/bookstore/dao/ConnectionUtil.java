@@ -1,4 +1,4 @@
-package com.fssa.book.dao;
+package com.fssa.bookstore.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

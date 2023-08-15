@@ -1,4 +1,4 @@
-package com.fssa.book.dao;
+package com.fssa.bookstore.dao;
 
 /**
  * Below the code for write the all query like create,read,delete,update
@@ -10,9 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.fssa.book.exception.DAOException;
-import com.fssa.book.logger.Logger;
-import com.fssa.book.model.Book;
+import com.fssa.bookstore.exception.DAOException;
+import com.fssa.bookstore.logger.Logger;
+import com.fssa.bookstore.model.Book;
 
 public class BookDao {
      

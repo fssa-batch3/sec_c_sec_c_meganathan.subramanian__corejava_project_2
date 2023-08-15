@@ -1,4 +1,4 @@
-package com.fssa.book.validator;
+package com.fssa.bookstore.testvalidator;
 
 /**
  *  Writing the test case for validate the book object 
@@ -7,8 +7,9 @@ package com.fssa.book.validator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import com.fssa.book.ValidatorErrors.BookValidateErrors;
-import com.fssa.book.model.Book;
+import com.fssa.bookstore.model.Book;
+import com.fssa.bookstore.validator.BookValidator;
+import com.fssa.bookstore.validatorerrors.BookValidateErrors;
 
 class TestBookValidator { 
 

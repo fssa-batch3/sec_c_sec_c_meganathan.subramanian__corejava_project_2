@@ -1,4 +1,4 @@
-package com.fssa.book.model;
+package com.fssa.bookstore.model;
 
 /**
  * Below the code for add the attribute and write the getter and setter

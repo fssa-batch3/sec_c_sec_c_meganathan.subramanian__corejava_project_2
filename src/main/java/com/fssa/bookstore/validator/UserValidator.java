@@ -1,11 +1,10 @@
-package com.fssa.book.validator;
+package com.fssa.bookstore.validator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.fssa.book.ValidatorErrors.BookValidateErrors;
-import com.fssa.book.ValidatorErrors.UserValidatorsErrors;
-import com.fssa.book.model.User;
+import com.fssa.bookstore.model.User;
+import com.fssa.bookstore.validatorerrors.UserValidatorsErrors;
 
 /**
  * Below the code for validate the user
@@ -23,12 +22,15 @@ public class UserValidator {
 	 */
 	public boolean validate(User user) throws IllegalArgumentException {
 		if (user == null) {
-			throw new IllegalArgumentException(UserValidatorsErrors.USER);
+			throw new IllegalArgumentException(UserValidatorsErrors.INVALID_USEROBJ_NULL);
 		}
 		validateUserName(user.getName());
 		validateEmail(user.getEmail());
 		validatePassword(user.getPassword());
 		validatePhoneNumber(user.getPhoneNumber());
+		validateState(user.getState());
+		validateCity(user.getCity());
+		validatePincode(user.getPincode());
 
 		return true;
 	}
@@ -133,6 +135,77 @@ public class UserValidator {
 		
 		return true;
 		
+	}
+	
+	
+	/**
+	 * below the code for validate the state
+	 * @param state
+	 * @return
+	 * @throws IllegalArgumentException
+	 */
+	public boolean validateState(String state)throws IllegalArgumentException{
+		if(state == null) {
+			throw new IllegalArgumentException(UserValidatorsErrors.INVALID_USER_STATE_NULL);
+		}
+		
+		// Below the code for REGEX
+		String regex = "[A-Z][a-z]+(?: +[A-Z][a-z]+)*";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(state);
+		boolean isMatch = matcher.matches();
+		
+		if("".trim().equals(state) || state.trim().length() > 15 || state.trim().length() < 4 || !isMatch) {
+			throw new IllegalArgumentException(UserValidatorsErrors.INVALID_USER_STATE);
+		}
+		return true;
+	}
+	
+	/**
+	 * Below the code for validate the city
+	 * @param city
+	 * @return
+	 * @throws IllegalArgumentException
+	 */
+	public boolean validateCity(String city)throws IllegalArgumentException {
+		if(city == null) {
+			throw new IllegalArgumentException(UserValidatorsErrors.INVALID_USER_CITY_NULL);
+		}
+		
+		// Below the code for regex
+		String regex = "^[a-zA-Z]+(?:[\\s-][a-zA-Z]+)*$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(city);
+		boolean isMatch = matcher.matches();
+		
+		if("".trim().equals(city) || city.trim().length() > 15 || city.trim().length() < 4 || !isMatch) {
+			throw new IllegalArgumentException(UserValidatorsErrors.INVALID_USER_CITY);
+		}
+		return true;
+	}
+	
+	
+	/**
+	 * Below the code for validate the pincode
+	 * @param pincode
+	 * @return
+	 * @throws IllegalArgumentException
+	 */
+	public boolean validatePincode(String pincode)throws IllegalArgumentException{
+		if(pincode == null) {
+			throw new IllegalArgumentException(UserValidatorsErrors.INVALID_USER_PINCODE);
+		}
+		
+		// below the code for regex
+		String regex = "^[0-9]{6}$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(pincode);
+		boolean isMatch = matcher.matches();
+		
+		if("".trim().equals(pincode) || pincode.trim().length() > 6 || !isMatch) {
+			throw new IllegalArgumentException(UserValidatorsErrors.INVALID_USER_PINCODE);
+		}
+		return true;
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.fssa.book.exception;
+package com.fssa.bookstore.exception;
 
 public class DAOException extends Exception {
 	

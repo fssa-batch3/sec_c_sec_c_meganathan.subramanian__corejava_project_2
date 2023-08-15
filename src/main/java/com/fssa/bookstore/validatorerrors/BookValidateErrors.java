@@ -1,4 +1,4 @@
-package com.fssa.book.ValidatorErrors;
+package com.fssa.bookstore.validatorerrors;
 
 /**
  * Create Exception errors in the different package and access it.

@@ -1,4 +1,4 @@
-package com.fssa.book.service;
+package com.fssa.bookstore.testservice;
 
 /**
  * Below the code for test all the book Service layer 
@@ -13,10 +13,11 @@ import java.sql.SQLException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import com.fssa.book.dao.BookDao;
-import com.fssa.book.exception.DAOException;
-import com.fssa.book.logger.Logger;
-import com.fssa.book.model.Book;
+import com.fssa.bookstore.dao.BookDao;
+import com.fssa.bookstore.exception.DAOException;
+import com.fssa.bookstore.logger.Logger;
+import com.fssa.bookstore.model.Book;
+import com.fssa.bookstore.service.BookService;
 
 
 
@@ -84,7 +85,7 @@ class TestBookService {
 	void testDeleteBookusingbookId() {
 
 		Book book = new Book();
-		book.setBookId(1);
+		book.setBookId(2);
 		BookService bookService = new BookService();
 		assertDoesNotThrow(() -> bookService.deleteBookUsingId(book.getBookId()));
 
@@ -96,7 +97,7 @@ class TestBookService {
 
 		Book book = new Book();
 		book.setBookId(5);
-		book.setBookPrice(400);
+		book.setBookPrice(500);
 		BookService bookService = new BookService();
 		assertDoesNotThrow(() -> bookService.updateBookPrice(book.getBookId(), book.getBookPrice()));
 
@@ -107,7 +108,7 @@ class TestBookService {
 	void testUpdateBookQty() {
 		Book book = new Book();
 		book.setBookId(5);
-		book.setQuantity(3);
+		book.setQuantity(1);
 		BookService bookService = new BookService();
 		assertDoesNotThrow(() -> bookService.updateBookQty(book.getBookId(), book.getQuantity()));
 	}

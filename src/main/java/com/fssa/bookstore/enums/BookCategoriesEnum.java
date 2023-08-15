@@ -1,4 +1,4 @@
-package com.fssa.book.enums;
+package com.fssa.bookstore.enums;
 
 public enum BookCategoriesEnum { 
 

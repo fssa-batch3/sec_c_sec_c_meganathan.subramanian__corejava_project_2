@@ -1,4 +1,4 @@
-package com.fssa.book.logger;
+package com.fssa.bookstore.logger;
 
 /**
  * below the code for create the Logger

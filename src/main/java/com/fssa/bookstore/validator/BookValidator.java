@@ -1,4 +1,4 @@
-package com.fssa.book.validator;
+package com.fssa.bookstore.validator;
 
 
 /**
@@ -11,9 +11,9 @@ import java.util.regex.Matcher;
 
 import java.util.regex.Pattern;
 
-import com.fssa.book.ValidatorErrors.BookValidateErrors;
-import com.fssa.book.enums.BookCategoriesEnum;
-import com.fssa.book.model.Book;
+import com.fssa.bookstore.enums.BookCategoriesEnum;
+import com.fssa.bookstore.model.Book;
+import com.fssa.bookstore.validatorerrors.BookValidateErrors;
 
 public class BookValidator {
 	
