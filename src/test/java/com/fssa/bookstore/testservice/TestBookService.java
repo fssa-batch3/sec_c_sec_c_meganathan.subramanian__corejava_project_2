@@ -31,7 +31,7 @@ class TestBookService {
 		book.setBookName("Attitude is Everything");
 		book.setBookPrice(400);
 		book.setbookCategories("Self help books");
-		book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
+		book.setBookImage("https://www.example.com");
 		book.setBooklanguage("English");
 		book.setQuantity(1);
 		book.setAuthor("Someone");
@@ -53,7 +53,7 @@ class TestBookService {
 		book.setBookName("The Elon musk book");
 		book.setBookPrice(400);
 		book.setbookCategories("fiction books");
-		book.setBookImage("https://m.media-amazon.com/images/I/611OWa8x+WL.jpg");
+		book.setBookImage("https://www.example.com");
 		book.setBooklanguage("Tamil");
 		book.setQuantity(1);
 		book.setAuthor("Brain Tracy");
@@ -85,7 +85,7 @@ class TestBookService {
 	void testDeleteBookusingbookId() {
 
 		Book book = new Book(); 
-		book.setBookId(1);
+		book.setBookId(7);
 		BookService bookService = new BookService();
 		assertDoesNotThrow(() -> bookService.deleteBookUsingId(book.getBookId()));
 
@@ -97,7 +97,7 @@ class TestBookService {
 
 		Book book = new Book();
 		book.setBookId(5);
-		book.setBookPrice(600);
+		book.setBookPrice(700);
 		BookService bookService = new BookService();
 		assertDoesNotThrow(() -> bookService.updateBookPrice(book.getBookId(), book.getBookPrice()));
 
@@ -107,8 +107,8 @@ class TestBookService {
 	@Test
 	void testUpdateBookQty() {
 		Book book = new Book();
-		book.setBookId(5);
-		book.setQuantity(3);
+		book.setBookId(3);
+		book.setQuantity(2);
 		BookService bookService = new BookService();
 		assertDoesNotThrow(() -> bookService.updateBookQty(book.getBookId(), book.getQuantity()));
 	}
