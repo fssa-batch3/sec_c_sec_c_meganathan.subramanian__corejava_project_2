@@ -6,7 +6,8 @@ package com.fssa.bookstore.testvalidator;
  */
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
+import com.fssa.bookstore.enums.Categories;
+import com.fssa.bookstore.exception.InvalidInputException;
 import com.fssa.bookstore.model.Book;
 import com.fssa.bookstore.validator.BookValidator;
 import com.fssa.bookstore.validatorerrors.BookValidateErrors;
@@ -35,9 +36,9 @@ class TestBookValidator {
 		Validbook.setBookDescription(
 				"The key takeaway from the book is to remember that being motivated is easier than making excuses. To be truly motivated, you need to think positively and break free of negative attitude and mental window.");
 		Validbook.setBookName("Attitude is everything");
-		Validbook.setbookCategories("fiction books");
+		Validbook.setbookCategories(Categories.FICTION_BOOKS);
 		Validbook.setBooklanguage("English");
-		Validbook.setBookImage("https://www.example.com");
+		Validbook.setBookImageUrl("https://www.example.com");
 		Validbook.setBookPrice(400);
 		Validbook.setQuantity(2);
 		Assertions.assertTrue(bookvalidator.validate(Validbook));
@@ -53,9 +54,9 @@ class TestBookValidator {
 			book.setBookDescription(
 					"The key takeaway from the book is to remember that being motivated is easier than making excuses. To be truly motivated, you need to think positively and break free of negative attitude and mental window.");
 			book.setBookName("Attitude is everything");
-			book.setbookCategories("fiction books");
+			book.setbookCategories(Categories.FICTION_BOOKS);
 			book.setBooklanguage("English");
-			book.setBookImage("https://www.example.com");
+			book.setBookImageUrl("https://www.example.com");
 			book.setBookPrice(400);
 			book.setQuantity(2);
 		} catch (IllegalArgumentException ex) {
@@ -73,9 +74,9 @@ class TestBookValidator {
 			book.setBookDescription(
 					"The key takeaway from the book is to remember that being motivated is easier than making excuses. To be truly motivated, you need to think positively and break free of negative attitude and mental window.");
 			book.setBookName("Attitude is everything");
-			book.setbookCategories("fiction books");
+			book.setbookCategories(Categories.FICTION_BOOKS);
 			book.setBooklanguage("English");
-			book.setBookImage("https://www.example.com");
+			book.setBookImageUrl("https://www.example.com");
 			book.setBookPrice(400);
 
 		} catch (IllegalArgumentException ex) {
@@ -92,9 +93,9 @@ class TestBookValidator {
 			book.setAuthor("Jeff keller");
 			book.setBookDescription(null);
 			book.setBookName("Attitude is everything");
-			book.setbookCategories("fiction books");
+			book.setbookCategories(Categories.FICTION_BOOKS);
 			book.setBooklanguage("English");
-			book.setBookImage("https://www.example.com");
+			book.setBookImageUrl("https://www.example.com");
 			book.setBookPrice(400);
 
 		} catch (IllegalArgumentException ex) {
@@ -112,9 +113,9 @@ class TestBookValidator {
 			book.setBookDescription(
 					"The key takeaway from the book is to remember that being motivated is easier than making excuses. To be truly motivated, you need to think positively and break free of negative attitude and mental window.");
 			book.setBookName(null);
-			book.setbookCategories("fiction books");
+			book.setbookCategories(Categories.FICTION_BOOKS);
 			book.setBooklanguage("English");
-			book.setBookImage("https://www.example.com");
+			book.setBookImageUrl("https://www.example.com");
 			book.setBookPrice(400);
 
 		} catch (IllegalArgumentException ex) {
@@ -134,7 +135,7 @@ class TestBookValidator {
 			book.setBookName("Eat that Frog");
 			book.setbookCategories(null);
 			book.setBooklanguage("English");
-			book.setBookImage("https://www.example.com");
+			book.setBookImageUrl("https://www.example.com");
 			book.setBookPrice(400);
 
 		} catch (IllegalArgumentException ex) {
@@ -152,9 +153,9 @@ class TestBookValidator {
 			book.setBookDescription(
 					"The key takeaway from the book is to remember that being motivated is easier than making excuses. To be truly motivated, you need to think positively and break free of negative attitude and mental window.");
 			book.setBookName("Eat that Frog");
-			book.setbookCategories("fiction books");
+			book.setbookCategories(Categories.FICTION_BOOKS);
 			book.setBooklanguage(null);
-			book.setBookImage("https://www.example.com");
+			book.setBookImageUrl("https://www.example.com");
 			book.setBookPrice(400);
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_LANGUAGE_NAME_NULL, ex.getMessage());
@@ -172,9 +173,9 @@ class TestBookValidator {
 			book.setBookDescription(
 					"The key takeaway from the book is to remember that being motivated is easier than making excuses. To be truly motivated, you need to think positively and break free of negative attitude and mental window.");
 			book.setBookName("Eat that Frog");
-			book.setbookCategories("fiction books");
+			book.setbookCategories(Categories.FICTION_BOOKS);
 			book.setBooklanguage("Tamil");
-			book.setBookImage(null);
+			book.setBookImageUrl(null);
 			book.setBookPrice(400);
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_IMAGE_URL, ex.getMessage());
@@ -191,9 +192,9 @@ class TestBookValidator {
 			book.setBookDescription(
 					"The key takeaway from the book is to remember that being motivated is easier than making excuses. To be truly motivated, you need to think positively and break free of negative attitude and mental window.");
 			book.setBookName("Eat that Frog");
-			book.setbookCategories("fiction books");
+			book.setbookCategories(Categories.FICTION_BOOKS);
 			book.setBooklanguage("Tamil");
-			book.setBookImage("https://www.example.com");
+			book.setBookImageUrl("https://www.example.com");
 			book.setBookPrice(0);
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_PRICE, ex.getMessage());
@@ -327,25 +328,15 @@ class TestBookValidator {
 	// Code for valid book categories name
 	void testValidBookCatName() {
 		BookValidator bookValidator = new BookValidator();
-		Assertions.assertTrue(bookValidator.validateBookCategoriesName("fiction books"));
+		Assertions.assertTrue(bookValidator.validateBookCategoriesName(Categories.FICTION_BOOKS));
 	}
 
-	@Test
-	// Code for Invalid Book categories name
-	void testvalidBookCatName() {
-		BookValidator bookValidator = new BookValidator();
-		try {
-			bookValidator.validateBookCategoriesName("story books");
-		} catch (IllegalArgumentException ex) {
-			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_CATEGOIRES_NAME, ex.getMessage());
-		}
-	}
 
 	@Test
 	// Code for test Valid the enum validator
-	void testInvalidBookCatName() {
+	void testvalidBookCatName() {
 		BookValidator bookValidator = new BookValidator();
-		Assertions.assertTrue(bookValidator.validateCategoryNameEnums("Law books"));
+		Assertions.assertTrue(bookValidator.validateBookCategoriesName(Categories.LAW_BOOKS));
 	}
 
 	@Test
@@ -353,7 +344,7 @@ class TestBookValidator {
 	void testInvaidBookcatgEnums() {
 		BookValidator bookValidator = new BookValidator();
 		try {
-			bookValidator.validateCategoryNameEnums(null);
+			bookValidator.validateBookCategoriesName(null);
 		} 
 		catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_CATEGORIES_NULL, ex.getMessage());
@@ -400,17 +391,6 @@ class TestBookValidator {
 
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_IMAGE_URL, ex.getMessage());
-		}
-	}
-
-	@Test
-	// Code for Test the invalid book image URL
-	void testInvalidIntBookImgUrl() {
-		BookValidator bookValidator = new BookValidator();
-		try {
-			bookValidator.validateBookCategoriesName("12323i2392038290323");
-		} catch (IllegalArgumentException ex) {
-			Assertions.assertEquals(BookValidateErrors.INVALID_BOOK_CATEGOIRES_NAME, ex.getMessage());
 		}
 	}
 

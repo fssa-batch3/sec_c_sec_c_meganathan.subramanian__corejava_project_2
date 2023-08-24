@@ -45,7 +45,7 @@ class TestUserService {
 	@Test
 	void testReadUser() {
 		User user = new User();
-		UserService userservice = new UserService(); 
+		UserService userservice = new UserService();
 		user.setId(1);
 		assertDoesNotThrow(() -> userservice.readUser(user.getId()));
 
@@ -55,21 +55,20 @@ class TestUserService {
 	@Test
 	void testDeleteUser() {
 		User user = new User();
-		UserService userservice = new UserService(); 
+		UserService userservice = new UserService();
 		user.setId(2);
 		assertDoesNotThrow(() -> userservice.deleteUser(user.getId()));
 
 	}
-	
+
 	// Below the code update the User phone number
 	@Test
 	void testUpdateUserPhoneNo() {
-		User  user = new User();
+		User user = new User();
 		UserService userservice = new UserService();
 		user.setId(2);
 		user.setPhoneNumber("+919092063763");
 		assertDoesNotThrow(() -> userservice.updatePhoneNo(user.getId(), user.getPhoneNumber()));
 	}
-	
-	
+
 }

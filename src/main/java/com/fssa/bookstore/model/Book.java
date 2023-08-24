@@ -1,5 +1,8 @@
 package com.fssa.bookstore.model;
 
+
+import com.fssa.bookstore.enums.Categories;
+
 /**
  * Below the code for add the attribute and write the getter and setter
  *
@@ -9,54 +12,43 @@ package com.fssa.bookstore.model;
 public class Book {
 	private int bookId;
 	private String bookName;
-	private int bookPrice;
-	private String bookCategories;
-	private String bookImage;
+	private double bookPrice;
+	private Categories bookCategories; 
+	private String bookImageUrl;
 	private String booklanguage;
 	private int quantity;
 	private String author;
-	private String bookDescription; 
-	private String bookFilter;
-	
-@Override
-public String toString() {
-    return "Book [\n"
-            + "bookId=" + bookId + "\n"
-            + "bookName=" + bookName + "\n"
-            + "bookPrice=" + bookPrice + "\n"
-            + "bookCategories=" + bookCategories + "\n"
-            + "bookImage=" + bookImage + "\n"
-            + "booklanguage=" + booklanguage + "\n"
-            + "quantity=" + quantity + "\n"
-            + "author=" + author + "\n"
-            + "bookDescription=" + bookDescription + "\n"
-            + "bookFilter=" + bookFilter + "\n"
-            + "]";
-}
+	private String bookDescription;
 
-	//	 Default constructor 
-	public Book() {
-		
+	@Override
+	public String toString() {
+		return "Book [\n" + "bookId=" + bookId + "\n" + "bookName=" + bookName + "\n" + "bookPrice=" + bookPrice + "\n"
+				+ "bookCategories=" + bookCategories + "\n" + "bookImage=" + bookImageUrl + "\n" + "booklanguage="
+				+ booklanguage + "\n" + "quantity=" + quantity + "\n" + "author=" + author + "\n" + "bookDescription="
+				+ bookDescription + "\n" + "]";
 	}
-	
-	// parameterized constructor 
-	public Book(int bookId, String bookName, int bookPrice, String bookCategories, String bookImage,
+
+	// Default constructor
+	public Book() {
+
+	}
+
+	// parameterized constructor
+	public Book(int bookId, String bookName, double bookPrice, Categories bookCategories, String bookImageUrl,
 			String booklanguage, int quantity) {
-	
+
 		this.bookId = bookId;
 		this.bookName = bookName;
 		this.bookPrice = bookPrice;
 		this.bookCategories = bookCategories;
-		this.bookImage = bookImage;
+		this.bookImageUrl = bookImageUrl;
 		this.booklanguage = booklanguage;
 		this.quantity = quantity;
-		
-		
+
 	}
 
-	public Book(String bookDescription, String bookFilter,String author) {
+	public Book(String bookDescription, String author) {
 		this.bookDescription = bookDescription;
-		this.bookFilter = bookFilter;
 		this.author = author;
 	}
 
@@ -76,28 +68,28 @@ public String toString() {
 		this.bookName = bookName;
 	}
 
-	public int getBookPrice() {
+	public double getBookPrice() {
 		return bookPrice;
 	}
 
-	public void setBookPrice(int bookPrice) {
+	public void setBookPrice(double bookPrice) {
 		this.bookPrice = bookPrice;
 	}
 
-	public String getbookCategories() {
+	public Categories getbookCategories() {
 		return bookCategories;
 	}
 
-	public void setbookCategories(String bookCategories) {
+	public void setbookCategories(Categories bookCategories) {
 		this.bookCategories = bookCategories;
 	}
 
-	public String getBookImage() {
-		return bookImage;
+	public String getBookImageUrl() {
+		return bookImageUrl;
 	}
 
-	public void setBookImage(String bookImage) {
-		this.bookImage = bookImage;
+	public void setBookImageUrl(String bookImage) {
+		this.bookImageUrl = bookImage;
 	}
 
 	public String getBooklanguage() {
@@ -130,14 +122,6 @@ public String toString() {
 
 	public void setBookDescription(String bookDescription) {
 		this.bookDescription = bookDescription;
-	}
-
-	public String getBookFilter() {
-		return bookFilter;
-	}
-
-	public void setBookFilter(String bookFilter) {
-		this.bookFilter = bookFilter;
 	}
 
 }

@@ -28,7 +28,7 @@ public class User {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
-		this.password = password;
+		this.password = password; 
 		this.state = state;
 		this.city = city;
 		this.id = id;
@@ -106,8 +106,9 @@ public class User {
 	// Below the code for to string method
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", phoneNumber=" + phoneNumber + ", email=" + email + ", password="
-				+ password + ", state=" + state + ", city=" + city + ", pincode=" + pincode + "]";
+		return "User [id = " + id + ", name = " + name + ", phoneNumber =" + phoneNumber + ", email = " + email
+				+ ", password = " + password + ", state = " + state + ", city = " + city + ", pincode = " + pincode
+				+ "]";
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.fssa.bookstore.dao;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 
 /**
@@ -8,7 +9,6 @@ import java.sql.DriverManager;
  * @author MeganathanSubramania
  */
 
-import io.github.cdimascio.dotenv.Dotenv;
 
 public class ConnectionUtil {
  
@@ -19,16 +19,10 @@ public class ConnectionUtil {
 		String userName;
 		String passWord;
 
-		if (System.getenv("CI") != null) {
 			url = System.getenv("DATABASE_HOST");
 			userName = System.getenv("DATABASE_USERNAME");
 			passWord = System.getenv("DATABASE_PASSWORD");
-		} else {
-			Dotenv env = Dotenv.load();
-			url = env.get("DATABASE_HOST");
-			userName = env.get("DATABASE_USERNAME");
-			passWord = env.get("DATABASE_PASSWORD");
-		}
+
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");

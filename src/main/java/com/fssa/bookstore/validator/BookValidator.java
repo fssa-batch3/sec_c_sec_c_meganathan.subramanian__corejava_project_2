@@ -1,4 +1,4 @@
-package com.fssa.bookstore.validator;
+	package com.fssa.bookstore.validator;
 
 /**
  * Below the code for validate the all attributes
@@ -7,18 +7,18 @@ package com.fssa.bookstore.validator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import com.fssa.bookstore.enums.BookCategoriesEnum;
+import com.fssa.bookstore.enums.Categories;
+import com.fssa.bookstore.exception.InvalidInputException;
 import com.fssa.bookstore.model.Book;
 import com.fssa.bookstore.validatorerrors.BookValidateErrors; 
 
 public class BookValidator {
 
 	// BELOW THE CODE FOR CONSTANTS
-	public static final String REGEX_NAMES = "^[A-Za-z ]+$";
+	public static final String REGEX_NAMES = "^[A-Za-z .]+$";
 	public static final int ZERO = 0;
-	public static final int THREE_FIFTY = 350;
-	public static final int THOUSAND_THREE_HUNDRED = 1300;
+	public static final double THREE_FIFTY = 350.00;
+	public static final double  THOUSAND_THREE_HUNDRED = 1300.00;
 	public static final int FORTY = 40;
 	public static final int THREE = 3;
 	public static final int TWENTY = 20;
@@ -44,7 +44,7 @@ public class BookValidator {
 		validateBookLanguages(book.getBooklanguage());
 		validateBookQuantity(book.getQuantity());
 		validateAuthorName(book.getAuthor());
-		validateBookImageUrl(book.getBookImage());
+		validateBookImageUrl(book.getBookImageUrl());
 		validateBookDescription(book.getBookDescription());
 
 		return true;
@@ -83,7 +83,7 @@ public class BookValidator {
 	 * @return
 	 * @throws IllegalArgumentException
 	 */
-	public boolean validateBookPrice(int price) throws IllegalArgumentException {
+	public boolean validateBookPrice(double price) throws IllegalArgumentException {
 		if (price <= THREE_FIFTY || price > THOUSAND_THREE_HUNDRED) {
 			throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_PRICE);
 		}
@@ -93,57 +93,27 @@ public class BookValidator {
 	/**
 	 * Below the code for validate the book categories name,Remind this is constant.
 	 *
-	 * @param bookCategoriesName
+	 * @param category
 	 * @return
 	 * @throws IllegalArgumentException
 	 */
-	public boolean validateBookCategoriesName(String bookCategoriesName) throws IllegalArgumentException {
+	public boolean validateBookCategoriesName(Categories category) throws IllegalArgumentException { 
 
-		if (bookCategoriesName == null || "".trim().equals(bookCategoriesName)) {
+		if (category == null ) { 
 			throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_CATEGORIES_NULL);
 		}
 
-		// Code for Regex pattern
-		String regex = REGEX_NAMES;
-		Pattern pattern = Pattern.compile(regex); // Compile the pattern
-		Matcher matcher = pattern.matcher(bookCategoriesName); // using matcher object of check the whether match or
-		boolean isMatch = matcher.matches(); // And return the boolean value
-
-		if (bookCategoriesName.toLowerCase().length() > 20 || bookCategoriesName.toLowerCase().length() < 2
-				|| !isMatch) {
+		if (category.toString().length() > 20 || category.toString().length() < 2) {
+			
 			throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_CATEGOIRES_NAME);
 		} else {
-			validateCategoryNameEnums(bookCategoriesName);
 			return true;
 		}
 
 	}
 
 	/**
-	 * Below the code for validate the book catgy name in enums
-	 *
-	 * @param mainCategory
-	 * @return
-	 * @throws IllegalArgumentException
-	 */
-	public boolean validateCategoryNameEnums(String mainCategory) throws IllegalArgumentException {
-
-		if (mainCategory == null || "".trim().equals(mainCategory)) {
-			throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_CATEGORIES_NULL);
-		}
-
-		for (BookCategoriesEnum category : BookCategoriesEnum.values()) {
-
-			if (category.getValue().equals(mainCategory)) {
-				return true;
-			}
-		}
-
-		throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_CATEGOIRES_NAME);
-	}
-
-	/**
-	 * Below the code for validate the book image url
+	 * Below the code for validate the book image URL
 	 *
 	 * @param bookImageUrl
 	 * @return
@@ -264,7 +234,7 @@ public class BookValidator {
 		if ("".trim().equals(bookDescription) || bookDescription.trim().length() > FOUR_HUNDRED || !isMatch) {
 			throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_DESCRIPTION);
 		} else {
-			return true;
+			return true; 
 		}
 	}
 }
