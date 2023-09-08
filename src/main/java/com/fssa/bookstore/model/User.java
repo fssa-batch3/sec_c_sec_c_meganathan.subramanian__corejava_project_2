@@ -1,7 +1,7 @@
 package com.fssa.bookstore.model;
 
 /**
- * Below the code for add the attributes for user details
+ * Below the code for add the attributes for user details 
  * 
  * @author MeganathanSubramania
  */
@@ -17,6 +17,7 @@ public class User {
 	private String state;
 	private String city;
 	private String pincode;
+	boolean isActive  = true;
 
 	// Default constructor
 	public User() {
@@ -32,8 +33,17 @@ public class User {
 		this.state = state;
 		this.city = city;
 		this.id = id;
+
 	}
 
+	public boolean isActive() {
+		return isActive;
+	}
+	
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+	
 	public User(String pincode) {
 		this.pincode = pincode;
 	}

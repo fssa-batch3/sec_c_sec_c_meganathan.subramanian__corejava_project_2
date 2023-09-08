@@ -7,9 +7,15 @@ package com.fssa.bookstore.testservice;
   */
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import com.fssa.bookstore.dao.BookDao;
+
+import com.fssa.bookstore.enums.BookBinding;
+import com.fssa.bookstore.enums.BookReturnable;
 import com.fssa.bookstore.enums.Categories;
 import com.fssa.bookstore.exception.ServiceException;
 import com.fssa.bookstore.logger.Logger;
@@ -18,21 +24,6 @@ import com.fssa.bookstore.service.BookService;
 
 // Main class for test
 class TestBookService {
-
-	Book getBook() {
-		Book book = new Book();
-		book.setBookName("Attitude is Everything");
-		book.setBookPrice(400);
-		book.setbookCategories(Categories.SELFHELP_BOOKS);
-		book.setBookImageUrl("https://www.example.com");
-		book.setBooklanguage("English");
-		book.setQuantity(1);
-		book.setAuthor("Someone");
-		book.setBookDescription(
-				"Combining ancient wisdom with the practicalities of today?,Think Like a Monk provides essential guidance for traveling a balanced path to success. Jay Shetty has written a book especially for you. He takes abstract concepts like compassion and humility and makes them applicable to your life.");
-		return book;
-
-	}
 
 	/**
 	 * Below the code for test the all the attribute to set the value
@@ -45,44 +36,49 @@ class TestBookService {
 		BookService bookservicelayer = new BookService();
 		Book book = new Book();
 		// Set the attributes of the book object for testing
-
+ 
 		try {
-			book.setBookName("My life My rules.");
-			book.setBookPrice(500);
-			book.setbookCategories(Categories.SELFHELP_BOOKS);
-			book.setBookImageUrl("https://www.example.com");
-			book.setBooklanguage("Tamil");
+			book.setBookName("The newclear weapon.");
+			book.setBookPrice(900.00);
+			book.setBookCategories(Categories.FICTION_BOOKS);
+			book.setBookImageUrl("https://m.media-amazon.com/images/I/710+HcoP38L.jpg");
+			book.setBooklanguage("English");
 			book.setQuantity(1);
-			book.setAuthor("Brain Tracy");
+			book.setAuthor("Cal new port");
 			book.setBookDescription(
-					"Combining ancient wisdom with the practicalities of today?,Think Like a Monk provides essential guidance for traveling a balanced path to success. Jay Shetty has written a book especially for you. He takes abstract concepts like compassion and humility and makes them applicable to your life.");
+					"Jeffrey Keller, President Of Attitude Is Everything, Incorporated, Works With Organizations That Want To Develop Acheivers Ans With Sales Mangeres Who Want Theru People To Be More Positive Jeff Is A Speaker,Seminar Leader And Writer In The Area Of Motivation And Human Potential.He Delivers His Uplifting Persentation To Businesses,Associations And Educational Instituation Jeff Is Also An Attorney And Praticed Law For More Than Ten Years Before Pursing A Full Time Carrer As A Speaker And Writer. In June 1999,Jeff's Book,Attitude Is Everything ,Was Released By INTI Pulblishing & Resourcev Books. This Exciting New Book.");
+			book.setAuthorImgUrl("https://iili.io/J9qBtse.jpg");
+			book.setIsbn("978-0979041037");
+			book.setBookWeight(800);
+			book.setBookwidth(7.0);
+			book.setBookHeight(6.0);
+			book.setBookDepth(2.0);
+			book.setBookBinding(BookBinding.PAPERBACK);
+			book.setAboutAuthor(
+					"Jeffrey Keller, President Of Attitude Is Everything, Incorporated, Works With Organizations That Want To Develop Acheivers Ans With Sales Mangeres Who Want Theru People To Be More Positive Jeff Is A Speaker,Seminar Leader And Writer In The Area Of Motivation And Human Potential.He Delivers His Uplifting Persentation To Businesses,Associations And Educational Instituation Jeff Is Also An Attorney And Praticed Law For More Than Ten Years Before Pursing A Full Time Carrer As A Speaker And Writer. In June 1999,Jeff's Book,Attitude Is.");
+			book.setReturnable(BookReturnable.YES);
+			book.setPublisherImprint("Savitha Printer");
+			book.setPublisherDate(LocalDate.of(2020, 9, 1));
+			book.setNoOfPages(400);
 			boolean success;
 			success = bookservicelayer.addBook(book);
 			Assertions.assertTrue(success);
 			Logger.info("Query inserted Successfully");
 		} catch (ServiceException ex) {
-			Assertions.assertEquals("Object are empty or Attribute error" + ex.getMessage(),ex.getMessage());
+			Assertions.assertEquals("Object are empty or Attribute error" + ex.getMessage(), ex.getMessage());
 		}
 		// Assert that the book creation is successful
 
-		
 	}
 
 	// Below the code for read the book using Book ID
 	@Test
-	void testReadBookUsingId() {
+	void testReadBookUsingId() throws ServiceException {
 
 		Book book = new Book();
-		book.setBookId(3);
-		BookDao bookDao = new BookDao();
+		book.setBookId(1);
 		BookService bookService = new BookService();
-		assertDoesNotThrow(() -> bookDao.readBook(book.getBookId()));
-		try {
-			Logger.info(bookService.readBook(book));
-		} catch (ServiceException e) {
-			Logger.info("error while reading the book from db" + e.getMessage());
-			e.printStackTrace();
-		}
+		Logger.info(assertDoesNotThrow(() -> bookService.readBook(book.getBookId())));
 		Logger.info("Succesfully read the data from the MYSQL");
 
 	}
@@ -92,7 +88,7 @@ class TestBookService {
 	void testDeleteBookusingbookId() {
 
 		Book book = new Book();
-		book.setBookId(3);
+		book.setBookId(10);
 		BookService bookService = new BookService();
 		assertDoesNotThrow(() -> bookService.deleteBookUsingId(book.getBookId()));
 
@@ -103,7 +99,7 @@ class TestBookService {
 	void testUpdateBookPrice() {
 
 		Book book = new Book();
-		book.setBookId(2);
+		book.setBookId(10);
 		book.setBookPrice(600);
 		BookService bookService = new BookService();
 		assertDoesNotThrow(() -> bookService.updateBookPrice(book.getBookId(), book.getBookPrice()));
@@ -114,20 +110,73 @@ class TestBookService {
 	@Test
 	void testUpdateBookQty() {
 		Book book = new Book();
-		book.setBookId(2);
-		book.setQuantity(1);
+		book.setBookId(3);
+		book.setQuantity(3);
 		BookService bookService = new BookService();
 		assertDoesNotThrow(() -> bookService.updateBookQty(book.getBookId(), book.getQuantity()));
 	}
-	
-	
-	// Below the code for test the read the book using title name
+
+	// Below the code for test the read the book using title name or category name
 	@Test
 	void testReadBookTitle() {
 		Book book = new Book();
-		book.setbookCategories(Categories.SELFHELP_BOOKS);
+		book.setBookCategories(Categories.SELFHELP_BOOKS);
 		BookService bookService = new BookService();
-		assertDoesNotThrow(() -> bookService.getAllBooksByCateName(book.getbookCategories().toString()));
-		
+		assertDoesNotThrow(() -> bookService.getAllBooksByCateName(book.getBookCategories().toString()));
+
 	}
+
+	// Below the code for test the tamil book using lang
+
+	@Test
+	void testReadTamilBook() {
+		Book book = new Book();
+		book.setBooklanguage("tamil");
+		BookService bookService = new BookService();
+		assertDoesNotThrow(() -> bookService.getAllTamilBooks(book.getBooklanguage()));
+	}
+
+	@Test
+	void ReadAllBook() throws ServiceException {
+		BookService bookService = new BookService();
+		List<Book> bookList = bookService.getAllBook();
+		for (Book ele : bookList) {
+			Logger.info(ele);
+		}
+	}
+
+	// Below the code for check the book update
+	@Test
+	void testUpdateBook() throws ServiceException, SQLException {
+
+		BookService bookService = new BookService();
+		Book book = new Book();
+
+		book.setBookId(10);
+		book.setBookName("Attitude is everything by Jeff Keller.");
+		book.setAuthor("jeff keller");
+		book.setBookCategories(Categories.SELFHELP_BOOKS);
+		book.setBookImageUrl("https://m.media-amazon.com/images/I/71Rcjb+1yLL.jpg");
+		book.setBooklanguage("tamil");
+		book.setBookPrice(800.00);
+		book.setQuantity(2);
+		book.setAuthor("Brain Tracy");
+		book.setBookDescription(
+				"Attitude is an all-encompassing term that defines your outlook and approach to life.It includes your inner thoughts and outward experssions. In the end, attitude determines everything you say and so and what you say and do determine your success. Attitude is an all-encompassing term that defines your outlook and approach to life.It includes your inner thoughts and outward experssions. In the end, attitude determines everything you say and so. ");
+		book.setAuthorImgUrl("https://iili.io/J9qBtse.jpg");
+		book.setIsbn("978-0979041037");
+		book.setBookWeight(800);
+		book.setBookwidth(7.0);
+		book.setBookHeight(6.0);
+		book.setBookDepth(2.0);
+		book.setBookBinding(BookBinding.PAPERBACK);
+		book.setAboutAuthor(
+				"Jeffrey Keller, President Of Attitude Is Everything, Incorporated, Works With Organizations That Want To Develop Acheivers Ans With Sales Mangeres Who Want Theru People To Be More Positive Jeff Is A Speaker,Seminar Leader And Writer In The Area Of Motivation And Human Potential.He Delivers His Uplifting Persentation To Businesses,Associations And Educational Instituation Jeff Is Also An Attorney And Praticed Law For More Than Ten Years Before Pursing A Full Time Carrer As A Speaker And Writer. In June 1999,Jeff's Book,Attitude Is.");
+		book.setReturnable(BookReturnable.YES);
+		book.setPublisherImprint("Savitha Printer");
+		book.setPublisherDate(LocalDate.of(2020, 10, 2)); // Year / Month / Date
+
+		assertDoesNotThrow(() -> bookService.updateBook(book.getBookId(), book));
+	}
+
 }

@@ -29,28 +29,86 @@ public class UserDao {
 	public boolean createUser(User user) throws DAOException, SQLException {
 		ConnectionUtil connectionUtil = new ConnectionUtil();
 		try (Connection connection = connectionUtil.getConnection()) {
-			String insertQuery = "INSERT INTO users (id, name, phoneNumber, email, password, state, city, pincode) VALUES (?,?,?,?,?,?,?,?)";
+			String insertQuery = "INSERT INTO users (name, phoneNumber, email, password) VALUES (?,?,?,?)";
 			try (PreparedStatement psmt = connection.prepareStatement(insertQuery)) {
 
-				psmt.setInt(1, user.getId());
-				psmt.setString(2, user.getName());
-				psmt.setString(3, user.getPhoneNumber());
-				psmt.setString(4, user.getEmail());
-				psmt.setString(5, user.getPassword());
-				psmt.setString(6, user.getState());
-				psmt.setString(7, user.getCity());
-				psmt.setString(8, user.getPincode());
+				psmt.setString(1, user.getName());
+				psmt.setString(2, user.getPhoneNumber());
+				psmt.setString(3, user.getEmail());
+				psmt.setString(4, user.getPassword());
 
 				psmt.executeUpdate();
 				return true;
 
 			} catch (SQLException ex) {
-				throw new DAOException("Error while adding the users Details :" + ex.getMessage());
+				throw new DAOException("Error while adding the users Details :	" + ex.getMessage());
 			}
 		}
 
 	}
+	
+	/**
+	 * This method belongs to the login to the user
+	 * 
+	 * @param email
+	 * @param password
+	 * @return
+	 * @throws DAOException
+	 * @throws SQLException
+	 */
+	public boolean userLogin(String emailId, String password) throws DAOException, SQLException {
+		ConnectionUtil connectionUtil = new ConnectionUtil();
+	    try (Connection connection = connectionUtil.getConnection()) {
+	        if (emailExists(emailId, connection)) {
+	            String selectQuery = "SELECT COUNT(*) FROM users WHERE email = ? AND password = ?";
+	            try (PreparedStatement psmt = connection.prepareStatement(selectQuery)) {
+	                psmt.setString(1, emailId);
+	                psmt.setString(2, password);
 
+	                try (ResultSet rs = psmt.executeQuery()) { 
+	                    if (rs.next()) {
+	                        int count = rs.getInt(1);
+	                        if (count > 0) {
+	                            return true;
+	                        } else {
+	                            throw new DAOException("Incorrect Password");
+	                        }
+	                    }
+	                }
+	            }
+	        } else {
+	            throw new DAOException("Invalid Email Id");
+	        }
+	    }
+	    return false;
+	}
+	
+	
+	/**
+	 * Below the code for already check in the DB
+	 * @param emailId
+	 * @param connection
+	 * @return
+	 * @throws DAOException
+	 * @throws SQLException 
+	 */
+
+	private boolean emailExists(String email, Connection connection) throws DAOException {
+        String selectQuery = "SELECT COUNT(*) FROM users WHERE email = ?";
+        try (PreparedStatement psmt = connection.prepareStatement(selectQuery)) {
+            psmt.setString(1, email);
+            try (ResultSet rs = psmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+        } catch (SQLException e) {
+            throw new DAOException("Given mail id is not regsiter " + e.getMessage());
+        }
+        return false;
+    }
+	
+	
 	/**
 	 * Below the code for read the user obj to mysql
 	 * 
@@ -71,11 +129,7 @@ public class UserDao {
 						user.setId(rs.getInt("id"));
 						user.setName(rs.getString("name"));
 						user.setEmail(rs.getString("email"));
-						user.setPassword(rs.getString("password"));
-						user.setPhoneNumber(rs.getString("phoneNumber"));
-						user.setCity(rs.getString("city"));
-						user.setState(rs.getString("state"));
-						user.setPincode(rs.getString("pincode"));
+						user.setPassword(rs.getString("password"));;
 						Logger.info(user);
 						return true;
 
@@ -117,7 +171,7 @@ public class UserDao {
 
 		// Below the code for delete the row using id
 		try (Connection connection = connectionUtil.getConnection()) {
-			String deleteQuery = "DELETE FROM users WHERE id = ?";
+			String deleteQuery = "UPDATE users SET is_active = 0 WHERE is_active = 1 AND id = ?";
 			try (PreparedStatement psmt = connection.prepareStatement(deleteQuery)) {
 				psmt.setInt(1, id);
 				int rowAffected = psmt.executeUpdate();

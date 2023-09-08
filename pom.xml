@@ -6,7 +6,8 @@
 	<artifactId>BookStore</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>BookStore</name>
-	<description>Project for doing CRUD operation in book Project for doing the CRUD in book </description>
+	<description>Project for doing CRUD operation in book Project for doing the
+		CRUD in book </description>
 
 	<properties>
 		<project.bulid.sourceEncoding>UTF-8</project.bulid.sourceEncoding>
@@ -31,7 +32,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.33</version>
+			<version>8.0.33</version> <!-- Use the correct version -->
 		</dependency>
 	</dependencies>
 	<build>
@@ -104,7 +105,8 @@
 				<plugin>
 					<groupId>org.sonarsource.scanner.maven</groupId>
 					<artifactId>sonar-maven-plugin</artifactId>
-					<version>3.9.0.2155</version> <!-- Check for the latest version on the Maven Central repository -->
+					<version>3.9.0.2155</version> <!-- Check for the latest
+					version on the Maven Central repository -->
 				</plugin>
 			</plugins>
 		</pluginManagement>

@@ -1,24 +1,32 @@
 -- Create a new DB Table books
 
 use meganathan_subramanian_corejava_project;
-CREATE TABLE books(
-    Id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    Name VARCHAR(100) NOT NULL,
-    Price INT(200) not null,
-    Categories VARCHAR(200) not null,
-    Image VARCHAR(200) not null,
-    Language VARCHAR(50) not null,
-    quantity INT not null,
-    author VARCHAR(100)not null, 
-    Description TEXT
+-- Create a new DB Table books
+use meganathan_subramanian_corejava_project;
+drop table books;
+CREATE TABLE books (
+  book_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255),
+    price DECIMAL(10, 2),
+    category VARCHAR(255),
+    image_url VARCHAR(255),
+    language VARCHAR(50),
+    quantity INT,
+    author VARCHAR(255),
+    description TEXT,
+    authorImgUrl VARCHAR(255),
+    aboutAuthor TEXT,
+    publisherImprint VARCHAR(255),
+    publisherDate DATE,
+    isbn VARCHAR(20),
+    width DECIMAL(5, 2),
+    pages INT,
+    height DECIMAL(5, 2),
+    depth DECIMAL(5, 2),
+    weight DECIMAL(10, 2),
+    binding VARCHAR(50),
+    returnable VARCHAR(10)
 );
-INSERT INTO books (Name, Price, Categories, Image, Language, quantity, author, Description)
-VALUES 
-    ('The Great Gatsby', 20, 'Fiction', 'gatsby.jpg', 'English', 2, 'F. Scott Fitzgerald', 'A classic novel about the American Dream.'),
-    ('To Kill a Mockingbird', 18, 'Fiction', 'mockingbird.jpg', 'English', 2, 'Harper Lee', 'A powerful story addressing racial injustice.'),
-    ('1984', 22, 'Science Fiction', '1984.jpg', 'English', 2, 'George Orwell', 'A dystopian novel exploring themes of totalitarianism.'),
-    ('Pride and Prejudice', 15, 'Romance', 'pride.jpg', 'English', 2, 'Jane Austen', 'A beloved tale of love and societal norms.'),
-    ('The Hobbit', 25, 'Fantasy', 'hobbit.jpg', 'English', 2, 'J.R.R. Tolkien', 'An adventurous fantasy journey.');
 
 SELECT * FROM books;
 

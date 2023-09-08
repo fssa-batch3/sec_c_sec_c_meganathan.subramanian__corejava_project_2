@@ -2,6 +2,7 @@ package com.fssa.bookstore.testvalidator;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 import com.fssa.bookstore.model.User;
 import com.fssa.bookstore.validator.UserValidator;
 import com.fssa.bookstore.validatorerrors.UserValidatorsErrors;
@@ -11,8 +12,8 @@ import com.fssa.bookstore.validatorerrors.UserValidatorsErrors;
  * 
  * @author MeganathanSubramania
  */
-
-class TestUserValidator { 
+ 
+class TestUserValidator {  
 
 	// Below the code for test the User name
 	@Test
@@ -59,7 +60,7 @@ class TestUserValidator {
 	@Test
 	void testValidUserPhoneNo() {
 		UserValidator userValidator = new UserValidator();
-		Assertions.assertTrue(userValidator.validatePhoneNumber("+918778719738"));
+		Assertions.assertTrue(userValidator.validatePhoneNumber("8778719738"));
 	}
 
 	// Below the code for test the invalid phone number
@@ -96,7 +97,7 @@ class TestUserValidator {
 	void testInvalidUserEmail() {
 		try {
 			UserValidator userValidator = new UserValidator();
-			userValidator.validateEmail("Dinesg.com");
+			userValidator.validateEmail("dinesh@.com");
 		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(UserValidatorsErrors.INVALID_USER_EMAIL, ex.getMessage());
 		}
@@ -311,7 +312,7 @@ class TestUserValidator {
 		validUser.setName("Dinesh");
 		validUser.setPassword("Dinesh@123");
 		validUser.setEmail("Dinesh@gmail.com");
-		validUser.setPhoneNumber("+918778719738");
+		validUser.setPhoneNumber("8778719738");
 		validUser.setCity("Chennai");
 		validUser.setState("Tamil Nadu");
 		validUser.setPincode("600081");

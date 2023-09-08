@@ -1,56 +1,46 @@
 package com.fssa.bookstore.model;
 
+import java.time.LocalDate;
 
+import com.fssa.bookstore.enums.BookBinding;
+import com.fssa.bookstore.enums.BookReturnable;
 import com.fssa.bookstore.enums.Categories;
 
 /**
  * Below the code for add the attribute and write the getter and setter
  *
- * @author MeganathanSubramania
+ * @author MeganathanSubramanian
  */
 
 public class Book {
 	private int bookId;
+	private int quantity;
 	private String bookName;
-	private double bookPrice;
-	private Categories bookCategories; 
 	private String bookImageUrl;
 	private String booklanguage;
-	private int quantity;
-	private String author;
 	private String bookDescription;
+	private String author;
+	private String authorImgUrl;
+	private String aboutAuthor;
+	private String publisherImprint;
+	private LocalDate publisherDate;
+	private String bookIsbn;
+	private double bookPrice;
+	private double bookwidth;
+	private int noOfPages;
+	private double bookHeight;
+	private double bookDepth;
+	private double bookWeight;
+	private Categories bookCategories;
+	private BookBinding bookBinding;
+	private BookReturnable returnable;
 
-	@Override
-	public String toString() {
-		return "Book [\n" + "bookId=" + bookId + "\n" + "bookName=" + bookName + "\n" + "bookPrice=" + bookPrice + "\n"
-				+ "bookCategories=" + bookCategories + "\n" + "bookImage=" + bookImageUrl + "\n" + "booklanguage="
-				+ booklanguage + "\n" + "quantity=" + quantity + "\n" + "author=" + author + "\n" + "bookDescription="
-				+ bookDescription + "\n" + "]";
-	}
-
-	// Default constructor
-	public Book() {
-
-	}
-
-	// parameterized constructor
-	public Book(int bookId, String bookName, double bookPrice, Categories bookCategories, String bookImageUrl,
-			String booklanguage, int quantity) {
-
-		this.bookId = bookId;
-		this.bookName = bookName;
-		this.bookPrice = bookPrice;
-		this.bookCategories = bookCategories;
-		this.bookImageUrl = bookImageUrl;
-		this.booklanguage = booklanguage;
-		this.quantity = quantity;
-
-	}
-
-	public Book(String bookDescription, String author) {
-		this.bookDescription = bookDescription;
-		this.author = author;
-	}
+	/**
+	 * Below the code getters and setters methods this will Return the which we set
+	 * the set attribute.
+	 * 
+	 * @return this all methods return the value to the Attribute.
+	 */
 
 	public int getBookId() {
 		return bookId;
@@ -76,11 +66,11 @@ public class Book {
 		this.bookPrice = bookPrice;
 	}
 
-	public Categories getbookCategories() {
+	public Categories getBookCategories() {
 		return bookCategories;
 	}
 
-	public void setbookCategories(Categories bookCategories) {
+	public void setBookCategories(Categories bookCategories) {
 		this.bookCategories = bookCategories;
 	}
 
@@ -88,8 +78,8 @@ public class Book {
 		return bookImageUrl;
 	}
 
-	public void setBookImageUrl(String bookImage) {
-		this.bookImageUrl = bookImage;
+	public void setBookImageUrl(String bookImageUrl) {
+		this.bookImageUrl = bookImageUrl;
 	}
 
 	public String getBooklanguage() {
@@ -122,6 +112,114 @@ public class Book {
 
 	public void setBookDescription(String bookDescription) {
 		this.bookDescription = bookDescription;
+	}
+
+	public String getAuthorImg() {
+		return authorImgUrl;
+	}
+
+	public void setAuthorImgUrl(String authorImgUrl) {
+		this.authorImgUrl = authorImgUrl;
+	}
+
+	public String getAboutAuthor() {
+		return aboutAuthor;
+	}
+
+	public void setAboutAuthor(String aboutAuthor) {
+		this.aboutAuthor = aboutAuthor;
+	}
+
+	public LocalDate getPublisherDate() {
+		return publisherDate;
+	}
+
+	public void setPublisherDate(LocalDate publisherDate) {
+		this.publisherDate = publisherDate;
+	}
+
+	public BookBinding getBookBinding() {
+		return bookBinding;
+	}
+
+	public void setBookBinding(BookBinding bookBinding) {
+		this.bookBinding = bookBinding;
+	}
+
+	public double getBookHeight() {
+		return bookHeight;
+	}
+
+	public void setBookHeight(double bookHeight) {
+		this.bookHeight = bookHeight;
+	}
+
+	public double getBookWeight() {
+		return bookWeight;
+	}
+
+	public void setBookWeight(double bookWeight) {
+		this.bookWeight = bookWeight;
+	}
+
+	public double getBookwidth() {
+		return bookwidth;
+	}
+
+	public void setBookwidth(double bookwidth) {
+		this.bookwidth = bookwidth;
+	}
+
+	public int getNoOfPages() {
+		return noOfPages;
+	}
+
+	public void setNoOfPages(int noOfPages) {
+		this.noOfPages = noOfPages;
+	}
+
+	public String getPublisherImprint() {
+		return publisherImprint;
+	}
+
+	public void setPublisherImprint(String publisherImprint) {
+		this.publisherImprint = publisherImprint;
+	}
+
+	public double getBookDepth() {
+		return bookDepth;
+	}
+
+	public void setBookDepth(double bookDepth) {
+		this.bookDepth = bookDepth;
+	}
+
+	public BookReturnable getReturnable() {
+		return returnable;
+	}
+
+	public void setReturnable(BookReturnable returnable) {
+		this.returnable = returnable;
+	}
+
+	public void setIsbn(String isbn) {
+		this.bookIsbn = isbn;
+	}
+
+	public String getisbn() {
+		return bookIsbn;
+	}
+
+	// Below the code convert the to string method in all
+	@Override
+	public String toString() {
+		return "Book [bookId= " + bookId + ", quantity= " + quantity + ", bookDepth= " + bookDepth + ", bookName= "
+				+ bookName + ", bookImageUrl= " + bookImageUrl + ", booklanguage= " + booklanguage + ", publisherImprint= "
+				+ publisherImprint + ", author= " + author + ", bookDescription= " + bookDescription + ", authorImg= "
+				+ authorImgUrl + ", aboutAuthorUrl= " + aboutAuthor + ", publisherDate= " + publisherDate + ", bookIsbn="
+				+ bookIsbn + ", bookPrice= " + bookPrice + ", bookHeight= " + bookHeight + ", bookWeight= " + bookWeight
+				+ ", bookwidth= " + bookwidth + ", noOfPages=" + noOfPages + ", bookCategories=" + bookCategories
+				+ ", bookBinding= " + bookBinding + ", returnable= " + returnable + "]";
 	}
 
 }

@@ -28,9 +28,6 @@ public class UserValidator {
 		validateEmail(user.getEmail());
 		validatePassword(user.getPassword());
 		validatePhoneNumber(user.getPhoneNumber()); 
-		validateState(user.getState());
-		validateCity(user.getCity());
-		validatePincode(user.getPincode());
 
 		return true;
 	}
@@ -74,7 +71,7 @@ public class UserValidator {
 
 		}
 
-		String regex = "^\\+91[1-9]\\d{9}$";
+		String regex = "^[0-9]{10}$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(phoneNumber);
 		boolean isMatch = matcher.matches();
@@ -101,7 +98,7 @@ public class UserValidator {
 
 		String regex = "^(?i)[a-z0-9.+-]{1,64}@[a-z0-9.-]{1,256}\\.[a-z]{2,6}$";
 		Pattern pattern = Pattern.compile(regex);
-		Matcher matcher = pattern.matcher(email);
+		Matcher matcher = pattern.matcher(email); 
 		boolean isMatch = matcher.matches();
 
 		if ("".trim().equals(email) || !isMatch) {

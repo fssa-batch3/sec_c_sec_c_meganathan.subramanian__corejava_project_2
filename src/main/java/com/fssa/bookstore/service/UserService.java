@@ -9,6 +9,7 @@ import java.sql.SQLException;
  */
 import com.fssa.bookstore.dao.UserDao;
 import com.fssa.bookstore.exception.DAOException;
+import com.fssa.bookstore.exception.ServiceException;
 import com.fssa.bookstore.model.User;
 import com.fssa.bookstore.validator.UserValidator;
 
@@ -20,8 +21,9 @@ public class UserService {
 	 * @param user
 	 * @return
 	 * @throws DAOException
+	 * @throws ServiceException 
 	 */
-	public boolean addUser(User user) throws DAOException,SQLException{
+	public boolean addUser(User user) throws DAOException,SQLException, ServiceException{
 		UserValidator userValidator = new UserValidator();
 		UserDao userdao = new UserDao();
 		try {
@@ -30,8 +32,27 @@ public class UserService {
 			return true;
 
 		} catch (DAOException | SQLException ex) {
-			throw new DAOException("Object are null or empty or invalid" + ex.getMessage());
+			throw new ServiceException("Object are null or empty or invalid" + ex.getMessage());
 		} 
+	}
+	
+	/*
+	 * Below the code for login to user 
+	 * 
+	 */
+	
+	public boolean loginUser(String email,String password)throws DAOException,SQLException, ServiceException{
+		UserValidator userValidator = new UserValidator();
+		UserDao userDao = new UserDao();
+		try {
+			userValidator.validateEmail(email);  
+			userValidator.validatePassword(password);
+			userDao.userLogin(email, password); 
+			return true;
+		}
+		catch(DAOException | SQLException | IllegalArgumentException e) {
+			throw new ServiceException("Given password or Mail id is wrong" + e.getMessage());
+		}
 	}
 	
 	

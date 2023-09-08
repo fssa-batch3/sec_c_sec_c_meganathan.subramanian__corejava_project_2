@@ -1,10 +1,14 @@
 package com.fssa.bookstore.testservice;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+
 import java.sql.SQLException;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 import com.fssa.bookstore.exception.DAOException;
+import com.fssa.bookstore.exception.ServiceException;
 import com.fssa.bookstore.logger.Logger;
 import com.fssa.bookstore.model.User;
 import com.fssa.bookstore.service.UserService;
@@ -21,11 +25,11 @@ class TestUserService {
 		UserService userservice = new UserService();
 		User user = new User();
 		// Set the value to all attributes
-		try {
-			user.setName("Saran");
-			user.setEmail("Saran@gmail.com");
+		try { 
+			user.setName("Vickey");
+			user.setEmail("Vickey@gmail.com");
 			user.setPassword("Saran@123");
-			user.setPhoneNumber("+918778719739");
+			user.setPhoneNumber("8463546871");
 			user.setCity("Chennai");
 			user.setState("Tamil Nadu");
 			user.setPincode("600021");
@@ -34,7 +38,7 @@ class TestUserService {
 			Assertions.assertTrue(success);
 			Logger.info("User Details Inserted Successfully");
 
-		} catch (DAOException | SQLException ex) {
+		} catch (DAOException | SQLException | ServiceException ex) {
 			Assertions.assertEquals("Object are null or empty or invalid" + ex.getMessage(), ex.getMessage());
 
 		}
@@ -56,7 +60,7 @@ class TestUserService {
 	void testDeleteUser() {
 		User user = new User();
 		UserService userservice = new UserService();
-		user.setId(2);
+		user.setId(1);
 		assertDoesNotThrow(() -> userservice.deleteUser(user.getId()));
 
 	}
@@ -66,8 +70,8 @@ class TestUserService {
 	void testUpdateUserPhoneNo() {
 		User user = new User();
 		UserService userservice = new UserService();
-		user.setId(2);
-		user.setPhoneNumber("+919092063763");
+		user.setId(1);
+		user.setPhoneNumber("9092063763");
 		assertDoesNotThrow(() -> userservice.updatePhoneNo(user.getId(), user.getPhoneNumber()));
 	}
 
