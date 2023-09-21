@@ -411,6 +411,13 @@ class TestBookValidator {
 		Assertions.assertTrue(bookValidator.validateBookCategoriesName(Categories.LAW_BOOKS));
 	}
 
+	
+	@Test
+	// code for vaild book catgory name
+	void testValidBookCategy() {
+		BookValidator bookValidator = new BookValidator();
+		Assertions.assertTrue(bookValidator.validateBookCategoriesName(Categories.COMBO_BOOKS));
+	}
 	@Test
 	// Code for test the invalid enum validator
 	void testInvaidBookcatgEnums() {
@@ -470,7 +477,7 @@ class TestBookValidator {
 	// code for the valid book language name
 	void testValidBooklangName() {
 		BookValidator bookValidator = new BookValidator();
-		Assertions.assertTrue(bookValidator.validateBookLanguages("Tamil"));
+		Assertions.assertTrue(bookValidator.validateBookLanguages("tamil"));
 	}
 
 	@Test

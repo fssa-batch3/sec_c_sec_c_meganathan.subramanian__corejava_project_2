@@ -1,7 +1,7 @@
 package com.fssa.bookstore.model;
 
 /**
- * Below the code for add the attributes for user details 
+ * Below the code for add the attributes for user details
  * 
  * @author MeganathanSubramania
  */
@@ -17,7 +17,8 @@ public class User {
 	private String state;
 	private String city;
 	private String pincode;
-	boolean isActive  = true;
+	private String address;
+	boolean isActive = true;
 
 	// Default constructor
 	public User() {
@@ -25,25 +26,22 @@ public class User {
 	}
 
 	// Constructor
-	public User(String name, String phoneNumber, String email, String password, String state, String city, int id) {
+	public User(String name, String email, String password, String phoneNumber) {
 		this.name = name;
-		this.phoneNumber = phoneNumber;
 		this.email = email;
-		this.password = password; 
-		this.state = state;
-		this.city = city;
-		this.id = id;
+		this.password = password;
+		this.phoneNumber  = phoneNumber;
 
 	}
 
 	public boolean isActive() {
 		return isActive;
 	}
-	
+
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
-	
+
 	public User(String pincode) {
 		this.pincode = pincode;
 	}
@@ -113,12 +111,20 @@ public class User {
 		return id;
 	}
 
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	// Below the code for to string method
 	@Override
 	public String toString() {
-		return "User [id = " + id + ", name = " + name + ", phoneNumber =" + phoneNumber + ", email = " + email
-				+ ", password = " + password + ", state = " + state + ", city = " + city + ", pincode = " + pincode
-				+ "]";
+		return "User [id=" + id + ", name=" + name + ", phoneNumber=" + phoneNumber + ", email=" + email + ", password="
+				+ password + ", state=" + state + ", city=" + city + ", pincode=" + pincode + ", address=" + address
+				+ ", isActive=" + isActive + "]";
 	}
 
 }

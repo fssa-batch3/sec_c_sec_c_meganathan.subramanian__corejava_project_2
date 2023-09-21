@@ -12,20 +12,20 @@ import com.fssa.bookstore.validatorerrors.UserValidatorsErrors;
  * 
  * @author MeganathanSubramania
  */
- 
-class TestUserValidator {  
 
+class TestUserValidator {
+	
 	// Below the code for test the User name
 	@Test
 	void testValidUserName() {
 		UserValidator uservalidator = new UserValidator();
-		Assertions.assertTrue(uservalidator.validateUserName("dinesh"));
+		Assertions.assertTrue(uservalidator.validateUserName("Meganathan"));
 	}
 
 	// Below the code for invalid user name
 	@Test
 	void testInvalidUserNameNull() {
-		try { 
+		try {
 			UserValidator userValidator = new UserValidator();
 			userValidator.validateUserName(null);
 		} catch (IllegalArgumentException ex) {
@@ -114,26 +114,25 @@ class TestUserValidator {
 		}
 	}
 
-	// Below the code for test the invalid email empty 
+	// Below the code for test the invalid email empty
 	@Test
 	void testInvalidUserEmailEmpty() {
-		try { 
+		try {
 			UserValidator userValidator = new UserValidator();
 			userValidator.validateEmail("");
-		}
-		catch(IllegalArgumentException ex) {
+		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(UserValidatorsErrors.INVALID_USER_EMAIL, ex.getMessage());
 		}
-		
+
 	}
-	
+
 	// Below the code for test the valid password
 	@Test
 	void testValidUserPass() {
 		UserValidator userValidator = new UserValidator();
 		Assertions.assertTrue(userValidator.validatePassword("Dinesh@123"));
 	}
-	
+
 	// Below the code for invalid test case for password
 
 	@Test
@@ -141,174 +140,207 @@ class TestUserValidator {
 		try {
 			UserValidator userValidator = new UserValidator();
 			userValidator.validatePassword("Dinesh1233");
-		}
-		catch(IllegalArgumentException ex) {
+		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(UserValidatorsErrors.INVALID_USER_PASSWORD, ex.getMessage());
 		}
 	}
-	
+
 	// Below the code for null check the password
 	@Test
 	void testInvalidUserPassNull() {
 		try {
 			UserValidator userValidator = new UserValidator();
 			userValidator.validatePassword(null);
-		}
-		catch(IllegalArgumentException ex) {
+		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(UserValidatorsErrors.INVALID_USER_PASSWORD_NULL, ex.getMessage());
 		}
 	}
-	
+
 	// Below the code for check the empty string in password
 	@Test
 	void testInvalidUserPassEmptyStr() {
 		try {
 			UserValidator userValidator = new UserValidator();
 			userValidator.validatePassword("");
-		}
-		catch(IllegalArgumentException ex) {
+		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(UserValidatorsErrors.INVALID_USER_PASSWORD, ex.getMessage());
 		}
 	}
-	
+
 	// Below the code for test the city
 	@Test
 	void testValidUserCity() {
 		UserValidator userValidator = new UserValidator();
 		Assertions.assertTrue(userValidator.validateCity("Chennai"));
-	
+
 	}
-	
-	 // Below the  code for test the Invalid test case
+
+	// Below the code for test the Invalid test case
 	@Test
 	void testInvalidUserCity() {
 		try {
 			UserValidator userValidator = new UserValidator();
 			userValidator.validateCity("Chenai12");
-		}
-		catch(IllegalArgumentException ex) {
+		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(UserValidatorsErrors.INVALID_USER_CITY, ex.getMessage());
 		}
-		
+
 	}
-	
-	// Below the code test the invalid test case for city 
+
+	// Below the code test the invalid test case for city
 	@Test
 	void testInvalidUserCityNull() {
 		try {
 			UserValidator userValidator = new UserValidator();
 			userValidator.validateCity(null);
-		}
-		catch(IllegalArgumentException ex) {
+		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(UserValidatorsErrors.INVALID_USER_CITY_NULL, ex.getMessage());
 		}
 	}
-	
-	
+
 	// Below the code for test the invalid for city
 	@Test
 	void testEmptyStrUsercity() {
 		try {
 			UserValidator userValidator = new UserValidator();
 			userValidator.validateCity("");
-		}
-		catch(IllegalArgumentException ex) {
+		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(UserValidatorsErrors.INVALID_USER_CITY, ex.getMessage());
 		}
 	}
-	
+
 	// Below the code for test the valid state
 	@Test
 	void testValidUserState() {
 		UserValidator userValidator = new UserValidator();
 		userValidator.validateState("Tamil Nadu");
 	}
-	
+
 	// Below the code for test the invalid state name
 	@Test
 	void testInvalidUserstate() {
 		try {
 			UserValidator userValidator = new UserValidator();
 			userValidator.validateState("UNO");
-		}
-		catch(IllegalArgumentException ex) {
+		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(UserValidatorsErrors.INVALID_USER_STATE, ex.getMessage());
 		}
 	}
-	
+
 	// Below the code for null check
 	@Test
 	void testInvalidUserStateNull() {
 		try {
 			UserValidator userValidator = new UserValidator();
 			userValidator.validateState(null);
-		}
-		catch(IllegalArgumentException ex) {
+		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(UserValidatorsErrors.INVALID_USER_STATE_NULL, ex.getMessage());
 		}
 	}
-	
+
 	// below the code for empty string in state
 	@Test
 	void testUserStateEmptyStr() {
 		try {
 			UserValidator userValidator = new UserValidator();
 			userValidator.validateState("");
-		}
-		catch(IllegalArgumentException ex) {
+		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(UserValidatorsErrors.INVALID_USER_STATE, ex.getMessage());
 		}
 	}
-	
+
 	// Below the code for test the user Pincode
 	@Test
 	void testValidUserPincode() {
 		UserValidator userValidator = new UserValidator();
 		Assertions.assertTrue(userValidator.validatePincode("600081"));
 	}
-	
+
 	// Below the code for test the invalid user pincode
 	@Test
 	void testInvalidUserPincode() {
 		try {
 			UserValidator userValidator = new UserValidator();
 			userValidator.validatePincode("12356113");
-		}
-		catch(IllegalArgumentException ex) {
+		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(UserValidatorsErrors.INVALID_USER_PINCODE, ex.getMessage());
 		}
-		
+
 	}
-	
-	// Below the code for invalid user Pincode 
+
+	// Below the code for invalid user Pincode
 	@Test
 	void testInvalidUserPincodeEmptyStr() {
 		try {
 			UserValidator userValidator = new UserValidator();
 			userValidator.validatePincode("");
-		}
-		catch(IllegalArgumentException ex) {
+		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(UserValidatorsErrors.INVALID_USER_PINCODE, ex.getMessage());
 		}
 	}
-	
+
 	// Below the code for invalid user pincode
 	@Test
 	void testInvalidUserPincodeNull() {
 		try {
 			UserValidator userValidator = new UserValidator();
 			userValidator.validatePincode(null);
-		}
-		catch(IllegalArgumentException ex) {
+		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(UserValidatorsErrors.INVALID_USER_PINCODE, ex.getMessage());
+		}
+	}
+
+	// Below the code for test the user address
+	@Test
+	void testValidAddress() {
+
+		UserValidator userValidator = new UserValidator();
+		Assertions.assertTrue(userValidator.validateAddress("4/451, shanmuga sundharam street,  ranga nagar extension, old perungalathur, chennai - 63."));
+
+	}
+	
+	//Below the code test the inavalid
+	@Test
+	void testInvalidAddressNull() {
+		try {
+			UserValidator userValidator = new UserValidator();
+			userValidator.validateAddress(null);
+		}
+		catch(IllegalArgumentException e) {
+			Assertions.assertEquals(UserValidatorsErrors.INVALID_USER_ADDRESS_NULL, e.getMessage());
+		}
+	}
+	
+	// Below the code for check the empty
+	@Test 
+	void testInvalidAddressEmty() {
+		try {
+			UserValidator userValidator = new UserValidator();
+			userValidator.validateAddress("");
+		}
+		catch(IllegalArgumentException e) {
+			Assertions.assertEquals(UserValidatorsErrors.INVALID_USER_ADDRESS, e.getMessage());
+		}
+	}
+	
+	// Below the code for check the wrong inpt to users
+	@Test
+	void testInvalidAddress() {
+		try {
+			UserValidator userValidator = new UserValidator();
+			userValidator.validateAddress("7838789/fdiudfuiudffhjkdhfkdjkfh,");
+		}
+		catch(IllegalArgumentException e) {
+			Assertions.assertEquals(UserValidatorsErrors.INVALID_USER_ADDRESS, e.getMessage());
 		}
 	}
 	
 	// Below the code for check the user obj
 	@Test
 	void testValidUserObj() {
-		User validUser  = new User();
+		User validUser = new User();
 		UserValidator userValidator = new UserValidator();
+		validUser.setId(1);
 		validUser.setName("Dinesh");
 		validUser.setPassword("Dinesh@123");
 		validUser.setEmail("Dinesh@gmail.com");
@@ -316,20 +348,21 @@ class TestUserValidator {
 		validUser.setCity("Chennai");
 		validUser.setState("Tamil Nadu");
 		validUser.setPincode("600081");
-		Assertions.assertTrue(userValidator.validate(validUser));
+		validUser.setAddress("4/451, shanmuga sundharam street,  ranga nagar extension, old perungalathur, chennai - 63.");
 		
-	} 
-	
+		Assertions.assertTrue(userValidator.validate(validUser));
+
+	}
+
 	// below the code for check the user obj null or empty
 	@Test
 	void testInvalidUserObjNull() {
 		try {
 			UserValidator userValidator = new UserValidator();
 			userValidator.validate(null);
-		}
-		catch(IllegalArgumentException ex) {
+		} catch (IllegalArgumentException ex) {
 			Assertions.assertEquals(UserValidatorsErrors.INVALID_USEROBJ_NULL, ex.getMessage());
 		}
 	}
-	
+
 }

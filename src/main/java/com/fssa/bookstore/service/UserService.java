@@ -28,30 +28,30 @@ public class UserService {
 		UserDao userdao = new UserDao();
 		try {
 			userValidator.validate(user);
+			userValidator.checkUserEmailExists(user.getEmail());
 			userdao.createUser(user);
 			return true;
 
 		} catch (DAOException | SQLException ex) {
-			throw new ServiceException("Object are null or empty or invalid" + ex.getMessage());
+			throw new ServiceException(ex.getMessage());
 		} 
 	}
 	
 	/*
 	 * Below the code for login to user 
 	 * 
-	 */
+	 */ 
 	
-	public boolean loginUser(String email,String password)throws DAOException,SQLException, ServiceException{
-		UserValidator userValidator = new UserValidator();
+	public User loginUser(String email)throws  ServiceException{
+		
 		UserDao userDao = new UserDao();
+		User user = new User();
 		try {
-			userValidator.validateEmail(email);  
-			userValidator.validatePassword(password);
-			userDao.userLogin(email, password); 
-			return true;
+			user = userDao.userLogin(email); 
+			return user;
 		}
-		catch(DAOException | SQLException | IllegalArgumentException e) {
-			throw new ServiceException("Given password or Mail id is wrong" + e.getMessage());
+		catch(DAOException e) {
+			throw new ServiceException(e.getMessage());
 		}
 	}
 	
@@ -63,11 +63,15 @@ public class UserService {
 	 * @throws DAOException
 	 * @throws SQLException
 	 */
-	public boolean readUser(int id)throws DAOException, SQLException{
+	public User readUser(int id)throws DAOException, SQLException{
+		UserValidator userValidator = new UserValidator();
 		UserDao userdao = new UserDao();
+		User user = new User();
 		try {
-			userdao.readUser(id);
-			return true;
+			userValidator.validateUserId(id);
+			userValidator.checkUserIdExists(id);
+			user =  userdao.readUser(id);
+			return user;
 		}
 		catch(DAOException | SQLException ex) { 
 			throw new DAOException("Error while finding the id" + ex.getMessage());
@@ -82,10 +86,12 @@ public class UserService {
 	  * @throws DAOException
 	  * @throws SQLException
 	  */
-	public boolean deleteUser(int id)throws DAOException , SQLException{
+	public boolean deleteUser(String email)throws DAOException , SQLException{
 		UserDao userdao = new UserDao();
+		UserValidator userValidator = new UserValidator();
 		try {
-			userdao.deleteUser(id);
+			userValidator.validateEmail(email);
+			userdao.deleteUser(email);
 			return true;
 		}
 		catch(DAOException | SQLException ex) {
@@ -95,7 +101,7 @@ public class UserService {
 	
 	
 	
-	public boolean updatePhoneNo(int id, String phoneNumber)throws DAOException,SQLException{
+	public boolean updatePhoneNo(int id, String phoneNumber)throws ServiceException{
 		UserDao userDao = new UserDao();
 		UserValidator userValidator = new UserValidator();
 		try {
@@ -104,7 +110,31 @@ public class UserService {
 			return true;
 		}
 		catch(DAOException | SQLException ex) {
-			throw new DAOException("Phone number or id are invalid" + ex.getMessage());
+			throw new ServiceException("Phone number or id are invalid" + ex.getMessage());
+		}
+	}
+	
+	
+	/**
+	 * Below the code for service layer update the user
+	 * 
+	 * @param id
+	 * @param user
+	 * @return
+	 * @throws ServiceException
+	 */
+	
+	public boolean updateUser(String email,User user)throws ServiceException{
+		UserDao dao = new  UserDao();
+		UserValidator userValidator = new UserValidator();
+		try {
+//			userValidator.validate(user);
+			dao.updateuser(email,user);
+			return true;
+		}
+		catch(DAOException | IllegalArgumentException e) {
+			e.printStackTrace();
+			throw new ServiceException(e.getMessage()); 
 		}
 	}
 }

@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.fssa.bookstore.dao.BookDao;
+import com.fssa.bookstore.enums.Categories;
 import com.fssa.bookstore.exception.DAOException;
 import com.fssa.bookstore.exception.InvalidInputException;
 import com.fssa.bookstore.exception.ServiceException;
@@ -20,7 +21,7 @@ public class BookService {
 			bookValidator.validate(book);
 			bookDao.createBook(book);
 			return true;
-			
+
 		} catch (DAOException | SQLException | InvalidInputException ex) {
 			throw new ServiceException("Object are empty or Attribute error" + ex.getMessage());
 		}
@@ -36,14 +37,20 @@ public class BookService {
 	 * @throws SQLException
 	 */
 
-	public Book readBook(int bookId) throws ServiceException, DAOException {
+	public Book readBook(int bookId) throws ServiceException {
 
 		BookValidator validator = new BookValidator();
-		validator.validateBookId(bookId);
 		BookDao bookDao = new BookDao();
-		Book book = bookDao.readBook(bookId);
-
-		return book;
+		Book book;
+		try {
+			validator.validateBookId(bookId);
+			book = bookDao.readBook(bookId);
+			return book;
+			
+		} catch (DAOException e) {
+			throw new ServiceException(e.getMessage());
+		}
+		
 	}
 
 	/**
@@ -71,7 +78,7 @@ public class BookService {
 	 * Delete the book using book id
 	 *
 	 * @param bookId
-	 * @return true or false  
+	 * @return true or false
 	 * @throws DAOException
 	 * @throws SQLException
 	 */
@@ -122,12 +129,12 @@ public class BookService {
 	 * @throws ServiceException -- if exception occurs this will throw
 	 */
 
-	public List<Book> getAllBooksByCateName(String catogyName) throws ServiceException {
+	public List<Book> getAllBooksByCatgy(String catogyName) throws ServiceException {
 
 		BookDao bookDao = new BookDao();
 		List<Book> books;
 		try {
-			books = bookDao.getAllBookByCateName(catogyName);
+			books = bookDao.getAllBookByCatgy(catogyName);
 		} catch (DAOException e) {
 			throw new ServiceException("Category name are not found" + e.getMessage());
 		}
@@ -135,27 +142,30 @@ public class BookService {
 		return books;
 
 	}
-	
-	
+
 	/**
-	 * Below the code for get the all tamil books
-	 * from the database
+	 * Below the code for get the all tamil books from the database
+	 * 
 	 * @param langName
 	 * @return
 	 * @throws ServiceException
 	 */
-	
-	public List<Book> getAllTamilBooks(String langName)throws ServiceException{
-		
+
+	public List<Book> getAllTamilBooks(String langName) throws ServiceException {
+
 		BookDao bookDao = new BookDao();
+		BookValidator bookValidator = new BookValidator();
 		List<Book> books;
 		try {
+
+			bookValidator.validateBookLanguages(langName);
 			books = bookDao.getTamilBookCategy(langName);
-		}
-		catch(DAOException e){
+
+		} catch (DAOException e) {
 			throw new ServiceException("lang name is not found" + e.getMessage());
 		}
 		return books;
+
 	}
 
 	/**
@@ -199,7 +209,6 @@ public class BookService {
 		bookValidator.validateBookName(book.getBookName());
 		bookValidator.validateBookPrice(book.getBookPrice());
 		bookValidator.validateBookQuantity(book.getQuantity());
-		
 
 		BookDao bookDAO = new BookDao(); // Create the new instance for the dao obj.
 		try {

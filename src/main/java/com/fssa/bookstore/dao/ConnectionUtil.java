@@ -21,10 +21,18 @@ public class ConnectionUtil {
 		String userName;
 		String passWord;
 
-		url = System.getenv("DATABASE_HOST");
-		userName = System.getenv("DATABASE_USERNAME");
-		passWord = System.getenv("DATABASE_PASSWORD");
-
+		
+		
+		  url = System.getenv("DATABASE_HOST"); userName =
+		  System.getenv("DATABASE_USERNAME"); passWord =
+		  System.getenv("DATABASE_PASSWORD");
+		 
+		 
+		
+//		  url = "jdbc:mysql://localhost:3306/book_store"; userName = "root"; passWord =
+//		  "root";
+		 
+		  
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(url, userName, passWord);
@@ -35,12 +43,10 @@ public class ConnectionUtil {
 		}
 		return con;
 	}
-	
+
 	public static void main(String[] args) {
 		ConnectionUtil con = new ConnectionUtil();
 		con.getConnection();
 	}
-	
-	
 
 }

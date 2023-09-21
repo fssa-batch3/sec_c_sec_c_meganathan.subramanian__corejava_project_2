@@ -38,11 +38,11 @@ class TestBookService {
 		// Set the attributes of the book object for testing
  
 		try {
-			book.setBookName("The newclear weapon.");
-			book.setBookPrice(900.00);
+			book.setBookName("Catch book in joesph keller");
+			book.setBookPrice(700.00);
 			book.setBookCategories(Categories.FICTION_BOOKS);
-			book.setBookImageUrl("https://m.media-amazon.com/images/I/710+HcoP38L.jpg");
-			book.setBooklanguage("English");
+			book.setBookImageUrl("https://m.media-amazon.com/images/I/51eW-wH1K-L.jpg");
+			book.setBooklanguage("tamil");
 			book.setQuantity(1);
 			book.setAuthor("Cal new port");
 			book.setBookDescription(
@@ -122,7 +122,7 @@ class TestBookService {
 		Book book = new Book();
 		book.setBookCategories(Categories.SELFHELP_BOOKS);
 		BookService bookService = new BookService();
-		assertDoesNotThrow(() -> bookService.getAllBooksByCateName(book.getBookCategories().toString()));
+		assertDoesNotThrow(() -> bookService.getAllBooksByCatgy(book.getBookCategories().toString()));
 
 	}
 

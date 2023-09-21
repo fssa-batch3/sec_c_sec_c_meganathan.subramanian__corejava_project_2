@@ -20,7 +20,7 @@ class TestUserService {
 
 	// Below the code for create the new user test
 	@Test
-	void testCreateUser() {
+	void testCreateUser() {  
 
 		UserService userservice = new UserService();
 		User user = new User();
@@ -33,6 +33,8 @@ class TestUserService {
 			user.setCity("Chennai");
 			user.setState("Tamil Nadu");
 			user.setPincode("600021");
+			user.setAddress("4/451, shanmuga sundharam street,  ranga nagar extension, old perungalathur, chennai - 63.");
+			
 
 			boolean success = userservice.addUser(user);
 			Assertions.assertTrue(success);
@@ -60,8 +62,8 @@ class TestUserService {
 	void testDeleteUser() {
 		User user = new User();
 		UserService userservice = new UserService();
-		user.setId(1);
-		assertDoesNotThrow(() -> userservice.deleteUser(user.getId()));
+		user.setEmail("Dinesh@gmail.com");
+		assertDoesNotThrow(() -> userservice.deleteUser(user.getEmail()));
 
 	}
 
@@ -73,6 +75,26 @@ class TestUserService {
 		user.setId(1);
 		user.setPhoneNumber("9092063763");
 		assertDoesNotThrow(() -> userservice.updatePhoneNo(user.getId(), user.getPhoneNumber()));
+	}
+	
+	// Below the code for update the whole user
+	@Test
+	void testUpdateUser() {
+		User user = new User();
+		UserService userService = new UserService();
+		
+		user.setId(2);
+		user.setName("Dinesh");
+		user.setEmail("dinesh@gmail.com");
+		user.setPassword("Dinesh@123");
+		user.setPhoneNumber("9092063753");
+		user.setCity("chennai");
+		user.setState("Tamil nadu");
+		user.setPincode("600081");
+		user.setActive(true);
+		user.setAddress("4/451, shanmuga sundharam street, ranga nagar extension, old perungalathur, chennai-600813.");
+		
+		assertDoesNotThrow(() -> userService.updateUser(user.getEmail(),user));
 	}
 
 }

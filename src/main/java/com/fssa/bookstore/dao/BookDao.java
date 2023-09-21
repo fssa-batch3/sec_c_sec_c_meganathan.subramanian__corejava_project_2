@@ -297,7 +297,7 @@ public class BookDao {
 	 * @param catgyname - This parameter pass the value as string
 	 */
 
-	public List<Book> getAllBookByCateName(String catgyName) throws DAOException{
+	public List<Book> getAllBookByCatgy(String catgyName) throws DAOException{
 		ConnectionUtil connectionUtil = new ConnectionUtil();
 		List<Book> listOfBooksByCategory = new ArrayList<>();
 
