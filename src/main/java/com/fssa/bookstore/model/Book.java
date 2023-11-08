@@ -211,15 +211,15 @@ public class Book {
 	}
 
 	// Below the code convert the to string method in all
-	@Override
-	public String toString() {
-		return "Book [bookId= " + bookId + ", quantity= " + quantity + ", bookDepth= " + bookDepth + ", bookName= "
-				+ bookName + ", bookImageUrl= " + bookImageUrl + ", booklanguage= " + booklanguage + ", publisherImprint= "
-				+ publisherImprint + ", author= " + author + ", bookDescription= " + bookDescription + ", authorImg= "
-				+ authorImgUrl + ", aboutAuthorUrl= " + aboutAuthor + ", publisherDate= " + publisherDate + ", bookIsbn="
-				+ bookIsbn + ", bookPrice= " + bookPrice + ", bookHeight= " + bookHeight + ", bookWeight= " + bookWeight
-				+ ", bookwidth= " + bookwidth + ", noOfPages=" + noOfPages + ", bookCategories=" + bookCategories
-				+ ", bookBinding= " + bookBinding + ", returnable= " + returnable + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Book [bookId= " + bookId + ", quantity= " + quantity + ", bookDepth= " + bookDepth + ", bookName= "
+//				+ bookName + ", bookImageUrl= " + bookImageUrl + ", booklanguage= " + booklanguage + ", publisherImprint= "
+//				+ publisherImprint + ", author= " + author + ", bookDescription= " + bookDescription + ", authorImg= "
+//				+ authorImgUrl + ", aboutAuthorUrl= " + aboutAuthor + ", publisherDate= " + publisherDate + ", bookIsbn="
+//				+ bookIsbn + ", bookPrice= " + bookPrice + ", bookHeight= " + bookHeight + ", bookWeight= " + bookWeight
+//				+ ", bookwidth= " + bookwidth + ", noOfPages=" + noOfPages + ", bookCategories=" + bookCategories
+//				+ ", bookBinding= " + bookBinding + ", returnable= " + returnable + "]";
+//	}
 
 }

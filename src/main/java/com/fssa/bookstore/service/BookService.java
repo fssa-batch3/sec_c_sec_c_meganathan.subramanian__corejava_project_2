@@ -20,7 +20,7 @@ public class BookService {
 		try {
 			bookValidator.validate(book);
 			bookDao.createBook(book);
-			return true;
+			return true; 
 
 		} catch (DAOException | SQLException | InvalidInputException ex) {
 			throw new ServiceException("Object are empty or Attribute error" + ex.getMessage());
@@ -180,7 +180,7 @@ public class BookService {
 		List<Book> books;
 		try {
 			books = bookDao.getAllBooks();
-		} catch (DAOException | SQLException e) {
+		} catch (DAOException  e) {
 			throw new ServiceException("Error while getting all the book" + e.getMessage());
 		}
 		return books;
@@ -218,5 +218,21 @@ public class BookService {
 			e.printStackTrace();
 			throw new ServiceException("Error while update the books");
 		}
+	}
+	public boolean updateStock (int quantity,int bookId) throws ServiceException {
+		BookDao bookDAO = new BookDao();
+		BookValidator bookValidator=new BookValidator();
+		bookValidator.validateBookId(bookId);
+		bookValidator.validateBookQuantity(quantity);
+	
+	    try {
+	    	bookDAO.updateBookStocks(quantity, bookId);
+	    	return true;
+	    	
+	    }
+	    catch(DAOException e) {
+	    	throw new ServiceException("");
+	    }
+	    
 	}
 }

@@ -1,14 +1,15 @@
-	package com.fssa.bookstore.validator;
+package com.fssa.bookstore.validator;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.*;
+import java.util.regex.Matcher;
 
 /**
  * Below the code for validate the all attributes
  * @author MeganathanSubramania
  */
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.fssa.bookstore.constants.BookValidatorConstants;
@@ -22,7 +23,7 @@ import com.fssa.bookstore.model.Book;
 import com.fssa.bookstore.validatorerrors.BookValidateErrors;
 
 public class BookValidator {
-
+   
 	/**
 	 * Below the code for validate the all attribute and get the value from it.
 	 *
@@ -36,7 +37,7 @@ public class BookValidator {
 		if (book == null) {
 			throw new IllegalArgumentException(BookValidateErrors.INVALID_BOOK_NULL);
 		}
-
+ 
 		validateBookName(book.getBookName());
 		validateBookPrice(book.getBookPrice());
 		validateBookCategoriesName(book.getBookCategories());

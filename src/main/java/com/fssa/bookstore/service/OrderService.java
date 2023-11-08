@@ -46,4 +46,28 @@ public class OrderService {
 		return myOrder;
 	}
 	
+	
+	public void cancelOrder(int OrderId)throws ServiceException{
+		OrderDAO orderDAO = new OrderDAO();
+	
+		try {
+			orderDAO.cancellOrderByOrderId(OrderId);		
+		}
+		catch(DAOException e) {
+			throw new ServiceException("error while getting the id" + e.getMessage());
+		}
+	}
+	
+	public List<Orders> readAllOrder()throws ServiceException{
+		
+		OrderDAO orderDAO = new OrderDAO();
+		List<Orders> myOrder = null;
+		try {
+			myOrder = orderDAO.getListOfOrders();
+		}
+		catch(DAOException e) {
+			throw new ServiceException(e.getMessage());
+		}
+		return myOrder;
+	}
 }

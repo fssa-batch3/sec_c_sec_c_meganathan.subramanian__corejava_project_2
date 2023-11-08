@@ -36,9 +36,9 @@ class TestBookService {
 		BookService bookservicelayer = new BookService();
 		Book book = new Book();
 		// Set the attributes of the book object for testing
- 
+
 		try {
-			book.setBookName("Catch book in joesph keller");
+			book.setBookName("Catch book in joesph keller Stone.");
 			book.setBookPrice(700.00);
 			book.setBookCategories(Categories.FICTION_BOOKS);
 			book.setBookImageUrl("https://m.media-amazon.com/images/I/51eW-wH1K-L.jpg");
@@ -58,7 +58,7 @@ class TestBookService {
 					"Jeffrey Keller, President Of Attitude Is Everything, Incorporated, Works With Organizations That Want To Develop Acheivers Ans With Sales Mangeres Who Want Theru People To Be More Positive Jeff Is A Speaker,Seminar Leader And Writer In The Area Of Motivation And Human Potential.He Delivers His Uplifting Persentation To Businesses,Associations And Educational Instituation Jeff Is Also An Attorney And Praticed Law For More Than Ten Years Before Pursing A Full Time Carrer As A Speaker And Writer. In June 1999,Jeff's Book,Attitude Is.");
 			book.setReturnable(BookReturnable.YES);
 			book.setPublisherImprint("Savitha Printer");
-			book.setPublisherDate(LocalDate.of(2020, 9, 1));
+			book.setPublisherDate(LocalDate.of(2023, 9, 1));
 			book.setNoOfPages(400);
 			boolean success;
 			success = bookservicelayer.addBook(book);
@@ -78,7 +78,7 @@ class TestBookService {
 		Book book = new Book();
 		book.setBookId(1);
 		BookService bookService = new BookService();
-		Logger.info(assertDoesNotThrow(() -> bookService.readBook(book.getBookId())));
+		assertDoesNotThrow(() -> bookService.readBook(book.getBookId()));
 		Logger.info("Succesfully read the data from the MYSQL");
 
 	}
@@ -120,7 +120,7 @@ class TestBookService {
 	@Test
 	void testReadBookTitle() {
 		Book book = new Book();
-		book.setBookCategories(Categories.SELFHELP_BOOKS);
+		book.setBookCategories(Categories.FICTION_BOOKS);
 		BookService bookService = new BookService();
 		assertDoesNotThrow(() -> bookService.getAllBooksByCatgy(book.getBookCategories().toString()));
 
@@ -135,13 +135,18 @@ class TestBookService {
 		BookService bookService = new BookService();
 		assertDoesNotThrow(() -> bookService.getAllTamilBooks(book.getBooklanguage()));
 	}
+	@Test
+	void testUpdateBookStock() {
+		Book book = new Book();
+		BookService bookService = new BookService();
+		assertDoesNotThrow(() -> bookService.updateStock(2, 3));
+	}
 
 	@Test
 	void ReadAllBook() throws ServiceException {
 		BookService bookService = new BookService();
 		List<Book> bookList = bookService.getAllBook();
 		for (Book ele : bookList) {
-			Logger.info(ele);
 		}
 	}
 
@@ -164,7 +169,7 @@ class TestBookService {
 		book.setBookDescription(
 				"Attitude is an all-encompassing term that defines your outlook and approach to life.It includes your inner thoughts and outward experssions. In the end, attitude determines everything you say and so and what you say and do determine your success. Attitude is an all-encompassing term that defines your outlook and approach to life.It includes your inner thoughts and outward experssions. In the end, attitude determines everything you say and so. ");
 		book.setAuthorImgUrl("https://iili.io/J9qBtse.jpg");
-		book.setIsbn("978-0979041037");
+		book.setIsbn("978-0979041037"); 
 		book.setBookWeight(800);
 		book.setBookwidth(7.0);
 		book.setBookHeight(6.0);

@@ -24,6 +24,7 @@ public class BookDao {
 
 	// Below the code for constant
 	public static final String GET_BOOKID = "SELECT * FROM books WHERE book_id = ?";
+	private static final String UPDATE_STOCK = "UPDATE books SET quantity= quantity - ? WHERE book_id = ?";
 
 	/**
 	 * Below the code for Creating the new book in database
@@ -345,7 +346,7 @@ public class BookDao {
 						}
 
 						listOfBooksByCategory.add(book);
-						Logger.info(listOfBooksByCategory);
+						
 					}
 				}
 			}
@@ -363,7 +364,7 @@ public class BookDao {
 	 * @throws SQLException
 	 */
 
-	public List<Book> getAllBooks() throws DAOException, SQLException {
+	public List<Book> getAllBooks() throws DAOException {
 		ConnectionUtil connectionUtil = new ConnectionUtil();
 		List<Book> listOfBooks = new ArrayList<>();
 		try (Connection connection = connectionUtil.getConnection()) {
@@ -413,6 +414,8 @@ public class BookDao {
 				}
 			}
 
+		} catch (SQLException e) {
+			throw new DAOException("error while getting the connection" + e.getMessage());
 		}
 		return listOfBooks;
 	}
@@ -475,13 +478,14 @@ public class BookDao {
 						}
 
 						listOfTamilBooks.add(book);
-						Logger.info(listOfTamilBooks);
+						
 					}
 				}
 			}
 		} catch (SQLException e) {
 			throw new DAOException("Error while getting the book by lang name" + e.getMessage());
 		}
+		Logger.info("list of books");
 		return listOfTamilBooks; 
 	}
 	
@@ -511,6 +515,30 @@ public class BookDao {
 		} catch (SQLException ex) {
 			throw new DAOException("Error while getting the id  " + ex.getMessage());
 		}
+	}
+	
+	public  boolean updateBookStocks(int quantity,int bookId) throws DAOException{
+		ConnectionUtil connectionUtil = new ConnectionUtil();
+		try (Connection conn = connectionUtil.getConnection()) {
+			try (PreparedStatement pstmt = conn.prepareStatement(UPDATE_STOCK)) {
+				pstmt.setInt(1,quantity);
+				pstmt.setInt(2,bookId);
+				int rowsAffected = pstmt.executeUpdate();
+				if (rowsAffected > 0) {
+					Logger.info("Updated Successfully");
+		           
+				} else {
+					throw new DAOException("Failed to update book with ID: ");
+				}
+			}catch(SQLException e) {
+				
+			}
+			
+		}catch(SQLException e) {
+			
+		}
+		
+		return true;
 	}
 	
 	

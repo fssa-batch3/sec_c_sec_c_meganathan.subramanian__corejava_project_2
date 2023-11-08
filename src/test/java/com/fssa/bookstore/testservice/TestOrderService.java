@@ -1,11 +1,15 @@
 package com.fssa.bookstore.testservice;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import com.fssa.bookstore.exception.ServiceException;
 import com.fssa.bookstore.logger.Logger;
+import com.fssa.bookstore.model.Book;
 import com.fssa.bookstore.model.Orders;
+import com.fssa.bookstore.service.BookService;
 import com.fssa.bookstore.service.OrderService;
 
 class TestOrderService {
@@ -43,5 +47,22 @@ class TestOrderService {
 
 			}
 
+		}
+		
+		
+		@Test
+		void testUserOrder() {
+			OrderService orderService = new OrderService();
+			Orders orders = new Orders();
+			orders.setUserId(2);
+			assertDoesNotThrow(() -> orderService.ordersByUserId(orders.getUserId()));
+			Logger.info("Succesfully read the data from the MYSQL");
+		}
+		
+		@Test
+		void ReadAllOrder() {
+			OrderService orderService = new OrderService();
+			assertDoesNotThrow(() -> orderService.readAllOrder());
+		
 		}
 }

@@ -145,13 +145,12 @@ public class OrderValidator {
 		if (address == null) {
 			throw new IllegalArgumentException(OrderValidatorsErrors.INVALID_USER_ADDRESS_NULL);
 		}
-
 		String regex = "^[\\w\\s\\.,'/-]+,[\\w\\s\\.,'/-]+,[\\w\\s\\.,'/-]+,[\\w\\s\\.,'/-]+,[\\w\\s\\.,'/-]+$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(address);
 		boolean isMatch = matcher.matches();
 
-		if (!isMatch || address.isEmpty() || address.trim().length() > 150 || address.trim().length() < 7) {
+		if (address.isEmpty() || address.trim().length() > 150 || address.trim().length() < 7) {
 			throw new IllegalArgumentException(OrderValidatorsErrors.INVALID_USER_ADDRESS);
 		}
 		return true;

@@ -1,7 +1,5 @@
 package com.fssa.bookstore.model;
 
-import java.time.LocalDate;
-
 public class Orders {
 
 	private int id;
@@ -16,9 +14,11 @@ public class Orders {
 	private String city;
 	private String state;
 	private int quantity;
-	private LocalDate orderDate;
+	private boolean status;
+	private String orderDate;
 
 	// Below the code for create the getters setters
+
 	public int getId() {
 		return id;
 	}
@@ -115,24 +115,31 @@ public class Orders {
 		this.quantity = quantity;
 	}
 
-	public LocalDate getOrderDate() {
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+	public String getOrderDate() {
 		return orderDate;
 	}
 
-	public void setOrderDate(LocalDate orderDate) {
+	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
 
 
-
-	// Below the code for to string method
 	@Override
 	public String toString() {
 		return "Orders [id=" + id + ", userId=" + userId + ", productId=" + productId + ", bookName=" + bookName
 				+ ", bookImgUrl=" + bookImgUrl + ", price=" + price + ", phoneNumber=" + phoneNumber + ", address="
 				+ address + ", pincode=" + pincode + ", city=" + city + ", state=" + state + ", quantity=" + quantity
-				+ ", orderDate=" + orderDate + "]";
+				+ ", status=" + status + ", orderDate=" + orderDate + "]";
 	}
 	
 
+	
 }

@@ -4,18 +4,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-import com.fssa.bookstore.enums.BookBinding;
-import com.fssa.bookstore.enums.BookReturnable;
-import com.fssa.bookstore.enums.Categories;
 import com.fssa.bookstore.exception.DAOException;
 import com.fssa.bookstore.logger.Logger;
-import com.fssa.bookstore.model.Book;
 import com.fssa.bookstore.model.Orders;
-import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
+import com.fssa.bookstore.service.OrderService;
 
 public class OrderDAO {
 
@@ -68,7 +67,7 @@ public class OrderDAO {
 					while (rs.next()) {
 
 						Orders order = new Orders();
-
+						order.setId(rs.getInt("id"));
 						order.setBookImgUrl(rs.getString("imgUrl"));
 						order.setBookName(rs.getString("name"));
 						order.setPrice(rs.getDouble("price"));
@@ -76,8 +75,15 @@ public class OrderDAO {
 						order.setCity(rs.getString("city"));
 						order.setPincode(rs.getString("pincode"));
 						order.setState(rs.getString("state"));
-						order.setOrderDate(rs.getDate("orderDate").toLocalDate());
+						ZoneId istZone = ZoneId.of("Asia/Kolkata"); // IST time zone
+						ZonedDateTime istDateTime = ZonedDateTime.now(istZone);
+						DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MMM/yyyy hh:mm:ss a");
+						String formattedDateTime = istDateTime.format(formatter);
+
+						order.setOrderDate(formattedDateTime);
 						order.setQuantity(rs.getInt("quantity"));
+						order.setStatus(rs.getBoolean("status"));
+						myOrderByUserId.add(order);
 					}
 
 				} catch (SQLException e) {
@@ -88,6 +94,81 @@ public class OrderDAO {
 			throw new DAOException("error while getting conection" + e.getMessage());
 		}
 		return myOrderByUserId;
+	}
+
+	/**
+	 * Below the code for update the users status
+	 * 
+	 * @param orderId
+	 * @throws DAOException
+	 */
+
+	public void cancellOrderByOrderId(int orderId) throws DAOException {
+		ConnectionUtil connectionUtil = new ConnectionUtil();
+
+		try (Connection connection = connectionUtil.getConnection()) {
+			String query = "UPDATE orders SET status=? WHERE status=1 AND id=?";
+			try (PreparedStatement psmt = connection.prepareStatement(query)) {
+				psmt.setBoolean(1, false);
+				psmt.setInt(2, orderId);
+				int rowsUpdated = psmt.executeUpdate();
+				if (rowsUpdated > 0) {
+					Logger.info("Order with ID " + orderId + " has been cancelled successfully.");
+				} else {
+					Logger.info("Order with ID " + orderId + " not found.");
+				}
+			} catch (SQLException e) {
+				throw new DAOException("error while changing the order status" + e.getMessage());
+			}
+
+		} catch (SQLException e) {
+			throw new DAOException("Error while getting the connection" + e.getMessage());
+		}
+	}
+
+	/**
+	 * Below the code for get the all orders list it the DB
+	 * 
+	 * @return
+	 * @throws DAOException
+	 */
+
+	public List<Orders> getListOfOrders() throws DAOException {
+		ConnectionUtil connectionUtil = new ConnectionUtil();
+		List<Orders> orderList = new ArrayList<>();
+		try (Connection connection = connectionUtil.getConnection()) {
+			String query = "SELECT * FROM orders";
+			try (PreparedStatement psmt = connection.prepareStatement(query)) {
+				try (ResultSet rs = psmt.executeQuery()) {
+					while (rs.next()) {
+						Orders orders = new Orders();
+						orders.setId(rs.getInt("id"));
+						orders.setPrice(rs.getDouble("price"));
+						orders.setAddress(rs.getString("address"));
+						orders.setCity(rs.getString("city"));
+						orders.setState(rs.getString("state"));
+						orders.setBookImgUrl(rs.getString("imgUrl"));
+						orders.setBookName(rs.getString("name"));
+						orders.setUserId(rs.getInt("userId"));
+						orders.setProductId(rs.getInt("productId"));
+						orders.setQuantity(rs.getInt("quantity"));
+						orders.setStatus(rs.getBoolean("status"));
+						orders.setOrderDate(rs.getString("date"));
+						orderList.add(orders);
+					}
+				} catch (SQLException e) {
+					Logger.info(e.getMessage());
+					e.printStackTrace();
+					throw new DAOException("Error while getting information" + e.getMessage());
+
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Logger.info(e.getMessage());
+			throw new DAOException("Error while getting the connections" + e.getMessage());
+		}
+		return orderList;
 	}
 
 }

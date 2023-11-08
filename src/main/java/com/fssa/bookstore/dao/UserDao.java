@@ -9,14 +9,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-
-import javax.lang.model.element.ModuleElement.UsesDirective;
 
 import com.fssa.bookstore.exception.DAOException;
 import com.fssa.bookstore.logger.Logger;
 import com.fssa.bookstore.model.User;
-import com.fssa.bookstore.service.UserService;
+import com.fssa.bookstore.utils.PasswordUtil;
 
 public class UserDao {
 
@@ -88,7 +85,7 @@ public class UserDao {
 						return user;
 
 					} else {
-						throw new DAOException("User not found");
+						throw new DAOException("Invalid Credentials");
 					}
 				}
 			}
@@ -248,17 +245,15 @@ public class UserDao {
 	public boolean updateuser(String email,User user) throws DAOException {
 		ConnectionUtil connectionUtil = new ConnectionUtil();
 		try (Connection connection = connectionUtil.getConnection()) {
-			String getUserQuery = "UPDATE users SET name =?, phoneNumber =? ,email =? ,password =? ,state =? , city =? , pincode =? ,address =? WHERE email = ? AND isActive = 1";
+			String getUserQuery = "UPDATE users SET name =?, phoneNumber =? ,state =? , city =? , pincode =? ,address =? WHERE email = ? AND isActive = 1";
 			try(PreparedStatement psmt = connection.prepareStatement(getUserQuery)){
 				psmt.setString(1, user.getName());
 				psmt.setString(2, user.getPhoneNumber());
-				psmt.setString(3, user.getEmail());
-				psmt.setString(4, user.getPassword());
-				psmt.setString(5, user.getState());
-				psmt.setString(6, user.getCity());
-				psmt.setString(7, user.getPincode());
-				psmt.setString(8, user.getAddress());
-				psmt.setString(9, email);
+				psmt.setString(3, user.getState());
+				psmt.setString(4, user.getCity());
+				psmt.setString(5, user.getPincode());
+				psmt.setString(6, user.getAddress());
+				psmt.setString(7, email);
 
 				int rowAffected = psmt.executeUpdate();
 				Logger.info(user);
@@ -274,7 +269,7 @@ public class UserDao {
 			}
 		}
 		catch(SQLException e) {
-			throw new DAOException("Error while getting the connection" + e.getMessage());
+			throw new DAOException("Error while getting the connection " + e.getMessage());
 		}
 		return false;
 	}
