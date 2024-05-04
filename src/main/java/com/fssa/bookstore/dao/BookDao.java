@@ -157,7 +157,7 @@ public class BookDao {
 	}
 
 	/**
-	 * @param BookId
+	 * @param
 	 * @throws DAOException
 	 * @throws SQLException
 	 */
@@ -245,7 +245,7 @@ public class BookDao {
 	 * Below the code for update the whole book like user can update anything they
 	 * want.
 	 * 
-	 * @param catgyName
+	 * @param
 	 * @return
 	 * @throws DAOException
 	 * @throws SQLException
